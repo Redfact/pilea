@@ -28,11 +28,11 @@
       </div>
       <div class="mr-10">
         <% if user_signed_in? %>
-          <%= link_to "Profil", user_path(current_user), class: "inline-block text-base px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-indigo-500 hover:bg-white mt-4 mr-2 lg:mt-0" %>
-          <%= link_to "Déconnexion", destroy_user_session_path, :method => :delete, class: "inline-block text-base px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-indigo-500 hover:bg-white mt-4 lg:mt-0" %>
+          <%= link_to "Profil", user_path(current_user), class: "inline-block text-base px-5 py-3 leading-none border rounded text-white border-white hover:border-transparent hover:text-indigo-500 hover:bg-white mt-4 mr-2 lg:mt-0" %>
+          <%= link_to "Déconnexion", destroy_user_session_path, :method => :delete, class: "inline-block text-base px-5 py-3 leading-none border rounded text-white border-white hover:border-transparent hover:text-indigo-500 hover:bg-white mt-4 lg:mt-0" %>
         <% else %>
-          <%= link_to "Inscription", new_user_registration_path, class: "inline-block text-base px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-indigo-500 hover:bg-white mt-4 mr-2 lg:mt-0" %>
-          <%= link_to "Connexion", new_user_session_path, class: "inline-block text-base px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-indigo-500 hover:bg-white mt-4 lg:mt-0" %>
+          <%= link_to "Inscription", new_user_registration_path, class: "inline-block text-base px-5 py-3 leading-none border rounded text-white border-white hover:border-transparent hover:text-indigo-500 hover:bg-white mt-4 mr-2 lg:mt-0" %>
+          <%= link_to "Connexion", new_user_session_path, class: "inline-block text-base px-5 py-3 leading-none border rounded text-white border-white hover:border-transparent hover:text-indigo-500 hover:bg-white mt-4 lg:mt-0" %>
         <% end %>
       </div>
     </div>
