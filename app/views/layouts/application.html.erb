@@ -16,7 +16,7 @@
       <%= link_to "PILEA", root_path, class: "font-semibold text-4xl tracking-tight" %>
     </div>
     <div class="block lg:hidden">
-      <button class="flex items-center px-3 py-2 border rounded text-green-200 border-white hover:text-white">
+      <button class="flex items-center px-3 py-2 border rounded text-green-200 border-green-200 hover:border-white hover:text-white">
         <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
       </button>
     </div>
@@ -28,11 +28,11 @@
       </div>
       <div class="mr-16">
         <% if user_signed_in? %>
-          <%= link_to "Profil", user_path(current_user), class: "inline-block text-base px-5 py-3 leading-none border rounded text-white border-white hover:border-transparent hover:text-green-600 hover:bg-white mt-4 mr-2 lg:mt-0" %>
-          <%= link_to "Déconnexion", destroy_user_session_path, :method => :delete, class: "inline-block text-base px-5 py-3 leading-none border rounded text-white border-white hover:border-transparent hover:text-green-600 hover:bg-white mt-4 lg:mt-0" %>
+          <%= link_to "Profil", user_path(current_user), class: "inline-block text-base px-5 py-3 leading-none border rounded text-green-200 border-green-200 hover:border-transparent hover:text-green-600 hover:bg-green-200 mt-4 mr-2 lg:mt-0" %>
+          <%= link_to "Déconnexion", destroy_user_session_path, :method => :delete, class: "inline-block text-base px-5 py-3 leading-none border rounded text-green-200 border-green-200 hover:border-transparent hover:text-green-600 hover:bg-green-200 mt-4 lg:mt-0" %>
         <% else %>
-          <%= link_to "Inscription", new_user_registration_path, class: "inline-block text-base px-5 py-3 leading-none border rounded text-white border-white hover:border-transparent hover:text-green-600 hover:bg-white mt-4 mr-2 lg:mt-0" %>
-          <%= link_to "Connexion", new_user_session_path, class: "inline-block text-base px-5 py-3 leading-none border rounded text-white border-white hover:border-transparent hover:text-green-600 hover:bg-white mt-4 lg:mt-0" %>
+          <%= link_to "Inscription", new_user_registration_path, class: "inline-block text-base px-5 py-3 leading-none border rounded text-green-200 border-green-200 hover:border-transparent hover:text-green-600 hover:bg-green-200 mt-4 mr-2 lg:mt-0" %>
+          <%= link_to "Connexion", new_user_session_path, class: "inline-block text-base px-5 py-3 leading-none border rounded text-green-200 border-green-200 hover:border-transparent hover:text-green-600 hover:bg-green-200 mt-4 lg:mt-0" %>
         <% end %>
       </div>
     </div>
