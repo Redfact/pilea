@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'coins#index'
   resources :coins, only: [:show]
-  resources :users, only: [:show]
   devise_for :users
+  resources :users, only: [:show, :edit, :update]
 end
