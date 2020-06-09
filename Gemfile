@@ -3,9 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
-gem "letter_opener", :group => :development
+gem 'mailjet', :git => 'https://github.com/mailjet/mailjet-gem.git'
+gem 'dotenv-rails'
 
-gem 'sendgrid-ruby'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
