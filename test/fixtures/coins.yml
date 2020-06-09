@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  symbole: MyString
+  symbol: MyString
 
 two:
-  symbole: MyString
+  symbol: MyString
