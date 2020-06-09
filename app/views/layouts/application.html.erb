@@ -12,7 +12,7 @@
 
 <body class="bg-gray-900">
   <nav class="flex items-center justify-between flex-wrap bg-indigo-500 py-4 px-10">
-    <div class="flex items-center flex-shrink-0 text-white ml-6 mr-16">
+    <div class="flex items-center flex-shrink-0 text-white ml-10 mr-16">
       <%= link_to "PILEA", root_path, class: "font-semibold text-3xl tracking-tight" %>
     </div>
     <div class="block lg:hidden">
@@ -28,10 +28,10 @@
       </div>
       <div>
         <% if user_signed_in? %>
-          <%= link_to "Profil", user_path(current_user), class: "inline-block text-base px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-indigo-500 hover:bg-white mt-4 mr-1 lg:mt-0" %>
+          <%= link_to "Profil", user_path(current_user), class: "inline-block text-base px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-indigo-500 hover:bg-white mt-4 mr-2 lg:mt-0" %>
           <%= link_to "Déconnexion", destroy_user_session_path, :method => :delete, class: "inline-block text-base px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-indigo-500 hover:bg-white mt-4 lg:mt-0" %>
         <% else %>
-          <%= link_to "Inscription", new_user_registration_path, class: "inline-block text-base px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-indigo-500 hover:bg-white mt-4 mr-1 lg:mt-0" %>
+          <%= link_to "Inscription", new_user_registration_path, class: "inline-block text-base px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-indigo-500 hover:bg-white mt-4 mr-2 lg:mt-0" %>
           <%= link_to "Connexion", new_user_session_path, class: "inline-block text-base px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-indigo-500 hover:bg-white mt-4 lg:mt-0" %>
         <% end %>
       </div>
