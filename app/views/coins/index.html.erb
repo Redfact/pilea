@@ -7,7 +7,7 @@ new Chart(document.getElementById("line-chart"), {
   data: {
     labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
     datasets: [{ 
-        data: [<%= 9 * "#{rand(1000)}," + "#{rand(1000)}" %>],
+        data: [<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>],
         label: "Kraken",
         borderColor: "#3e95cd",
         fill: false
