@@ -11,14 +11,14 @@ new Chart(document.getElementById("mixed-chart-<%= @coin.name %>"), {
           label: "Prix",
           type: "line",
           borderColor: "#48bb78",
-          data: [<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>],
+          data: [<%= rand(10000) %>,<%= rand(10000) %>,<%= rand(10000) %>,<%= rand(10000) %>,<%= rand(10000) %>,<%= rand(10000) %>,<%= rand(10000) %>],
           fill: false
         }, {
           label: "Volume",
           type: "bar",
           backgroundColor: "rgba(0,0,0,0.2)",
           backgroundColorHover: "#3e95cd",
-          data: [<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>]
+          data: [<%= rand(100000000000..200000000000) %>,<%= rand(100000000000..200000000000) %>,<%= rand(100000000000..200000000000) %>,<%= rand(100000000000..200000000000) %>,<%= rand(100000000000..200000000000) %>,<%= rand(100000000000..200000000000) %>,<%= rand(100000000000..200000000000) %>]
         }
       ]
     },
