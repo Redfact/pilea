@@ -1,4 +1,4 @@
-<div class="chart-container relative w-2/4 h-1/12 rounded-lg p-5 bg-white" >
+<div class="chart-container relative w-2/4 h-1/12 rounded-lg p-5 bg-gray-100">
 <canvas id="mixed-chart"></canvas>
 </div>
 
@@ -8,13 +8,13 @@ new Chart(document.getElementById("mixed-chart"), {
     data: {
       labels: ["13h","14h","15h","16h","17h","18h","19h","20h","21h","22h","23h","00h","01h","02h","03h","04h","05h","06h","07h","08h","09h","10h","11h","12h"],
       datasets: [{
-          label: "Binance",
+          label: "Prix",
           type: "line",
           borderColor: "#48bb78",
           data: [<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>],
           fill: false
         }, {
-          label: "Binance",
+          label: "Volume",
           type: "bar",
           backgroundColor: "rgba(0,0,0,0.2)",
           backgroundColorHover: "#3e95cd",
@@ -29,7 +29,10 @@ new Chart(document.getElementById("mixed-chart"), {
 });
 </script>
 
-<div class="chart-container relative w-2/4 h-1/12 rounded-lg px-48 pt-4 pb-0 bg-white" >
+<div class="w-2/4 h-1/12 rounded-lg px-48 pt-4 pb-0">
+</div>
+
+<div class="chart-container relative w-2/4 h-1/12 rounded-lg px-48 pt-4 pb-0 bg-gray-100">
 <canvas id="line-chart"></canvas>
 </div>
 
@@ -39,7 +42,7 @@ new Chart(document.getElementById("line-chart"), {
     data: {
       labels: ["13h","14h","15h","16h","17h","18h","19h","20h","21h","22h","23h","00h","01h","02h","03h","04h","05h","06h","07h","08h","09h","10h","11h","12h"],
       datasets: [{
-          label: "Binance",
+          label: "Prix",
           borderColor: "#48bb78",
           data: [<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>],
           fill: false
