@@ -6,7 +6,7 @@
       <p class="w-16 my-auto mx-10 text-2xl text-center border border-red-500"><%= coin.symbol %></p>
     </div>
     <p class="w-48 my-auto mx-10 text-2xl text-center border border-red-500">$ <%= rand(10000) %></p>
-    <p class="w-48 my-auto mx-10 text-2xl text-center border border-red-500">$ <%= rand(100000000000) %></p>
+    <p class="w-48 my-auto mx-10 text-2xl text-center border border-red-500">$ <%= rand(100000000000..200000000000) %></p>
     <div class="chart-container relative px-20 rounded-lg border border-red-500">
       <canvas id="line-chart-<%= coin.name %>"></canvas>
     </div>
