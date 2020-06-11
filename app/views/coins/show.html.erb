@@ -23,7 +23,13 @@ new Chart(document.getElementById("mixed-chart-<%= @coin.name %>"), {
       ]
     },
     options: {
-      title: { display: false },
+      title: {
+        display: false,
+        gridLines: {
+					display: false,
+					drawBorder: false
+				}
+      },
       legend: { display: false }
     }
 });
