@@ -1,5 +1,5 @@
 class GetValues
-   attr_accessor :data_hash,:coin 
+   attr_accessor :data_hash, :coin 
 
    def initialize(coin_name)
       @data_hash = Hash.new
@@ -17,17 +17,16 @@ class GetValues
       return @data_hash
    end
 
-   def find_prices_for_last_week
-      puts "Lancement de la méthode find_prices_for_last_week"
-      # Méthode qui retourne les prix des 7 derniers jours du data_hash dans un array
-      prices_array = []
-      prices_data = @data_hash['prices'].last(7)
-      prices_data.each{ |index|
-         timestamp =  index[0]
-         price =  index[1]
-         prices_array << price
+   def find_for_last_week(elements)
+      puts "Récupération des 7 derniers dans un array"
+      elements_array = []
+      elements_data = @data_hash[elements].last(7)
+      elements_data.each{ |index|
+         element_timestamp =  index[0]
+         element =  index[1]
+         elements_array << element
       }
-      puts prices_array
+      puts elements_array
    end
 
    def find_prices_each_months
