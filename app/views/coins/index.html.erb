@@ -1,8 +1,10 @@
 <% @coins.each do |coin| %>
 
 <div class="flex justify-between bg-gray-200 text-gray-700 shadow-2xl rounded-lg mx-auto my-3 px-8 py-4 w-10/12 border border-red-500">
-    <img class="w-16 h-16 my-auto mx-8 shadow-2xl" src="<%= coin.logo %>" alt="Logo <%= coin.name %>">
+    <img class="w-16 h-16 rounded-full object-cover my-auto mx-8 shadow-2xl" src="<%= coin.logo %>" alt="Logo <%= coin.name %>">
     <p class="w-16 my-auto mx-8 text-2xl text-center border border-red-500"><%= coin.symbol %></p>
+    <p class="w-16 my-auto mx-8 text-2xl text-center border border-red-500"><%= coin.rand(1000) %></p>
+    <p class="w-16 my-auto mx-8 text-2xl text-center border border-red-500"><%= coin.rand(1000) %></p>
     <div class="chart-container relative px-20 rounded-lg border border-red-500">
       <canvas id="line-chart-<%= coin.name %>"></canvas>
     </div>
