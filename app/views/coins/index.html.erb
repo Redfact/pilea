@@ -1,89 +1,20 @@
-<div class="chart-container relative w-2/4 h-1/12 rounded-lg p-5 bg-gray-100">
-<canvas id="mixed-chart"></canvas>
-</div>
-
-<script>
-new Chart(document.getElementById("mixed-chart"), {
-    type: 'bar',
-    data: {
-      labels: ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"],
-      datasets: [{
-          label: "Prix",
-          type: "line",
-          borderColor: "#48bb78",
-          data: [<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>],
-          fill: false
-        }, {
-          label: "Volume",
-          type: "bar",
-          backgroundColor: "rgba(0,0,0,0.2)",
-          backgroundColorHover: "#3e95cd",
-          data: [<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>]
-        }
-      ]
-    },
-    options: {
-      title: { display: false },
-      legend: { display: false }
-    }
-});
-</script>
-
-<div class="w-2/4 h-1/12 rounded-lg px-48 pt-4 pb-0">
-</div>
-
-<div class="chart-container relative w-2/4 h-1/12 rounded-lg px-48 pt-4 pb-0 bg-gray-100">
-<canvas id="line-chart"></canvas>
-</div>
-
-<script>
-new Chart(document.getElementById("line-chart"), {
-    type: 'line',
-    data: {
-      labels: ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"],
-      datasets: [{
-          label: "Prix",
-          borderColor: "#48bb78",
-          data: [<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>],
-          fill: false
-        }
-      ]
-    },
-    options: {
-      title: { display: false },
-      legend: { display: false },
-      scales: {
-          xAxes: [{
-						display: true,
-						ticks: {
-							callback: function(dataLabel) {
-								return null;
-							}
-						}
-					}],
-					yAxes: [{
-							display: true,
-              ticks: {
-							callback: function(dataLabel) {
-								return null;
-							}
-						}
-					}]
-				}
-    }
-});
-</script>
-
 <% @coins.each do |coin| %>
+
 <div class="flex bg-white text-gray-700 shadow-lg rounded-lg mx-auto my-3 w-10/12">
   <div class="flex items-start my-auto px-8 py-4">
-    <img class="w-16 h-16 rounded-full object-cover ùy-auto mr-8 shadow" src="<%= coin.logo %>" alt="Logo <%= coin.name %>">
+    <img class="w-16 h-16 rounded-full object-cover my-auto mr-8 shadow" src="<%= coin.logo %>" alt="Logo <%= coin.name %>">
     <div class="w-16 my-auto mr-8">
       <p class="text-2xl my-auto text-center"><%= coin.symbol %></p>
+    </div>
+    <div class="chart-container relative w-2/4 h-1/12 rounded-lg px-48 pt-4 pb-0 bg-gray-100">
+      <canvas id="line-chart"></canvas>
     </div>
     <svg fill="none" viewBox="0 0 24 24"  class="my-auto w-8 h-8 mr-1" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
     </svg>
   </div>
 </div>
+
+<script scr="app/assets/javascripts/line_chart.js"></script>
+
 <% end %>
