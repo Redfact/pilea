@@ -1,6 +1,4 @@
-<h1>Coins#index</h1>
-<p>Find me in app/views/coins/index.html.erb</p>
-<div class="chart-container relative w-1/4 h-1/12 rounded-lg p-5 bg-white" >
+<div class="chart-container relative w-2/4 h-1/12 rounded-lg p-5 bg-white" >
 <canvas id="mixed-chart"></canvas>
 </div>
 
@@ -8,6 +6,7 @@
 new Chart(document.getElementById("mixed-chart"), {
     type: 'bar',
     data: {
+      labels: ["13h","14h","15h","16h","17h","18h","19h","20h","21h","22h","23h","00h","01h","02h","03h","04h","05h","06h","07h","08h","09h","10h","11h","12h"]
       datasets: [{
           label: "Binance",
           type: "line",
@@ -38,7 +37,7 @@ new Chart(document.getElementById("mixed-chart"), {
 new Chart(document.getElementById("line-chart"), {
     type: 'line',
     data: {
-      labels: ["13h","14h","15h","16h","17h","18h","19h","20h","21h","22h","23h","00h","01h","02h","03h","04h","05h","06h","07h","08h","09h","10h","11h","12h"],
+      labels: ["13h","14h","15h","16h","17h","18h","19h","20h","21h","22h","23h","00h","01h","02h","03h","04h","05h","06h","07h","08h","09h","10h","11h","12h", display: false],
       datasets: [{
           label: "Binance",
           borderColor: "#3e95cd",
