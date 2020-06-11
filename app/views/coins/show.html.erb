@@ -1,24 +1,24 @@
 <div class="chart-container relative w-2/4 h-1/12 rounded-lg p-5 bg-gray-100">
-<canvas id="mixed-chart"></canvas>
+<canvas id="mixed-chart-<%= @coin.name %>"></canvas>
 </div>
 
 <script>
-new Chart(document.getElementById("mixed-chart"), {
+new Chart(document.getElementById("mixed-chart-<%= @coin.name %>"), {
     type: 'bar',
     data: {
-      labels: ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"],
+      labels: ["JEU","VEN","SAM","DIM","LUN","MAR","MER"],
       datasets: [{
           label: "Prix",
           type: "line",
           borderColor: "#48bb78",
-          data: [<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>],
+          data: [<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>],
           fill: false
         }, {
           label: "Volume",
           type: "bar",
           backgroundColor: "rgba(0,0,0,0.2)",
           backgroundColorHover: "#3e95cd",
-          data: [<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>]
+          data: [<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>]
         }
       ]
     },
