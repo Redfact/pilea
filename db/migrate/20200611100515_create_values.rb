@@ -4,7 +4,7 @@ class CreateValues < ActiveRecord::Migration[5.2]
       t.belongs_to :coin , index: true 
       t.integer :price
       t.bigint :volume
-      t.string :interval
+      t.integer :interval, default: 0
       t.timestamps
     end
   end

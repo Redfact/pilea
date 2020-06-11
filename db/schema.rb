@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2020_06_11_100515) do
     t.bigint "coin_id"
     t.integer "price"
     t.bigint "volume"
-    t.string "interval"
+    t.integer "interval", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["coin_id"], name: "index_values_on_coin_id"
