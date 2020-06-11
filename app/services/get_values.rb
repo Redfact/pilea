@@ -18,7 +18,6 @@ class GetValues
    end
 
    def find_for_last_week(elements)
-      puts "Récupération des 7 derniers dans un array"
       elements_array = []
       elements_data = @data_hash[elements].last(7)
       elements_data.each{ |index|
@@ -26,7 +25,7 @@ class GetValues
          element =  index[1]
          elements_array << element
       }
-      puts elements_array
+      return elements_array
    end
 
    def find_prices_each_months

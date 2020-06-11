@@ -1,3 +1,5 @@
+require 'get_values'
+
 coins = {
  "bitcoin"=>["BTC","https://s2.coinmarketcap.com/static/img/coins/32x32/1.png"],
  "ethereum"=>["ETH","https://s2.coinmarketcap.com/static/img/coins/32x32/1027.png"],
@@ -12,8 +14,23 @@ coins = {
 }
 
 Coin.destroy_all
+Value.destroy_all
 
+#All existing coin 
 coins.each{ |key,value|
     Coin.create(name:key,symbol:value[0],logo:value[1])
 }
+
+#Fill the table  Values for bitcoin (first value) 
+cur_coin = Coin.first
+data = GetValues.new(cur_coin.name)
+bt_prices = data.find_for_last_week('prices')
+bt_volumes = data.find_for_last_week('total_volumes')
+ 
+for i in 0..bt_volumes.size-1
+    Value.create(price: bt_prices[i] , volume:bt_volumes[i].to_i , interval:2,coin_id:cur_coin.id)
+end
+
+
+
 

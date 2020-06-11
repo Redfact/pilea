@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2020_06_11_103124) do
 
   create_table "values", force: :cascade do |t|
     t.bigint "coin_id"
-    t.integer "price"
+    t.decimal "price"
     t.bigint "volume"
     t.integer "interval", default: 0
     t.datetime "created_at", null: false

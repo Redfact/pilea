@@ -10,4 +10,6 @@ class Coin < ApplicationRecord
     uniqueness:true, 
     presence:true , 
     length: {in: 1..3}
+
+    
 end
