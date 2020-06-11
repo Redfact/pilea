@@ -31,6 +31,10 @@ for i in 0..bt_volumes.size-1
     Value.create(price: bt_prices[i] , volume:bt_volumes[i].to_i , interval:2,coin_id:cur_coin.id)
 end
 
+# Example how to get prices and volumes of the current_coin
+cur_coin.values.each{|index|
+    print "volume: #{index.volume} , price : #{index.price} \n"
+}
 
 
 
