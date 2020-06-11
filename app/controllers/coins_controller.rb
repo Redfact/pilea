@@ -1,8 +1,9 @@
 class CoinsController < ApplicationController
   def index
-    @coin = Coin.find(params[:id])
+    @coins = Coin.all
   end
 
   def show
+    @coins = Coin.find(params[:id])
   end
 end
