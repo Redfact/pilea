@@ -13,11 +13,11 @@
 </div>
 
 <div class="chart-container relative w-2/4 h-1/12 rounded-lg px-48 pt-4 pb-0 bg-gray-100">
-<canvas id="line-chart-ethereum"></canvas>
+<canvas id="line-chart-<%= coin.name %>"></canvas>
 </div>
 
 <script>
-new Chart(document.getElementById("line-chart-ethereum"), {
+new Chart(document.getElementById("line-chart-<%= coin.name %>"), {
     type: 'line',
     data: {
       labels: ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"],
