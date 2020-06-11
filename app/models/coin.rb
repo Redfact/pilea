@@ -9,5 +9,5 @@ class Coin < ApplicationRecord
     validates :symbol, 
     uniqueness:true, 
     presence:true , 
-    length: {in: 1..20}
+    length: {in: 1..3}
 end
