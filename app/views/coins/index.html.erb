@@ -2,7 +2,9 @@
 
 <div class="flex justify-between bg-gray-200 text-gray-700 shadow-2xl rounded-lg mx-auto my-3 px-8 py-4 w-8/12">
     <div class="my-auto mx-6">
-      <img class="w-16 h-16 rounded-full object-cover my-auto shadow-2xl" src="<%= coin.logo %>" alt="Logo <%= coin.name %>">
+      <a href="<%= coin_path %>">
+        <img class="w-16 h-16 rounded-full object-cover my-auto shadow-2xl" src="<%= coin.logo %>" alt="Logo <%= coin.name %>">
+      </a>
       <p class="w-16 my-auto text-lg text-center"><%= coin.symbol %></p>
     </div>
     <div class="flex my-auto">
