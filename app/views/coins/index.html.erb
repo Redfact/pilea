@@ -23,13 +23,14 @@ new Chart(document.getElementById("mixed-chart"), {
       ]
     },
     options: {
+      responsive: true,
       title: { display: false },
       legend: { display: false }
     }
 });
 </script>
 
-<div class="chart-container relative w-64 h-40 rounded-lg p-5 bg-white" >
+<div class="chart-container relative w-1/4 h-40 rounded-lg p-2 bg-white" >
 <canvas id="line-chart"></canvas>
 </div>
 
@@ -47,8 +48,27 @@ new Chart(document.getElementById("line-chart"), {
       ]
     },
     options: {
+      responsive: true,
       title: { display: false },
-      legend: { display: false }
+      legend: { display: false },
+      scales: {
+          xAxes: [{
+						display: true,
+						ticks: {
+							callback: function(dataLabel, index) {
+								// Hide the label of every 2nd dataset. return null to hide the grid line too
+								return null;
+							}
+						}
+					}],
+					yAxes: [{
+						scaleLabel: {
+							display: true,
+							labelString: 'value',
+              beginAtZero: false
+						}
+					}]
+				}
     }
 });
 </script>
