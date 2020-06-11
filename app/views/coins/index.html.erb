@@ -1,16 +1,16 @@
 <% @coins.each do |coin| %>
 
 <div class="flex justify-between bg-gray-200 text-gray-700 shadow-2xl rounded-lg mx-auto my-3 px-8 py-4 w-10/12 border border-red-500">
-    <div class="my-auto mx-12 border border-red-500">
-      <img class="w-16 h-16 rounded-full object-cover my-auto mx-12 shadow-2xl" src="<%= coin.logo %>" alt="Logo <%= coin.name %>">
-      <p class="w-16 my-auto mx-12 text-2xl text-center border border-red-500"><%= coin.symbol %></p>
+    <div class="my-auto mx-4 border border-red-500">
+      <img class="w-16 h-16 rounded-full object-cover my-auto mx-4 shadow-2xl" src="<%= coin.logo %>" alt="Logo <%= coin.name %>">
+      <p class="w-16 my-auto mx-4 text-2xl text-center border border-red-500"><%= coin.symbol %></p>
     </div>
-    <p class="w-64 my-auto mx-12 text-2xl text-center border border-red-500">$ <%= rand(10000) %></p>
-    <p class="w-64 my-auto mx-12 text-2xl text-center border border-red-500">$ <%= rand(100000000000..200000000000) %></p>
+    <p class="w-64 my-auto mx-4 text-2xl text-center border border-red-500">$ <%= rand(10000) %></p>
+    <p class="w-64 my-auto mx-4 text-2xl text-center border border-red-500">$ <%= rand(100000000000..200000000000) %></p>
     <div class="chart-container relative h-20 w-40 mt-5 rounded-lg border border-red-500">
       <canvas id="line-chart-<%= coin.name %>"></canvas>
     </div>
-    <svg fill="none" viewBox="0 0 24 24"  class="my-auto w-8 h-8 mx-12 border border-red-500" stroke="currentColor">
+    <svg fill="none" viewBox="0 0 24 24"  class="my-auto w-8 h-8 mx-4 border border-red-500" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
     </svg>
 </div>
