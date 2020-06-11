@@ -8,10 +8,9 @@ class GetValues
    end
 
    def get_data_hash
-      # Call API qui récupère l'historique du 10 Juin 2019 au 10 Juin 2020
-      # TimeStamp 10 Juin 2019 00h00 : 1560124800
-      # TimeStamp 10 Juin 2020 00h00 : 1591747200
-      response = RestClient.get("https://api.coingecko.com/api/v3/coins/#{@coin}/market_chart/range?vs_currency=usd&from=1560124800&to=1591747200")
+      now = DateTime.now.strftime('%s')
+      one_year_ago = 1.year.ago.strftime('%s')
+      response = RestClient.get("https://api.coingecko.com/api/v3/coins/#{@coin}/market_chart/range?vs_currency=usd&from=#{one_year_ago}&to=#{now}")
       @data_hash = JSON.parse(response)
       return @data_hash
    end
