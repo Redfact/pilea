@@ -12,11 +12,47 @@
   </div>
 </div>
 
-<% end %>
-
 <div class="chart-container relative w-2/4 h-1/12 rounded-lg px-48 pt-4 pb-0 bg-gray-100">
 <canvas id="line-chart-ethereum"></canvas>
 </div>
 
-<script src="app/assets/javascripts/line_chart.js">
+<script>
+new Chart(document.getElementById("line-chart-ethereum"), {
+    type: 'line',
+    data: {
+      labels: ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"],
+      datasets: [{
+          label: "Prix",
+          borderColor: "#48bb78",
+          data: [<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>],
+          fill: false
+        }
+      ]
+    },
+    options: {
+      title: { display: false },
+      legend: { display: false },
+      scales: {
+          xAxes: [{
+						display: true,
+						ticks: {
+							callback: function(dataLabel) {
+								return null;
+							}
+						}
+					}],
+					yAxes: [{
+							display: true,
+              ticks: {
+							callback: function(dataLabel) {
+								return null;
+							}
+						}
+					}]
+				}
+    }
+});
 </script>
+
+<% end %>
+
