@@ -5,8 +5,8 @@
       <img class="w-16 h-16 rounded-full object-cover my-auto mx-10 shadow-2xl" src="<%= coin.logo %>" alt="Logo <%= coin.name %>">
       <p class="w-16 my-auto mx-10 text-2xl text-center border border-red-500"><%= coin.symbol %></p>
     </div>
-    <p class="w-40 my-auto mx-10 text-2xl text-center border border-red-500">$ <%= rand(1000) %></p>
-    <p class="w-40 my-auto mx-10 text-2xl text-center border border-red-500">$ <%= rand(1000) %></p>
+    <p class="w-48 my-auto mx-10 text-2xl text-center border border-red-500">$ <%= rand(10000) %></p>
+    <p class="w-48 my-auto mx-10 text-2xl text-center border border-red-500">$ <%= rand(100000000000) %></p>
     <div class="chart-container relative px-20 rounded-lg border border-red-500">
       <canvas id="line-chart-<%= coin.name %>"></canvas>
     </div>
