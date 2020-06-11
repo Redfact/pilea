@@ -19,11 +19,19 @@ class GetValues
       elements_array = []
       elements_data = @data_hash[elements].last(7)
       elements_data.each{ |index|
-         element_timestamp =  index[0]
          element =  index[1]
          elements_array << element
       }
       return elements_array
+   end
+
+   def timestamp_for_last_week
+      timestamp_array = []
+      data = @data_hash['prices'].last(7)
+      data.each{ |index|
+         timestamp_array << index[0]
+      }
+      return timestamp_array
    end
 
    def find_prices_each_months

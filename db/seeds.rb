@@ -25,16 +25,18 @@ coins.each { |key,value|
 #max
 def fill_values_in_database(coin)
     data = GetValues.new(coin.name)
+    timestamps = data.timestamp_for_last_week
     prices = data.find_for_last_week('prices')
     volumes = data.find_for_last_week('total_volumes')
     number_of_values = prices.length
   
     number_of_values.times { |i|
         Value.create(
+            coin_id: coin.id,
             price: prices[i],
             volume: volumes[i].to_i,
             interval: 1,
-            coin_id: coin.id)
+            timestamp: timestamps[i])
     }
 end
   
