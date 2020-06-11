@@ -53,7 +53,7 @@ new Chart(document.getElementById("line-chart"), {
           xAxes: [{
 						display: true,
 						ticks: {
-							callback: function(dataLabel, index) {
+							callback: function(dataLabel) {
 								// Hide the label of every 2nd dataset. return null to hide the grid line too
 								return null;
 							}
@@ -63,7 +63,7 @@ new Chart(document.getElementById("line-chart"), {
 						scaleLabel: {
 							display: true,
               ticks: {
-							callback: function(dataLabel, index) {
+							callback: function(dataLabel) {
 								// Hide the label of every 2nd dataset. return null to hide the grid line too
 								return null;
 							}
