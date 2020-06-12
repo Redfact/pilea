@@ -22,7 +22,11 @@ new Chart(document.getElementById("mixed-chart-<%= @coin.name %>"), {
           type: "bar",
           backgroundColor: "rgba(0,0,0,0.2)",
           backgroundColorHover: "#3e95cd",
-          data: [<%= rand(10000) %>,<%= rand(10000) %>,<%= rand(10000) %>,<%= rand(10000) %>,<%= rand(10000) %>,<%= rand(10000) %>,<%= rand(10000) %>]
+          data: [
+            <% @coin.values.each do |x| %>
+            <%= "#{x.volume}," %>          
+            <% end %>
+          ]
         }
       ]
     },
