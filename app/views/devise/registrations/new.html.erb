@@ -1,29 +1,33 @@
-<h2>Sign up</h2>
+<div class="max-w-xl bg-white shadow-md rounded px-8 pt-6 pb-8 mt-16 mb-4 mx-auto">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <p class="text-center text-gray-700 text-lg font-bold mb-6">INSCRIPTION</p>
+
+  <div class="mb-6">
+    <%= f.label :Adresse_Email, class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <%= f.email_field :email, autofocus: true, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:border-green-300 outline-none", placeholder: "Email" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
+  <div class="mb-6">
+    <%= f.label :Mot_de_passe, class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <%= f.password_field :password, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:border-green-300 outline-none", placeholder: "******" %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+      <em class="italic text-gray-400">(<%= @minimum_password_length %> caractères minimum)</em>
+    <% end %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="mb-6">
+    <%= f.label :Confirmation_du_mot_de_passe, class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <%= f.password_field :password_confirmation, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:border-green-300 outline-none", placeholder: "******" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="text-center">
+    <%= f.submit "S'inscrire", class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:border-green-300 outline-none" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+</div>
+
+<p class="text-center text-gray-500 text-xs">&copy;2020 Metis Lab. All rights reserved.</p>
