@@ -24,7 +24,7 @@ new Chart(document.getElementById("mixed-chart-<%= @coin.name %>"), {
           backgroundColorHover: "#3e95cd",
           data: [
             <% @coin.values.each do |x| %>
-            <%= "#{x.volume}," %>          
+            <%= "#{x.price}," %>          
             <% end %>
           ]
         }
