@@ -2,12 +2,12 @@
 
 <p class="text-center text-gray-700 text-lg font-bold mb-6">MON PROFIL</p>
 
-<div class="flex">
+<div class="flex text-center">
   <% unless @user.first_name = nil %>
-    <p class="text-center text-gray-700 text-xl mb-6">Jean</p>
+    <p class="text-center text-gray-700 text-xl mb-6 mr-2">Jean</p>
   <% end %>
-  <% unless @user.first_name = nil %>
-    <p class="text-center text-gray-700 text-xl mb-6">Dupont</p>
+  <% unless @user.last_name = nil %>
+    <p class="text-center text-gray-700 text-xl mb-6 ml-2">Dupont</p>
   <% end %>
 </div>
 
