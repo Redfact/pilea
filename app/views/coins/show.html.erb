@@ -13,7 +13,7 @@ new Chart(document.getElementById("mixed-chart-<%= @coin.name %>"), {
           borderColor: "#48bb78",
           data: [
             <% @coin.values.each do |x| %>
-            <%= x.price %>          
+            <%= "#{x.price}," %>          
             <% end %>
           ],
           fill: false
