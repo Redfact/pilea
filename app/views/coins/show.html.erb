@@ -1,5 +1,5 @@
 <div class="bg-gray-200 shadow-2xl rounded-lg mx-auto my-3 px-8 py-4 w-8/12">
-  <div class="flex justify-between text-gray-700 mx-auto">
+  <div class="flex justify-between text-gray-700 my-5 mx-auto">
     <div class="my-auto mx-6">
       <img class="w-16 h-16 rounded-full object-cover my-auto shadow-2xl" src="<%= @coin.logo %>" alt="Logo <%= @coin.name %>">
       <p class="w-16 my-auto text-lg text-center"><%= @coin.symbol %></p>
@@ -14,7 +14,7 @@
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
     </svg>
   </div>
-  <div class="flex">
+  <div class="flex my-5">
     <div class="chart-container relative w-2/4 h-1/12 rounded-lg p-5">
       <canvas id="line-chart-<%= @coin.name %>"></canvas>
     </div>
