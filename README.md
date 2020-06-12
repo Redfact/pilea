@@ -15,6 +15,7 @@ Au cours de la 2ème semaine nous allons ajouter des fonctionnalités:
 
 
 Nous avons utilisé:
+
 -tailwindcss
 -chart.js
 -ruby
