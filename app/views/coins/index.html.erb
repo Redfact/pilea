@@ -27,7 +27,11 @@ new Chart(document.getElementById("line-chart-<%= coin.name %>"), {
       datasets: [{
           label: "Prix",
           borderColor: "#48bb78",
-          data: [<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>,<%= rand(1000) %>],
+          data: [
+            <% coin.values.each do |value| %>
+            <%= "#{value.price}," %>          
+            <% end %>
+          ],
           fill: false
         }
       ]

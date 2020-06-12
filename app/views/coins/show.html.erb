@@ -12,8 +12,8 @@ new Chart(document.getElementById("mixed-chart-<%= @coin.name %>"), {
           type: "line",
           borderColor: "#48bb78",
           data: [
-            <% @coin.values.each do |x| %>
-            <%= "#{x.price}," %>          
+            <% @coin.values.each do |value| %>
+            <%= "#{value.price}," %>          
             <% end %>
           ],
           fill: false
@@ -23,8 +23,8 @@ new Chart(document.getElementById("mixed-chart-<%= @coin.name %>"), {
           backgroundColor: "rgba(0,0,0,0.2)",
           backgroundColorHover: "#3e95cd",
           data: [
-            <% @coin.values.each do |x| %>
-            <%= "#{x.price}," %>          
+            <% @coin.values.each do |value| %>
+            <%= "#{value.price}," %>          
             <% end %>
           ]
         }
