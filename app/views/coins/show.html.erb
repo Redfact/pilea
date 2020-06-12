@@ -11,7 +11,9 @@ new Chart(document.getElementById("mixed-chart-<%= @coin.name %>"), {
           label: "Prix",
           type: "line",
           borderColor: "#48bb78",
-          data: [<%= @coin.values.each {|value|"#{value.price},"} %>],
+          data: [<% @coin.values.each |x| %>
+          <%= x.price %>          
+          <% end %>],
           fill: false
         }, {
           label: "Volume",
