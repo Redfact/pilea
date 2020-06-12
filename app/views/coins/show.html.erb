@@ -11,7 +11,7 @@ new Chart(document.getElementById("mixed-chart-<%= @coin.name %>"), {
           label: "Prix",
           type: "line",
           borderColor: "#48bb78",
-          data: [<%= rand(10000) %>,<%= rand(10000) %>,<%= rand(10000) %>,<%= rand(10000) %>,<%= rand(10000) %>,<%= rand(10000) %>,<%= rand(10000) %>,],
+          data: [<%= @coin.values.each {|value|"#{value.price},"} %>],
           fill: false
         }, {
           label: "Volume",
