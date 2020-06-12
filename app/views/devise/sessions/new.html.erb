@@ -6,24 +6,24 @@
   <p class="text-center text-gray-700 text-lg font-bold mb-6">CONNEXION</p>
 
   <div class="mb-6">
-    <%= f.label :Adresse_Mail, class: "block text-gray-700 text-sm font-bold mb-2" %>
-    <%= f.email_field :email, autofocus: true, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:border-green-300 outline-none", placeholder: "Email" %>
+    <%= f.label :Adresse_mail, class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <%= f.email_field :email, autofocus: true, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:border-green-300 outline-none", placeholder: "exemple@mail.com" %>
   </div>
 
   <div class="mb-6">
     <%= f.label :Mot_de_Passe, class: "block text-gray-700 text-sm font-bold mb-2" %>
-    <%= f.password_field :password, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:border-green-300 outline-none", placeholder: "******" %>
+    <%= f.password_field :password, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:border-green-300 outline-none", placeholder: "*********" %>
   </div>
 
   <% if devise_mapping.rememberable? %>
     <div class="mb-6 text-center">
       <%= f.check_box :remember_me %>
-      <%= f.label :Se_souvenir_de_moi, class: "ml-2" %>
+      <%= f.label :Se_souvenir_de_moi, class: "block text-gray-700 text-sm font-bold ml-2" %>
     </div>
   <% end %>
 
   <div class="text-center">
-    <%= f.submit "Se connecter", class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+    <%= f.submit "Se connecter", class: "bg-green-300 hover:bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
   </div>
   <div class="text-center">
     <%= link_to "Mot de passe oublié ?", 'https://test.com', class: "inline-block align-baseline font-bold text-sm text-green-500 hover:text-green-800" %>
