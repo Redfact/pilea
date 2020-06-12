@@ -1,2 +1,44 @@
-<h1>Coins#show</h1>
-<p>Find me in app/views/coins/show.html.erb</p>
+<div class="chart-container relative w-2/4 h-1/12 rounded-lg p-5 bg-gray-100">
+<canvas id="mixed-chart-<%= @coin.name %>"></canvas>
+</div>
+
+<script>
+new Chart(document.getElementById("mixed-chart-<%= @coin.name %>"), {
+    type: 'bar',
+    data: {
+      labels: ["JEU","VEN","SAM","DIM","LUN","MAR","MER"],
+      datasets: [{
+          label: "Prix",
+          type: "line",
+          borderColor: "#48bb78",
+          data: [
+            <% @coin.values.each do |value| %>
+            <%= "#{value.price}," %>          
+            <% end %>
+          ],
+          fill: false
+        }, {
+          label: "Volume",
+          type: "bar",
+          backgroundColor: "rgba(0,0,0,0.2)",
+          backgroundColorHover: "#3e95cd",
+          data: [
+            <% @coin.values.each do |value| %>
+            <%= "#{value.price}," %>          
+            <% end %>
+          ]
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: false,
+        gridLines: {
+					display: false,
+					drawBorder: false
+				}
+      },
+      legend: { display: false }
+    }
+});
+</script>
