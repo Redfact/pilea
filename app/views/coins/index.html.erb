@@ -8,8 +8,8 @@
       <p class="w-16 my-auto text-lg text-center"><%= coin.symbol %></p>
     </div>
     <div class="flex my-auto">
-      <p class="w-64 my-auto text-2xl text-center">$ <%= rand(10000) %></p>
-      <p class="w-64 my-auto text-2xl text-center">$ <%= rand(100000000000..200000000000) %></p>
+      <p class="w-64 my-auto text-2xl text-center">$ <%= coin.values.last.price %></p>
+      <p class="w-64 my-auto text-2xl text-center">$ <%= coin.values.last.volume %></p>
     </div>
     <div class="container relative h-20 w-56 mx-5 rounded-lg">
       <canvas id="line-chart-<%= coin.name %>"></canvas>
