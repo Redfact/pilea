@@ -10,7 +10,7 @@
       <p><%= @user.first_name %></p>
     <% end %>
     <div class="mx-3"></div>
-    <% if @user.last_name.empty? %>
+    <% if @user.last_name.nil? %>
       <p class="italic">NOM</p>
     <% else %>
       <p><%= @user.last_name %></p>
