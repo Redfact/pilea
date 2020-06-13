@@ -4,13 +4,13 @@
 
 <div class="my-5">
   <div class="flex justify-center text-gray-700 text-2xl mb-6">
-    <% if @user.first_name = nil %>
+    <% if @user.first_name.nil? %>
       <p class="italic">Prénom</p>
     <% else %>
       <p><%= @user.first_name %></p>
     <% end %>
     <div class="mx-3"></div>
-    <% unless @user.last_name = nil %>
+    <% if @user.last_name.empty? %>
       <p class="italic">NOM</p>
     <% else %>
       <p><%= @user.last_name %></p>
