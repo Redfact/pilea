@@ -2,9 +2,9 @@
 
 <%= form_for(current_user, url: user_path(current_user), method: :put) do |f| %>
 
-  <p class="text-center text-gray-700 text-lg font-bold mb-6">MODIFIER MES INFORMATIONS</p>
+  <p class="text-center text-gray-700 text-lg font-bold mb-10">MODIFIER MES INFORMATIONS</p>
 
-  <div class="flex mt-6 mb-10">
+  <div class="flex mb-10">
     <div class="w-2/4">
       <%= f.label :Prénom, class: "block text-gray-700 text-sm font-bold mb-2" %>
       <%= f.text_field :first_name, autocomplete: :first_name, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:border-green-300 outline-none", placeholder: "#{
