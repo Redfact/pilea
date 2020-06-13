@@ -1,12 +1,15 @@
 <div class="max-w-xl bg-white shadow-md rounded px-8 pt-6 pb-8 mt-4 mx-auto">
 
-<%= form_for @user, url: user_path(@user) do |f| %>
+<%= form_for(current_user, url: user_path(current_user), method: :put) do |f| %>
+        <div class="field">
+          <%= f.label "Prénom" %><br />
+          <%= f.text_field :first_name, autofocus: true, autocomplete: :first_name %>
 
   <p class="text-center text-gray-700 text-lg font-bold mb-6">MODIFIER MES INFORMATIONS</p>
 
   <div class="mb-6">
     <%= f.label :Prénom, class: "block text-gray-700 text-sm font-bold mb-2" %>
-    <%= f.text_field :first_name, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:border-green-300 outline-none", placeholder: "#{
+    <%= f.text_field :first_name, autocomplete: :first_name, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:border-green-300 outline-none", placeholder: "#{
       unless @user.first_name == nil
         @user.first_name
       else
@@ -17,7 +20,7 @@
 
   <div class="mb-6">
     <%= f.label :Nom, class: "block text-gray-700 text-sm font-bold mb-2" %>
-    <%= f.text_field :last_name, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:border-green-300 outline-none", placeholder: "#{
+    <%= f.text_field :last_name, autocomplete: :last_name, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:border-green-300 outline-none", placeholder: "#{
       unless @user.last_name == nil
         @user.last_name
       else

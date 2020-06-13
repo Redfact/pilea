@@ -4,17 +4,17 @@
 
 <div class="my-5">
   <div class="flex justify-center text-gray-700 text-2xl mb-6">
-  <% unless @user.first_name == nil %>
-    <p><%= @user.first_name %></p>
-  <% else %>
-    <i>Prénom</i>
-  <% end %>
-  <div class="mx-4"></div>
-  <% unless @user.last_name == nil %>
-    <p><%= @user.last_name %></p>
-  <% else %>
-    <i>NOM</i>
-  <% end %>
+    <% unless @user.first_name == nil %>
+      <p><%= @user.first_name %></p>
+    <% else %>
+      <i>Prénom</i>
+    <% end %>
+    <div class="mx-3"></div>
+    <% unless @user.last_name == nil %>
+      <p><%= @user.last_name %></p>
+    <% else %>
+      <i>NOM</i>
+    <% end %>
   </div>
   <p class="text-center text-gray-700 text-xl mb-8"><%= @user.email %></p>
 </div>
