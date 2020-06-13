@@ -15,15 +15,15 @@
   <% end %>
 
   <div class="mb-6">
-    <%= f.label :Nouveau_mot_de_passe, class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <%= f.label :Nouveau_mot_de_passe, class: "block text-gray-700 text-sm font-bold" %>
     <% if @minimum_password_length %>
       <em class="italic text-gray-500"><%= @minimum_password_length %> caractères minimum</em>
     <% end %>
-    <%= f.password_field :password, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:border-green-300 outline-none", placeholder: "Laisser ce champ vide pour ne pas changer" %>
+    <%= f.password_field :password, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-2 b-3 leading-tight focus:border-green-300 outline-none", placeholder: "Laisser ce champ vide pour ne pas changer" %>
   </div>
 
   <div class="mb-6">
-    <%= f.label :Confirmer_le_nouveau_mot_de_passe, class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <%= f.label :Confirmer_le_mot_de_passe, class: "block text-gray-700 text-sm font-bold mb-2" %>
     <%= f.password_field :password_confirmation, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:border-green-300 outline-none", placeholder: "laisser ce champ vide pour ne pas changer" %>
   </div>
 
