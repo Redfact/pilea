@@ -1,2 +1,29 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="max-w-xl bg-white shadow-md rounded px-8 pt-6 pb-8 mt-4 mx-auto">
+
+<p class="text-center text-gray-700 text-lg font-bold mb-6">MON PROFIL</p>
+
+<div class="my-5">
+  <div class="flex justify-center text-gray-700 text-2xl mb-6">
+  <% unless @user.first_name == nil %>
+    <p><%= @user.first_name %></p>
+  <% else %>
+    <i>Prénom</i>
+  <% end %>
+  <div class="mx-4"></div>
+  <% unless @user.last_name == nil %>
+    <p><%= @user.last_name %></p>
+  <% else %>
+    <i>NOM</i>
+  <% end %>
+  </div>
+  <p class="text-center text-gray-700 text-xl mb-8"><%= @user.email %></p>
+</div>
+
+<div class="flex justify-center">
+  <%= link_to "Modifier", edit_user_registration_path, class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded border-none outline-none" %>
+  <%= link_to "Retour", :back, class: "bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 ml-2 rounded border-none outline-none" %>
+</div>
+
+</div>
+
+<p class="text-center text-gray-500 my-4 text-xs">&copy;2020 Metis Lab. All rights reserved.</p>

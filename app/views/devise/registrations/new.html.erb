@@ -1,4 +1,4 @@
-<div class="max-w-xl bg-white shadow-md rounded px-8 pt-6 pb-8 mt-8 mb-4 mx-auto">
+<div class="max-w-xl bg-white shadow-md rounded px-8 pt-6 pb-8 mt-4 mx-auto">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -6,28 +6,29 @@
   <p class="text-center text-gray-700 text-lg font-bold mb-6">INSCRIPTION</p>
 
   <div class="mb-6">
-    <%= f.label :Adresse_Email, class: "block text-gray-700 text-sm font-bold mb-2" %>
-    <%= f.email_field :email, autofocus: true, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:border-green-300 outline-none", placeholder: "Email" %>
+    <%= f.label :Adresse_mail, class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <%= f.email_field :email, autofocus: true, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:border-green-300 outline-none", placeholder: "exemple@mail.com" %>
   </div>
 
   <div class="mb-6">
-    <%= f.label :Mot_de_passe, class: "block text-gray-700 text-sm font-bold mb-2" %>
-    <%= f.password_field :password, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:border-green-300 outline-none", placeholder: "******" %>
+    <%= f.label :Mot_de_passe, class: "block text-gray-700 text-sm font-bold" %>
     <% if @minimum_password_length %>
-      <em class="italic text-gray-500">(<%= @minimum_password_length %> caractères minimum)</em>
+      <em class="italic text-gray-500"><%= @minimum_password_length %> caractères minimum</em>
     <% end %>
+    <%= f.password_field :password, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-2 mb-3 leading-tight focus:border-green-300 outline-none", placeholder: "*********" %>
   </div>
 
   <div class="mb-6">
-    <%= f.label :Confirmation_du_mot_de_passe, class: "block text-gray-700 text-sm font-bold mb-2" %>
-    <%= f.password_field :password_confirmation, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:border-green-300 outline-none", placeholder: "******" %>
+    <%= f.label :Confirmer_le_mot_de_passe, class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <%= f.password_field :password_confirmation, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:border-green-300 outline-none", placeholder: "*********" %>
   </div>
 
-  <div class="text-center">
-    <%= f.submit "S'inscrire", class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:border-green-300 outline-none" %>
+  <div class="flex justify-center">
+    <%= f.submit "S'inscrire", class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded border-none outline-none" %>
+    <%= link_to "Retour", :back, class: "bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 ml-2 rounded border-none outline-none" %>
   </div>
 <% end %>
 
 </div>
 
-<p class="text-center text-gray-500 text-xs">&copy;2020 Metis Lab. All rights reserved.</p>
+<p class="text-center text-gray-500 my-4 text-xs">&copy;2020 Metis Lab. All rights reserved.</p>
