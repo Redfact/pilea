@@ -3,7 +3,7 @@
 <p class="text-center text-gray-700 text-lg font-bold mb-6">MON PROFIL</p>
 
 <div class="text-gray-600 my-5">
-  <div class="flex justify-center text-3xl uppercase mb-3">
+  <div class="flex justify-center text-3xl mb-3">
     <% if @user.first_name.nil? %>
       <p class="italic">Prénom</p>
     <% else %>
@@ -16,7 +16,7 @@
       <p><%= @user.last_name %></p>
     <% end %>
   </div>
-  <p class="text-center text-gray-700 text-xl mb-10"><%= @user.email %></p>
+  <p class="text-center text-xl mb-10"><%= @user.email %></p>
 </div>
 
 <div class="flex justify-center">
