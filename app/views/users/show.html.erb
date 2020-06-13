@@ -3,17 +3,17 @@
 <p class="text-center text-gray-700 text-lg font-bold mb-6">MON PROFIL</p>
 
 <div class="my-5">
-  <div class="flex justify-center text-gray-700 text-2xl mb-6">
+  <div class="flex justify-center text-gray-700 text-3xl mb-6">
     <% if @user.first_name.nil? %>
       <p class="italic">Prénom</p>
     <% else %>
       <p><%= @user.first_name %></p>
     <% end %>
-    <div class="mx-3"></div>
+    <div class="mx-2"></div>
     <% if @user.last_name.nil? %>
       <p class="italic">NOM</p>
     <% else %>
-      <p><%= @user.last_name %></p>
+      <p class="uppercase"><%= @user.last_name %></p>
     <% end %>
   </div>
   <p class="text-center text-gray-700 text-xl mb-8"><%= @user.email %></p>

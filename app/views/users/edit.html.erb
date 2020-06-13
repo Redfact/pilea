@@ -1,9 +1,6 @@
 <div class="max-w-xl bg-white shadow-md rounded px-8 pt-6 pb-8 mt-4 mx-auto">
 
 <%= form_for(current_user, url: user_path(current_user), method: :put) do |f| %>
-        <div class="field">
-          <%= f.label "Prénom" %><br />
-          <%= f.text_field :first_name, autofocus: true, autocomplete: :first_name %>
 
   <p class="text-center text-gray-700 text-lg font-bold mb-6">MODIFIER MES INFORMATIONS</p>
 
