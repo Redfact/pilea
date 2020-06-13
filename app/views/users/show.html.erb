@@ -13,7 +13,7 @@
     <% if @user.last_name.nil? %>
       <p class="italic">NOM</p>
     <% else %>
-      <p class="uppercase"><%= @user.last_name %></p>
+      <p><%= @user.last_name %></p>
     <% end %>
   </div>
   <p class="text-center text-gray-700 text-xl mb-10"><%= @user.email %></p>
