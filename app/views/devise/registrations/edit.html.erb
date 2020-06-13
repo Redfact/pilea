@@ -3,7 +3,7 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <p class="text-center text-gray-700 text-lg font-bold mb-6">MODIFIER MES INFORMATIONS</p>
+  <p class="text-center text-gray-700 text-lg font-bold mb-6">MODIFIER MON COMPTE</p>
 
   <div class="mb-6">
     <%= f.label :Nouvelle_adresse_mail, class: "block text-gray-700 text-sm font-bold mb-2" %>
@@ -24,12 +24,12 @@
 
   <div class="mb-6">
     <%= f.label :Confirmer_le_mot_de_passe, class: "block text-gray-700 text-sm font-bold mb-2" %>
-    <%= f.password_field :password_confirmation, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:border-green-300 outline-none", placeholder: "laisser ce champ vide pour ne pas changer" %>
+    <%= f.password_field :password_confirmation, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:border-green-300 outline-none", placeholder: "Laisser ce champ vide pour ne pas changer" %>
   </div>
 
   <div class="mb-6">
     <%= f.label :Mot_de_passe_actuel, class: "block text-gray-700 text-sm font-bold mb-2" %>
-    <%= f.password_field :current_password, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:border-green-300 outline-none", placeholder: "*********" %>
+    <%= f.password_field :current_password, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:border-green-300 outline-none", placeholder: "***************" %>
   </div>
 
   <div class="flex justify-center">
@@ -40,7 +40,7 @@
 <% end %>
 
   <div class="flex justify-center mt-2">
-    <%= button_to "Supprimer compte", registration_path(resource_name), class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded border-none outline-none", data: { confirm: "Êtes-vous sûr ?" }, method: :delete %></p>
+    <%= button_to "Supprimer compte", registration_path(resource_name), class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded border-none outline-none", data: { confirm: "Êtes-vous sûr de vouloir supprimer votre compte ? Toute suppression sera définitive." }, method: :delete %></p>
   </div>
 
 </div>
