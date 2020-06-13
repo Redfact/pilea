@@ -5,15 +5,15 @@
 <div class="my-5">
   <div class="flex justify-center text-gray-700 text-3xl mb-3">
     <% if @user.first_name.nil? %>
-      <p class="italic">Prénom</p>
+      <p class="italic">PRÉNOM</p>
     <% else %>
-      <p><%= @user.first_name %></p>
+      <p class="uppercase"><%= @user.first_name %></p>
     <% end %>
     <div class="mx-2"></div>
     <% if @user.last_name.nil? %>
       <p class="italic">NOM</p>
     <% else %>
-      <p><%= @user.last_name %></p>
+      <p class="uppercase"><%= @user.last_name %></p>
     <% end %>
   </div>
   <p class="text-center text-gray-700 text-xl mb-10"><%= @user.email %></p>
