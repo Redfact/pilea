@@ -33,66 +33,14 @@
     <%= f.password_field :password_confirmation, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:border-green-300 outline-none", autocomplete: "Nouveau mot de passe" %>
   </div>
 
-  <div class="flex justify-center">
-   <%= f.submit "Valider", class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded border-none outline-none" %>
-   <%= link_to "Retour", :back, class: "bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 ml-2 rounded border-none outline-none" %>
-  </div>
 <% end %>
+  <div class="flex justify-center">
+    <%= f.submit "Valider", class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded border-none outline-none" %>
+    <%= link_to "Retour", :back, class: "bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 ml-2 rounded border-none outline-none" %>
+  </div>
 
-<h3>Supprimer mon compte</h3>
-
-<%= button_to "Supprimer définitivement mon compte", registration_path(resource_name), data: { confirm: "Êtes-vous sûr ?" }, method: :delete %></p>
-
-<%= link_to "Retour", :back %>
+  <%= button_to "Supprimer mon compte", registration_path(resource_name), class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-6 mt-6 rounded border-none outline-none", data: { confirm: "Êtes-vous sûr ?" }, method: :delete %></p>
 
 </div>
 
 <p class="text-center text-gray-500 text-xs">&copy;2020 Metis Lab. All rights reserved.</p>
-
-
-
-
-
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
