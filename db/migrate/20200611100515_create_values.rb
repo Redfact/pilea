@@ -5,8 +5,7 @@ class CreateValues < ActiveRecord::Migration[5.2]
       t.decimal :price
       t.bigint :volume
       t.bigint :market_cap
-      # time as milisecondes in timestamp
-      t.bigint :time
+      t.datetime :volume
       t.integer :interval, default: 0
       t.timestamps
     end
