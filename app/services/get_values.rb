@@ -1,44 +1,49 @@
 class GetValues
-   attr_accessor :data_hash, :coin 
+   attr_accessor :daily, :coin , :hourly
 
-   def initialize(coin_name)
-      @data_hash = Hash.new
+   def initialize(coin_name) 
+      @daily = Hash.new
+      @hourly = Hash.new
       @coin = coin_name
-      get_data_hash
+      
+      @daily = history_daily
+      @hourly  = history_hourly    
    end
 
-   def get_data_hash
-      now = DateTime.now.strftime('%s')
-      one_year_ago = 1.year.ago.strftime('%s')
-      response = RestClient.get("https://api.coingecko.com/api/v3/coins/#{@coin}/market_chart/range?vs_currency=usd&from=#{one_year_ago}&to=#{now}")
-      @data_hash = JSON.parse(response)
-      return @data_hash
+
+   #Get all existing values of the current coin daily since today 
+   def history_daily
+      response = RestClient.get("https://api.coingecko.com/api/v3/coins/#{coin}/market_chart?vs_currency=usd&days=max")
+      tmp_hash = JSON.parse(response)
+      return tmp_hash
    end
 
-   def find_for_last_week(elements)
-      elements_array = []
-      elements_data = @data_hash[elements].last(7)
-      elements_data.each{ |index|
-         element =  index[1]
-         elements_array << element
+   #Get all existing values of the current coin from now to 3 months ago
+   def history_hourly
+      response = RestClient.get("https://api.coingecko.com/api/v3/coins/#{coin}/market_chart?vs_currency=usd&days=90")
+      tmp_hash = JSON.parse(response)
+      return tmp_hash
+   end
+
+   # Get all values per value type  (volumes,market cap,prices) in hash (daily or hourly)
+   #Return 1 dimension array with the value type 
+   def get_all_values(hash,value_type)
+      array_res= []
+      
+      hash[value_type].each{ |index|
+         array_res<<index[1]
       }
-      return elements_array
+      return array_res 
    end
 
-   def timestamp_for_last_week
-      timestamp_array = []
-      data = @data_hash['prices'].last(7)
-      data.each{ |index|
-         timestamp_array << index[0]
+   # Work like 'get_all_values()' but return an array of timestamp 
+   def get_time_of_values(hash)
+      array_res= []
+      hash['prices'].each{ |index|
+         array_res<<index[0]
       }
-      return timestamp_array
+      return array_res 
    end
-
-   def find_prices_each_months
-      puts "Lancement de la méthode find_prices_each_months"
-      # Méthode qui retourne les prix des 12 derniers mois du data_hash dans un array
-   end
-
+ 
 end
 
-# Il faut récupérer le "prices" et le "total_volumes" une fois par mois pour la MVP
