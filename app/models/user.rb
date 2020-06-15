@@ -11,4 +11,8 @@ class User < ApplicationRecord
     puts 'sending mail ...'
     UserMailer.welcome_email(self).deliver_now!
   end
+
+  def admin?
+    return self.admin==true
+  end
 end
