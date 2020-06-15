@@ -13,8 +13,6 @@ class GetValues
 
    #Get all existing values of the current coin daily since today 
    def history_daily
-      now = DateTime.now.strftime('%s')
-      one_year_ago = 1.year.ago.strftime('%s')
       response = RestClient.get("https://api.coingecko.com/api/v3/coins/#{coin}/market_chart?vs_currency=usd&days=max")
       tmp_hash = JSON.parse(response)
       return tmp_hash
@@ -22,8 +20,6 @@ class GetValues
 
    #Get all existing values of the current coin from now to 3 months ago
    def history_hourly
-      now = DateTime.now.strftime('%s')
-      one_year_ago = 1.year.ago.strftime('%s')
       response = RestClient.get("https://api.coingecko.com/api/v3/coins/#{coin}/market_chart?vs_currency=usd&days=90")
       tmp_hash = JSON.parse(response)
       return tmp_hash
