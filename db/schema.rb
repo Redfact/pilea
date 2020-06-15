@@ -60,5 +60,4 @@ ActiveRecord::Schema.define(version: 2020_06_15_105554) do
     t.index ["coin_id"], name: "index_values_on_coin_id"
   end
 
-  
 end

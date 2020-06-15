@@ -11,5 +11,11 @@ class Coin < ApplicationRecord
     presence:true , 
     length: {in: 1..3}
 
+
+    def 
+        
+    end
+    
+
     
 end

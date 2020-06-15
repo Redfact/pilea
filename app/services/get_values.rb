@@ -31,7 +31,7 @@ class GetValues
 
    def find_for_last_week(elements)
       elements_array = []
-      elements_data = @data_hash[elements].last(7)
+      elements_data = @daily[elements].last(7)
       elements_data.each{ |index|
          element =  index[1]
          elements_array << element
@@ -39,10 +39,29 @@ class GetValues
       return elements_array
    end
 
+   # Get all values per value type  (volumes,market cap,prices) in hash (daily or hourly)
+   #Return 1 dimension array with the value type 
+   def get_all_values(hash,value_type)
+      array_res= []
+      
+      hash[value_type].each{ |index|
+         array_res<<index[1]
+      }
+      return array_res 
+   end
 
+   # Work like 'get_all_values()' but return an array of timestamp 
+   def get_time_of_values(hash,value_type)
+      array_res= []
+      hash[value_type].each{ |index|
+         array_res<<index[0]
+      }
+      return array_res 
+   end
+   
    def timestamp_for_last_week
       timestamp_array = []
-      data = @data_hash['prices'].last(7)
+      data = @daily['prices'].last(7)
       data.each{ |index|
          timestamp_array << index[0]
       }
