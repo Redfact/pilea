@@ -22,28 +22,12 @@ coins.each { |key,value|
     Coin.create(name:key, symbol:value[0], logo:value[1])
 }
 
-# def fill_values_in_database(coin)
-#     timestamps = data.timestamp_for_last_week
-#     prices = data.find_for_last_week('prices')
-#     volumes = data.find_for_last_week('total_volumes')
-#     number_of_values = prices.length
-  
-#     number_of_values.times { |i|
-#         Value.create(
-#             coin_id: coin.id,
-#             price: prices[i],
-#             volume: volumes[i].to_i,
-#             interval: 1,
-#             timestamp: timestamps[i])
-#     }
-# end
-
 def Add_daily_values(coin,data)
     daily     = data.daily
     prices    = data.get_all_values(daily,'prices')
     volumes   = data.get_all_values(daily,'total_volumes')
     marketcap = data.get_all_values(daily,'market_caps')
-    times     = data.get_time_of_values(daily,'total_volumes')
+    times     = data.get_time_of_values(daily)
     number_of_values = prices.length
 
     number_of_values.times { |i|
@@ -59,11 +43,11 @@ def Add_daily_values(coin,data)
 end
 
 def Add_hourly_values(coin,data)
-    hourly     = data.hourly
+    hourly    = data.hourly
     prices    = data.get_all_values(hourly,'prices')
     volumes   = data.get_all_values(hourly,'total_volumes')
     marketcap = data.get_all_values(hourly,'market_caps')
-    times     = data.get_time_of_values(hourly,'total_volumes')
+    times     = data.get_time_of_values(hourly)
     number_of_values = prices.length
 
     number_of_values.times { |i|
