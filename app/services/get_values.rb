@@ -39,6 +39,10 @@ class GetValues
       # Méthode qui retourne les prix des 12 derniers mois du data_hash dans un array
    end
 
+   def print_a_message
+     puts "Hello, ce code est écris dans app/services/get_values.rb ! C'est génial !"
+   end
+
 end
 
 # Il faut récupérer le "prices" et le "total_volumes" une fois par mois pour la MVP
