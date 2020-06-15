@@ -15,6 +15,7 @@ coins = {
 
 Coin.destroy_all
 Value.destroy_all
+User.destroy_all
 
 #All existing coin 
 coins.each { |key,value|
@@ -44,6 +45,15 @@ Coin.all.each { |coin|
     puts "Filling database with values of #{coin.name}..."
     fill_values_in_database(coin)
 }
+
+puts "Creating admin account..."
+User.create(
+  first_name: "Metis",
+  last_name: "Lab",
+  email: "metislab201@gmail.com",
+  password: "Metislab2016064",
+  admin: true
+  )
 
 puts "Seeding is done !"
 
