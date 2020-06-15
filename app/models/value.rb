@@ -1,5 +1,5 @@
 class Value < ApplicationRecord
     belongs_to :coin
 
-    enum interval: { hourly: 0, daily: 1, weekly: 2}
+    enum interval: { minutely: 0, hourly: 1, daily: 2}
 end
