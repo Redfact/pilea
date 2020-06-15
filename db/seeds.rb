@@ -52,7 +52,7 @@ def Add_daily_values(coin,data)
             price: prices[i],
             volume: volumes[i].to_i,
             market_cap: marketcap[i],
-            interval: 1,
+            interval: 2,
             time: times[i]
         )
     }
@@ -72,7 +72,7 @@ def Add_hourly_values(coin,data)
             price: prices[i],
             volume: volumes[i].to_i,
             market_cap: marketcap[i],
-            interval: 0,
+            interval: 1,
             time: times[i]
         )
     }
