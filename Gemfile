@@ -11,6 +11,8 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'devise'
 # Use Dotenv to manage .env files
 gem 'dotenv-rails'
+# Use table-print to visualize the database from console
+gem 'table_print'
 # Use rest-client to get and parse API data
 gem 'rest-client'
 # Use Premailer to parse mailers styling
@@ -59,7 +61,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'table_print'
 end
 
 group :test do
