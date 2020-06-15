@@ -1,24 +1,33 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ce readme présente le projet pilea fait pendant la formation THP session 12
 
-Things you may want to cover:
+Il s'agit d'un site présentant d'une mamière simplifiée l'affichage des prix des cryptomonnaies
 
-* Ruby version
+Pour le MVP vous allez pouvoir consulter le prix et volume de 10 monnaies et créer un compte. Nous avons branché dessus un maileur (mailjet) pour intéragir avec l'utilisateur.
 
-* System dependencies
+---
 
-* Configuration
+## FONCTIONNALITÉS FUTURES
 
-* Database creation
+- Dashboard accessible au compte Administrateur
+- Gestion des favoris et classement des monnaies
+- Frontend responsive et graphiques dynamiques
+- Récupération automatique des données API
 
-* Database initialization
+---
 
-* How to run the test suite
+## TECHNOLOGIES UTILISÉES
 
-* Services (job queues, cache servers, search engines, etc.)
+- TailwindCSS
+- Chart.js
+- Ruby
+- Rails
+- API CoinGecko
 
-* Deployment instructions
+---
 
-* ...
+## ADMINISTRATEUR
+
+- MAIL: metislab201@gmail.com
+- MDP: Metislab2016064
