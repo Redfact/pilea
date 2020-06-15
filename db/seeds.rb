@@ -1,16 +1,21 @@
 require 'get_values'
 
 coins = {
- "bitcoin"=>["BTC","https://s2.coinmarketcap.com/static/img/coins/32x32/1.png"],
- "ethereum"=>["ETH","https://s2.coinmarketcap.com/static/img/coins/32x32/1027.png"],
- "ripple"=>["XRP","https://s2.coinmarketcap.com/static/img/coins/32x32/52.png"],
- "bitcoin-cash"=>["BCH","https://s2.coinmarketcap.com/static/img/coins/32x32/1831.png"],
- "litecoin"=>["LTC","https://s2.coinmarketcap.com/static/img/coins/32x32/2.png"],
- "binancecoin"=>["BNB","https://s2.coinmarketcap.com/static/img/coins/32x32/1839.png"],
- "eos"=>["EOS","https://s2.coinmarketcap.com/static/img/coins/32x32/1765.png"],
- "cardano"=>["ADA","https://s2.coinmarketcap.com/static/img/coins/32x32/2010.png"],
- "monero"=>["XMR","https://s2.coinmarketcap.com/static/img/coins/32x32/328.png"],
- "tron"=>["TRX","https://s2.coinmarketcap.com/static/img/coins/32x32/1958.png"]
+ "bitcoin"=>["btc","https://assets.coingecko.com/coins/images/1/large/bitcoin.png"],
+ "ethereum"=>["eth","https://assets.coingecko.com/coins/images/279/large/ethereum.png"],
+ "ripple"=>["xrp","https://assets.coingecko.com/coins/images/44/large/xrp.png"],
+ "litecoin"=>["ltc","https://assets.coingecko.com/coins/images/2/large/litecoin.png"],
+ "binancecoin"=>["bnb","https://assets.coingecko.com/coins/images/825/large/binance-coin-logo.png"],
+ "cardano"=>["ada","https://assets.coingecko.com/coins/images/975/large/cardano.png"],
+ "monero"=>["xmr","https://assets.coingecko.com/coins/images/69/large/monero_logo.png"],
+ "tron"=>["trx","https://assets.coingecko.com/coins/images/1094/large/tron-logo.png"],
+ "dash"=>["dash","https://assets.coingecko.com/coins/images/19/large/dash-logo.png"],
+ "dogecoin"=>["doge","https://assets.coingecko.com/coins/images/5/large/dogecoin.png"],
+ "algorand"=>["algo","https://assets.coingecko.com/coins/images/4380/large/download.png"],
+ "lisk"=>["lsk","https://assets.coingecko.com/coins/images/385/large/Lisk_Symbol_-_Blue.png"],
+ "verge"=>["xvg","https://assets.coingecko.com/coins/images/203/large/verge-symbol-color_logo.png"],
+ "nano"=>["nano","https://assets.coingecko.com/coins/images/756/large/nano-coin-logo.png"],
+ "waves"=>["waves","https://assets.coingecko.com/coins/images/425/large/waves.png"]
 }
 
 Coin.destroy_all
