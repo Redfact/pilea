@@ -2,8 +2,10 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
-
+# Mailer 
+gem 'premailer', '~> 1.8', '>= 1.8.6'
 gem 'mailjet', :git => 'https://github.com/mailjet/mailjet-gem.git'
+gem 'nokogiri'
 gem 'dotenv-rails'
 gem 'rest-client'
 
