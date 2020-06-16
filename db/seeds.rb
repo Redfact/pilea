@@ -2,27 +2,15 @@ require 'get_values'
 
 coins = {
  "bitcoin"=>["btc","https://assets.coingecko.com/coins/images/1/large/bitcoin.png"],
- "ethereum"=>["eth","https://assets.coingecko.com/coins/images/279/large/ethereum.png"],
- "ripple"=>["xrp","https://assets.coingecko.com/coins/images/44/large/xrp.png"],
- "litecoin"=>["ltc","https://assets.coingecko.com/coins/images/2/large/litecoin.png"],
- "binancecoin"=>["bnb","https://assets.coingecko.com/coins/images/825/large/binance-coin-logo.png"],
- "cardano"=>["ada","https://assets.coingecko.com/coins/images/975/large/cardano.png"],
- "monero"=>["xmr","https://assets.coingecko.com/coins/images/69/large/monero_logo.png"],
- "tron"=>["trx","https://assets.coingecko.com/coins/images/1094/large/tron-logo.png"],
- "dash"=>["dash","https://assets.coingecko.com/coins/images/19/large/dash-logo.png"],
- "dogecoin"=>["doge","https://assets.coingecko.com/coins/images/5/large/dogecoin.png"],
- "algorand"=>["algo","https://assets.coingecko.com/coins/images/4380/large/download.png"],
- "lisk"=>["lsk","https://assets.coingecko.com/coins/images/385/large/Lisk_Symbol_-_Blue.png"],
- "verge"=>["xvg","https://assets.coingecko.com/coins/images/203/large/verge-symbol-color_logo.png"],
- "nano"=>["nano","https://assets.coingecko.com/coins/images/756/large/nano-coin-logo.png"],
- "waves"=>["waves","https://assets.coingecko.com/coins/images/425/large/waves.png"]
+ "ethereum"=>["eth","https://assets.coingecko.com/coins/images/279/large/ethereum.png"]
 }
 
+puts "Cleaning database..."
 Coin.destroy_all
 Value.destroy_all
 User.destroy_all
 
-#Import coins in database 
+puts "Creating coins..." 
 coins.each { |key,value|
     Coin.create(name:key, symbol:value[0], logo:value[1])
 }
@@ -67,7 +55,6 @@ def Add_hourly_values(coin,data)
     }
 end
 
-  
 Coin.all.each { |coin|
     puts "Filling database with values of #{coin.name}..."
     data = GetValues.new(coin.name)

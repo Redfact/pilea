@@ -8,8 +8,8 @@
       <p class="w-16 my-auto text-lg text-center"><%= coin.symbol %></p>
     </div>
     <div class="flex my-auto">
-      <p class="w-64 my-auto text-2xl text-center">$ <%= coin.values.last.price %></p>
-      <p class="w-64 my-auto text-2xl text-center">$ <%= coin.values.last.volume %></p>
+      <p class="w-64 my-auto text-2xl text-center"><%= number_to_currency(coin.values.last.price, :unit => "$ ", :separator => ".", :delimiter => " ") %></p>
+      <p class="w-64 my-auto text-2xl text-center"><%= number_to_currency(coin.values.last.volume, :unit => "$ ", :separator => ".", :delimiter => " ", :precision => 0) %></p>
     </div>
     <div class="container relative h-20 w-56 mx-5 rounded-lg">
       <canvas id="line-chart-<%= coin.name %>"></canvas>
@@ -23,13 +23,17 @@
 new Chart(document.getElementById("line-chart-<%= coin.name %>"), {
     type: 'line',
     data: {
-      labels: ["JEU","VEN","SAM","DIM","LUN","MAR","MER"],
+      labels: [
+            <% coin.daily.each do |value| %>
+              "<%= Time.at((value.time)/1000).strftime("%D") %>",    
+            <% end %>
+          ],
       datasets: [{
           label: "Prix",
           borderColor: "#48bb78",
           data: [
-            <% coin.values.each do |value| %>
-            <%= "#{value.price}," %>          
+            <% coin.daily.each do |value| %>
+              <%= number_to_currency(value.price, :unit => "", :separator => ".", :delimiter => "") %>,
             <% end %>
           ],
           fill: false

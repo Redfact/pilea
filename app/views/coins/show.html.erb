@@ -5,10 +5,13 @@
       <p class="w-16 my-auto text-lg text-center"><%= @coin.symbol %></p>
     </div>
     <div class="flex my-auto">
-      <p class="w-64 my-auto text-2xl text-center">$ <%= @coin.values.last.price %></p>
+      <p class="w-64 my-auto text-2xl text-center"><%= number_to_currency(@coin.values.last.price, :unit => "$ ", :separator => ".", :delimiter => " ") %></p>
     </div>
     <div class="flex my-auto">
-      <p class="w-64 my-auto text-2xl text-center">$ <%= @coin.values.last.volume %></p>
+      <p class="w-64 my-auto text-2xl text-center"><%= number_to_currency(@coin.values.last.volume, :unit => "$ ", :separator => ".", :delimiter => " ", :precision => 0) %></p>
+    </div>
+    <div class="flex my-auto">
+      <p class="w-64 my-auto text-2xl text-center"><%= number_to_currency(@coin.values.last.market_cap, :unit => "$ ", :separator => ".", :delimiter => " ", :precision => 0) %></p>
     </div>
     <svg fill="none" viewBox="0 0 24 24"  class="my-auto w-8 h-8 mx-8" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
@@ -28,14 +31,18 @@
 new Chart(document.getElementById("line-chart-<%= @coin.name %>"), {
     type: 'line',
     data: {
-      labels: ["JEU","VEN","SAM","DIM","LUN","MAR","MER"],
+      labels: [
+            <% @values.daily.each do |value| %>
+              <%= "#{value.time}," %>
+            <% end %>
+          ],
       datasets: [{
           label: "Prix",
           type: "line",
           borderColor: "#48bb78",
           data: [
-            <% @coin.values.each do |value| %>
-            <%= "#{value.price}," %>          
+            <% @values.daily.each do |value| %>
+              <%= value.market_cap %>,
             <% end %>
           ],
           fill: false
@@ -57,15 +64,19 @@ new Chart(document.getElementById("line-chart-<%= @coin.name %>"), {
 new Chart(document.getElementById("bar-chart-<%= @coin.name %>"), {
     type: 'bar',
     data: {
-      labels: ["JEU","VEN","SAM","DIM","LUN","MAR","MER"],
+      labels: [
+            <% @values.each do |value| %>
+            <%= "#{value.price}," %>          
+            <% end %>
+          ],
       datasets: [{
           label: "Volume",
           type: "bar",
           backgroundColor: "rgba(0,20,0,0.2)",
           backgroundColorHover: "#3e95cd",
           data: [
-            <% @coin.values.each do |value| %>
-            <%= "#{value.volume}," %>          
+            <% @values.each do |value| %>
+            <%= "#{value.market_cap}," %>          
             <% end %>
           ]
         }
