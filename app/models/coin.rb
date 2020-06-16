@@ -8,8 +8,7 @@ class Coin < ApplicationRecord
 
     validates :symbol, 
     uniqueness:true, 
-    presence:true , 
-    length: {in: 1..3}
+    presence:true
 
     def daily
         array = []
