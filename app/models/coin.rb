@@ -10,5 +10,25 @@ class Coin < ApplicationRecord
     uniqueness:true, 
     presence:true , 
     length: {in: 1..3}
+
+    def daily
+        array = []
+        values.each{ |index|
+            if(index.daily?)
+                array << index
+            end
+        }
+        return array
+    end
+
+    def hourly
+        array = []
+        values.each{ |index|
+            if(index.hourly?)
+                array << index
+            end
+        }
+        return array 
+    end
     
 end
