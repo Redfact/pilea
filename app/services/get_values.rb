@@ -15,8 +15,6 @@ class GetValues
          @lastDateHourly = @coin.hourly.last.time
          @hourly = update_hourly
          @daily = update_daily
-         puts "We have #{@daily['prices'].size -1} new value(s) in daily for #{@coin_name} "
-         puts "We have #{@hourly['prices'].size -1} new value(s) in hourly for #{@coin_name} "
       else
             @daily = history_daily
             @hourly  = history_hourly 
