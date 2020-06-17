@@ -7,14 +7,17 @@
     <%= favicon_link_tag 'favicon.ico' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css' %>
+    <%= stylesheet_link_tag 'https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css' %>
     <%= stylesheet_link_tag 'https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css' %>
+    <%= stylesheet_link_tag 'https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap' %>
     <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js' %>
   </head>
 
-<body class="bg-gray-800">
-  <nav class="flex items-center justify-between flex-wrap bg-green-600 py-2 px-10">
+<body class="bg-gray-900">
+  <nav class="flex items-center justify-between flex-wrap bg-green-600 py-1 px-10">
     <div class="flex items-center flex-shrink-0 text-white mx-16">
-      <%= link_to "PILEA", root_path, class: "font-semibold text-4xl tracking-normal" %>
+      <%= link_to "Pilea", root_path, style: "font-family:'Leckerli One'", class: "text-5xl tracking-normal" %>
     </div>
     <div class="block lg:hidden">
       <button class="flex items-center px-3 py-2 border rounded text-green-200 border-green-200 hover:border-white hover:text-white">
@@ -23,9 +26,8 @@
     </div>
     <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
       <div class="text-lg lg:flex-grow">
-        <%= link_to "Ruby", 'https://www.ruby-lang.org/', target: "_blank", class: "block mt-4 lg:inline-block lg:mt-0 text-green-200 hover:text-white mr-6" %>
-        <%= link_to "Rails", 'https://rubyonrails.org', target: "_blank", class: "block mt-4 lg:inline-block lg:mt-0 text-green-200 hover:text-white mr-6" %>
-        <%= link_to "Tailwind", 'https://tailwindcss.com/', target: "_blank", class: "block mt-4 lg:inline-block lg:mt-0 text-green-200 hover:text-white mr-6" %>
+        <%= link_to "Équipe", 'https://www.ruby-lang.org/', target: "_blank", class: "block mt-4 lg:inline-block lg:mt-0 text-green-200 hover:text-white mr-6" %>
+        <%= link_to "Projet", 'https://www.ruby-lang.org/', target: "_blank", class: "block mt-4 lg:inline-block lg:mt-0 text-green-200 hover:text-white mr-6" %>
       </div>
       <div class="mr-16">
         <% if user_signed_in? %>

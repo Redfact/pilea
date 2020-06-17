@@ -1,8 +1,10 @@
 require 'get_values'
 
 coins = {
- "bitcoin"=>["btc","https://assets.coingecko.com/coins/images/1/large/bitcoin.png"],
- "ethereum"=>["eth","https://assets.coingecko.com/coins/images/279/large/ethereum.png"]
+  "bitcoin"=>["btc","https://assets.coingecko.com/coins/images/1/large/bitcoin.png"],
+  "ethereum"=>["eth","https://assets.coingecko.com/coins/images/279/large/ethereum.png"],
+  "ripple"=>["xrp","https://assets.coingecko.com/coins/images/44/large/xrp.png"],
+  "litecoin"=>["ltc","https://assets.coingecko.com/coins/images/2/large/litecoin.png"]
 }
 
 puts "Creating coins..." 
