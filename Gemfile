@@ -2,22 +2,26 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
-# Mailer 
-gem 'premailer', '~> 1.8', '>= 1.8.6'
-gem 'mailjet', :git => 'https://github.com/mailjet/mailjet-gem.git'
-gem 'nokogiri'
-gem 'dotenv-rails'
-gem 'rest-client'
-
-#Administrate Admin System
-gem 'administrate', '~> 0.13.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
-# Use postgresql as the database for Active Record
+# Use PostgreSQL as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Devise for authentication
 gem 'devise'
+# Manage Administrator Dashboard
+gem 'administrate', '~> 0.13.0'
+# Use Dotenv to manage .env files
+gem 'dotenv-rails'
+# Use table-print to visualize the database from console
+gem 'table_print'
+# Use rest-client to get and parse API data
+gem 'rest-client'
+# Use Premailer to parse mailers styling
+gem 'premailer'
+# Use Mailjet for sending mails
+gem 'mailjet', :git => 'https://github.com/mailjet/mailjet-gem.git'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -59,7 +63,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'table_print'
 end
 
 group :test do

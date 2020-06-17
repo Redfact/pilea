@@ -296,7 +296,7 @@ DEPENDENCIES
   mailjet!
   nokogiri
   pg (>= 0.18, < 2.0)
-  premailer (~> 1.8, >= 1.8.6)
+  premailer
   puma (~> 3.11)
   rails (~> 5.2.1)
   rest-client
