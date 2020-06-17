@@ -9,8 +9,6 @@ gem 'rails', '~> 5.2.1'
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Devise for authentication
 gem 'devise'
-# Manage Administrator Dashboard
-gem 'administrate', '~> 0.13.0'
 # Use Dotenv to manage .env files
 gem 'dotenv-rails'
 # Use table-print to visualize the database from console
