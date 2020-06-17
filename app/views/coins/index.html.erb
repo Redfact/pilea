@@ -138,7 +138,7 @@ new Chart(document.getElementById("line-chart-<%= coin.name %>"), {
       borderColor: "#48bb78",
       data: [
         <% coin.hourly.last(170).each do |value| %>
-          <%= number_to_currency(value.price, :unit => "", :separator => ".", :delimiter => "") %>,
+          <%= number_to_currency(value.price, :unit => "", :separator => ".", :delimiter => "", :precision => 3) %>,
         <% end %>
       ],
       fill: false
