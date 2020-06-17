@@ -98,6 +98,8 @@ GEM
     crass (1.0.6)
     css_parser (1.7.1)
       addressable
+    datetime_picker_rails (0.0.7)
+      momentjs-rails (>= 2.8.1)
     devise (4.7.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
