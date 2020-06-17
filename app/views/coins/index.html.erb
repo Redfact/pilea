@@ -1,75 +1,187 @@
-<% @coins.each do |coin| %>
+<style>
+  /*Overrides for Tailwind CSS */
+  
+  /*Form fields*/
+  .dataTables_wrapper select,
+  .dataTables_wrapper .dataTables_filter input {
+    color: #4a5568; 			/*text-gray-700*/
+    padding-left: 1rem; 		/*pl-4*/
+    padding-right: 1rem; 		/*pl-4*/
+    padding-top: .5rem; 		/*pl-2*/
+    padding-bottom: .5rem; 		/*pl-2*/
+    line-height: 1.25; 			/*leading-tight*/
+    border-width: 2px; 			/*border-2*/
+    border-radius: .25rem; 		
+    border-color: #edf2f7; 		/*border-gray-200*/
+    background-color: #edf2f7; 	/*bg-gray-200*/
+  }
 
-<div class="flex justify-between bg-gray-200 text-gray-700 shadow-2xl rounded-lg mx-auto my-3 px-8 py-4 w-8/12">
-    <div class="my-auto mx-6">
-      <a href="<%= coin_path(coin) %>">
-        <img class="w-16 h-16 rounded-full object-cover my-auto shadow-2xl" src="<%= coin.logo %>" alt="Logo <%= coin.name %>">
-      </a>
-      <p class="w-16 my-auto text-lg text-center"><%= coin.symbol %></p>
-    </div>
-    <div class="flex my-auto">
-      <p class="w-64 my-auto text-2xl text-center"><%= number_to_currency(coin.values.last.price, :unit => "$ ", :separator => ".", :delimiter => " ") %></p>
-      <p class="w-64 my-auto text-2xl text-center"><%= number_to_currency(coin.values.last.volume, :unit => "$ ", :separator => ".", :delimiter => " ", :precision => 0) %></p>
-    </div>
-    <div class="container relative h-20 w-56 mx-5 rounded-lg">
-      <canvas id="line-chart-<%= coin.name %>"></canvas>
-    </div>
-    <svg fill="none" viewBox="0 0 24 24"  class="my-auto w-8 h-8 mx-8" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-    </svg>
+  /*Row Hover*/
+  table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
+    background-color: #ebf4ff;	/*bg-indigo-100*/
+  }
+  
+  /*Pagination Buttons*/
+  .dataTables_wrapper .dataTables_paginate .paginate_button		{
+    font-weight: 700;				/*font-bold*/
+    border-radius: .25rem;			/*rounded*/
+    border: 1px solid transparent;	/*border border-transparent*/
+  }
+  
+  /*Pagination Buttons - Current selected */
+  .dataTables_wrapper .dataTables_paginate .paginate_button.current	{
+    color: #fff !important;				/*text-white*/
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06); 	/*shadow*/
+    font-weight: 700;					/*font-bold*/
+    border-radius: .25rem;				/*rounded*/
+    background: #667eea !important;		/*bg-indigo-500*/
+    border: 1px solid transparent;		/*border border-transparent*/
+  }
+
+  /*Pagination Buttons - Hover */
+  .dataTables_wrapper .dataTables_paginate .paginate_button:hover		{
+    color: #fff !important;				/*text-white*/
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);	 /*shadow*/
+    font-weight: 700;					/*font-bold*/
+    border-radius: .25rem;				/*rounded*/
+    background: #667eea !important;		/*bg-indigo-500*/
+    border: 1px solid transparent;		/*border border-transparent*/
+  }
+  
+  /*Add padding to bottom border */
+  table.dataTable.no-footer {
+    border-bottom: 1px solid #e2e8f0;	/*border-b-1 border-gray-300*/
+    margin-top: 0.75em;
+    margin-bottom: 0.75em;
+  }
+  
+  /*Change colour of responsive icon*/
+  table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
+    background-color: #667eea !important; /*bg-indigo-500*/
+  }
+</style>
+
+<!-- <body class="bg-gray-100 text-gray-900 tracking-wider leading-normal"> --> 
+
+<div class="w-full">
+
+  <div class="p-6 bg-white">
+    
+    <table id="all-coins" class="stripe hover mx-auto">
+      <thead>
+        <tr>
+          <th></th>
+          <th data-priority="1">Nom</th>
+          <th data-priority="1">Évolution Prix</th>
+          <th>Prix</th>
+          <th>Volume</th>
+          <th>Capitalisation</th>
+          <th data-priority="1"></th>
+        </tr>
+      </thead>
+      <tbody>				
+        <!-- Rest of your data (refer to https://datatables.net/examples/server_side/ for server side processing)-->
+        <% @coins.each do |coin| %>
+          <tr class="uppercase text-center">
+            <td class="flex justify-center">
+              <a href="<%= coin_path(coin) %>">
+                <img class="w-10 h-10 absolute rounded-full" src="<%= coin.logo %>" alt="Logo <%= coin.name %>">
+              </a>
+            </td>
+            <td>
+              <a href="<%= coin_path(coin) %>">
+                <%= coin.name %>
+              </a>
+            </td>
+            <td class="chart-container">
+              <canvas id="line-chart-<%= coin.name %>" width="40" height="15"></canvas>
+            </td>
+            <td><%= number_to_currency(coin.values.hourly.last.price, :unit => "$ ", :delimiter => ",", :separator => ".") %></td>
+            <td><%= number_to_currency(coin.values.hourly.last.volume, :unit => "$ ", :delimiter => ",", :precision => 0) %></td>
+            <td><%= number_to_currency(coin.values.hourly.last.market_cap, :unit => "$ ", :delimiter => ",", :precision => 0) %></td>
+            <td class="flex justify-center">
+              <svg fill="none" viewBox="0 0 24 24"  class="absolute w-8 h-8" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+              </svg>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
 
+<%= javascript_include_tag 'https://code.jquery.com/jquery-3.4.1.min.js' %>
+<%= javascript_include_tag 'https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js' %>
+<%= javascript_include_tag 'https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js' %>
+
 <script>
-new Chart(document.getElementById("line-chart-<%= coin.name %>"), {
-    type: 'line',
-    data: {
-      labels: [
-            <% coin.daily.each do |value| %>
-              "<%= Time.at((value.time)/1000).strftime("%D") %>",    
-            <% end %>
-          ],
-      datasets: [{
-          label: "Prix",
-          borderColor: "#48bb78",
-          data: [
-            <% coin.daily.each do |value| %>
-              <%= number_to_currency(value.price, :unit => "", :separator => ".", :delimiter => "") %>,
-            <% end %>
-          ],
-          fill: false
-        }
-      ]
-    },
-    options: {
-      maintainAspectRatio: true,
-      title: {
-        display: false,
-        gridLines: {
-					display: false,
-					drawBorder: false
-				}
-      },
-      legend: { display: false },
-      scales: {
-          xAxes: [{
-						display: true,
-						ticks: {
-							callback: function(dataLabel) {
-								return null;
-							}
-						}
-					}],
-					yAxes: [{
-							display: true,
-              ticks: {
-							callback: function(dataLabel) {
-								return null;
-							}
-						}
-					}]
-				}
-    }
-});
+  $(document).ready(function() {
+    
+    var table = $('#all-coins').DataTable( {
+        responsive: true
+      } )
+      .columns.adjust()
+      .responsive.recalc();
+  } );
 </script>
 
+<% @coins.each do |coin| %>
+<script>
+new Chart(document.getElementById("line-chart-<%= coin.name %>"), {
+  type: 'line',
+  data: {
+    labels: [
+          <% coin.hourly.last(170).each do |value| %>
+            "<%= Time.at((value.time)/1000).strftime("%^a %R") %>",    
+          <% end %>
+        ],
+    datasets: [{
+        label: "Prix (USD)",
+        borderColor: "#48bb78",
+        data: [
+          <% coin.hourly.last(170).each do |value| %>
+            <%= number_to_currency(value.price, :unit => "", :separator => ".", :delimiter => "") %>,
+          <% end %>
+        ],
+        fill: false
+      }
+    ]
+  },
+  options: {
+    maintainAspectRatio: true,
+    title: {
+      display: false,
+      gridLines: {
+        display: false,
+        drawBorder: false
+      },
+    },
+    elements: {
+        point:{
+          radius: 0
+        }
+    },
+    legend: { display: false },
+    scales: {
+      xAxes: [{
+        display: true,
+        ticks: {
+          callback: function(dataLabel) {
+            return null;
+          }
+        }
+      }],
+      yAxes: [{
+          display: true,
+          ticks: {
+            callback: function(dataLabel) {
+              return null;
+            }
+          }
+      }]
+    },
+  }
+});
+</script>
 <% end %>
