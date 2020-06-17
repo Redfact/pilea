@@ -7,11 +7,11 @@ class GetValues
       @coin = coin_name
       
       @daily = history_daily
-      @hourly  = history_hourly    
+      @hourly = history_hourly    
    end
 
 
-   #Get all existing values of the current coin daily since today 
+   #Get all existing values of the current coin daily since forever 
    def history_daily
       response = RestClient.get("https://api.coingecko.com/api/v3/coins/#{coin}/market_chart?vs_currency=usd&days=max")
       tmp_hash = JSON.parse(response)
