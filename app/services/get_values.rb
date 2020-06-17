@@ -50,7 +50,8 @@ class GetValues
       iter=0
       array.each do |elem|
          deltatime = elem[0] - lastime
-            if( deltatime < 0 )  
+            if( deltatime <=
+                0 )  
                break
             else
                iter +=1 
