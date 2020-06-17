@@ -74,7 +74,7 @@ class GetValues
       new_data['total_volumes']=get_sub_array(new_data['total_volumes'],last_dates(duration))
       new_data
    end
-
+   
 end
 
 
