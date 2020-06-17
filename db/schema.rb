@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2020_06_15_155156) do
     t.integer "interval", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "market_cap"
     t.bigint "time"
     t.index ["coin_id"], name: "index_values_on_coin_id"
   end

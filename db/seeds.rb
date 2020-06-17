@@ -1,30 +1,21 @@
 require 'get_values'
 
 coins = {
- "bitcoin"=>["BTC","https://s2.coinmarketcap.com/static/img/coins/32x32/1.png"],
- "ethereum"=>["ETH","https://s2.coinmarketcap.com/static/img/coins/32x32/1027.png"],
- "ripple"=>["XRP","https://s2.coinmarketcap.com/static/img/coins/32x32/52.png"],
- "bitcoin-cash"=>["BCH","https://s2.coinmarketcap.com/static/img/coins/32x32/1831.png"],
- "litecoin"=>["LTC","https://s2.coinmarketcap.com/static/img/coins/32x32/2.png"],
- "binancecoin"=>["BNB","https://s2.coinmarketcap.com/static/img/coins/32x32/1839.png"],
- "eos"=>["EOS","https://s2.coinmarketcap.com/static/img/coins/32x32/1765.png"],
- "cardano"=>["ADA","https://s2.coinmarketcap.com/static/img/coins/32x32/2010.png"],
- "monero"=>["XMR","https://s2.coinmarketcap.com/static/img/coins/32x32/328.png"],
- "tron"=>["TRX","https://s2.coinmarketcap.com/static/img/coins/32x32/1958.png"]
+ "bitcoin"=>["btc","https://assets.coingecko.com/coins/images/1/large/bitcoin.png"],
+ "ethereum"=>["eth","https://assets.coingecko.com/coins/images/279/large/ethereum.png"]
 }
 
-# Uncomment if first time you seed your DB
+# Uncomment if first time seeding database
 
+# puts "Cleaning database..."
 # Coin.destroy_all
 # Value.destroy_all
 # User.destroy_all
 
-# #Import coins in database 
-# if ( Coin.all.empty?)
+# puts "Creating coins..." 
 # coins.each { |key,value|
 #     Coin.create(name:key, symbol:value[0], logo:value[1])
 # }
-# end
 
 def Add_daily_values(coin,data)
     daily     = data.daily
@@ -66,7 +57,6 @@ def Add_hourly_values(coin,data)
     }
 end
 
-  
 Coin.all.each { |coin|
     puts "Filling database with values of #{coin.name}..."
     data = GetValues.new(coin.name)
