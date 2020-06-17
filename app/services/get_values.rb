@@ -75,7 +75,6 @@ class GetValues
       new_data
    end
    
-
 end
 
 
