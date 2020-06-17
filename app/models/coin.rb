@@ -8,7 +8,35 @@ class Coin < ApplicationRecord
 
     validates :symbol, 
     uniqueness:true, 
-    presence:true , 
-    length: {in: 1..3}
-    
+    presence:true
+
+    def minutely
+      array = []
+      values.each{ |index|
+          if(index.minutely?)
+              array << index
+          end
+      }
+      return array 
+    end
+
+    def daily
+      array = []
+      values.each{ |index|
+          if(index.daily?)
+              array << index
+          end
+      }
+      return array
+    end
+
+    def hourly
+        array = []
+        values.each{ |index|
+            if(index.hourly?)
+                array << index
+            end
+        }
+        return array 
+    end
 end
