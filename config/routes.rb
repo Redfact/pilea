@@ -3,5 +3,4 @@ Rails.application.routes.draw do
   resources :coins, only: [:show]
   devise_for :users
   resources :users, only: [:show, :edit, :update]
-  resources :admin, only: [:index]
 end
