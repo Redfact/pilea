@@ -1,31 +1,35 @@
 
 class GetValues
-   attr_accessor :coin_name ,:coin
+   attr_accessor :coin
    
-   def initialize(pcoin_name) 
-      @coin = pcoin_name
+   def initialize(coin_name) 
+      @coin = coin_name
    end
 
-   def last_daily_date
-      Coin.find_by(name:@coin).daily.last.time
-   end
-
-   def last_hourly_date
-      Coin.find_by(name:@coin).hourly.last.time
+   def last_dates(duration)
+      case duration
+         when "daily"
+            Coin.find_by(name:@coin).daily.last.time
+         when "hourly"
+            Coin.find_by(name:@coin).hourly.last.time    
+      end
    end
    
    def coingecko_call(coin_name, days)
       RestClient.get("https://api.coingecko.com/api/v3/coins/#{coin_name}/market_chart?vs_currency=usd&days=#{days}")
    end
+
+   def history(duration)
+      case duration
+         when "daily"
+            JSON.parse(coingecko_call(@coin,'max'))
+         when "hourly"
+            JSON.parse(coingecko_call(@coin,'90'))
+         else
+            puts "Chose valide duration (ex: 'daily' , 'hourly' ..."     
+      end
+   end
    
-   def history_daily
-      JSON.parse(coingecko_call(@coin,'max'))
-   end
-
-   def history_hourly
-      JSON.parse(coingecko_call(@coin,'90'))
-   end
-
    # Value type => total_volumes,market_caps,prices
    def get_array_values(hash,value_type)
       hash[value_type].each_with_object([]) do |index, values|
@@ -55,21 +59,21 @@ class GetValues
       array.first(iter).reverse()
    end
 
-   def update_hourly
-      hourly = JSON.parse(coingecko_call(@coin,'90'))
-      hourly['prices']=get_sub_array(hourly['prices'],last_hourly_date)
-      hourly['market_caps']=get_sub_array(hourly['market_caps'],last_hourly_date)
-      hourly['total_volumes']=get_sub_array(hourly['total_volumes'],last_hourly_date)
-      hourly
-   end 
-
-   def update_daily
-      daily = JSON.parse(coingecko_call(@coin,'max'))
-      daily['prices']=get_sub_array(daily['prices'],last_hourly_date)
-      daily['market_caps']=get_sub_array(daily['market_caps'],last_hourly_date)
-      daily['total_volumes']=get_sub_array(daily['total_volumes'],last_hourly_date)
-      daily
+   def update(duration)
+      case duration
+         when "daily"
+            new_data=JSON.parse(coingecko_call(@coin,'max'))
+         when "hourly"
+            new_data=JSON.parse(coingecko_call(@coin,'90'))
+         else
+            puts "Chose valide duration (ex: 'daily' , 'hourly' ..."     
+      end
+      new_data['prices']=get_sub_array(new_data['prices'],last_dates(duration))
+      new_data['market_caps']=get_sub_array(new_data['market_caps'],last_dates(duration))
+      new_data['total_volumes']=get_sub_array(new_data['total_volumes'],last_dates(duration))
+      new_data
    end
+   
 
 end
 
