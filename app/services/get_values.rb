@@ -1,3 +1,4 @@
+
 class GetValues
    attr_accessor :daily, :coin_name ,:coin ,:hourly,:lastDateDaily,:lastDateHourly
 
@@ -6,13 +7,16 @@ class GetValues
       @hourly = Hash.new
       @coin_name = pcoin_name
       @coin = Coin.find_by(name:pcoin_name)
-      @lastDateDaily =  @coin.daily.last.time
-      @lastDateHourly = @coin.hourly.last.time
+
       # Get all existing values if DB is empty
       # Or just get all new values if database is already filled
       if(!@coin.values.empty?)
+         @lastDateDaily =  @coin.daily.last.time
+         @lastDateHourly = @coin.hourly.last.time
          @hourly = update_hourly
          @daily = update_daily
+         puts "We have #{@daily['prices'].size -1} new value(s) in daily for #{@coin_name} "
+         puts "We have #{@hourly['prices'].size -1} new value(s) in hourly for #{@coin_name} "
       else
             @daily = history_daily
             @hourly  = history_hourly 
@@ -90,11 +94,11 @@ class GetValues
    def update_daily
       # TODO : Change max when the worker will be setted up 
       response = RestClient.get("https://api.coingecko.com/api/v3/coins/#{@coin_name}/market_chart?vs_currency=usd&days=max")
-      hourly = JSON.parse(response)
-      hourly['prices']=get_sub_array(hourly['prices'],@lastDateDaily)
-      hourly['market_caps']=get_sub_array(hourly['market_caps'],@lastDateDaily)
-      hourly['total_volumes']=get_sub_array(hourly['total_volumes'],@lastDateDaily)
-      return hourly ; 
+      daily = JSON.parse(response)
+      daily['prices']=get_sub_array(daily['prices'],@lastDateDaily)
+      daily['market_caps']=get_sub_array(daily['market_caps'],@lastDateDaily)
+      daily['total_volumes']=get_sub_array(daily['total_volumes'],@lastDateDaily)
+      return daily ; 
    end
 
 end

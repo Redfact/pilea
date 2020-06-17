@@ -13,14 +13,18 @@ coins = {
  "tron"=>["TRX","https://s2.coinmarketcap.com/static/img/coins/32x32/1958.png"]
 }
 
-Coin.destroy_all
-Value.destroy_all
-User.destroy_all
+# Uncomment if first time you seed your DB
 
-#Import coins in database 
-coins.each { |key,value|
-    Coin.create(name:key, symbol:value[0], logo:value[1])
-}
+# Coin.destroy_all
+# Value.destroy_all
+# User.destroy_all
+
+# #Import coins in database 
+# if ( Coin.all.empty?)
+# coins.each { |key,value|
+#     Coin.create(name:key, symbol:value[0], logo:value[1])
+# }
+# end
 
 def Add_daily_values(coin,data)
     daily     = data.daily
