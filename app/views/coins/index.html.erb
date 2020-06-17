@@ -61,11 +61,9 @@
   }
 </style>
 
-<!-- <body class="bg-gray-100 text-gray-900 tracking-wider leading-normal"> --> 
+<div class="w-full bg-white tracking-wider leading-normal">
 
-<div class="w-full">
-
-  <div class="p-6 bg-white">
+  <div class="p-6">
     
     <table id="all-coins" class="stripe hover mx-auto">
       <thead>
@@ -80,7 +78,6 @@
         </tr>
       </thead>
       <tbody>				
-        <!-- Rest of your data (refer to https://datatables.net/examples/server_side/ for server side processing)-->
         <% @coins.each do |coin| %>
           <tr class="uppercase text-center">
             <td class="flex justify-center">
@@ -116,14 +113,14 @@
 <%= javascript_include_tag 'https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js' %>
 
 <script>
-  $(document).ready(function() {
-    
-    var table = $('#all-coins').DataTable( {
-        responsive: true
-      } )
-      .columns.adjust()
-      .responsive.recalc();
-  } );
+$(document).ready(function() {
+  
+  var table = $('#all-coins').DataTable( {
+      responsive: true
+    } )
+    .columns.adjust()
+    .responsive.recalc();
+} )
 </script>
 
 <% @coins.each do |coin| %>
@@ -132,21 +129,20 @@ new Chart(document.getElementById("line-chart-<%= coin.name %>"), {
   type: 'line',
   data: {
     labels: [
-          <% coin.hourly.last(170).each do |value| %>
-            "<%= Time.at((value.time)/1000).strftime("%^a %R") %>",    
-          <% end %>
-        ],
+      <% coin.hourly.last(170).each do |value| %>
+        "<%= Time.at((value.time)/1000).strftime("%^a %R") %>",    
+      <% end %>
+    ],
     datasets: [{
-        label: "Prix (USD)",
-        borderColor: "#48bb78",
-        data: [
-          <% coin.hourly.last(170).each do |value| %>
-            <%= number_to_currency(value.price, :unit => "", :separator => ".", :delimiter => "") %>,
-          <% end %>
-        ],
-        fill: false
-      }
-    ]
+      label: "Prix (USD)",
+      borderColor: "#48bb78",
+      data: [
+        <% coin.hourly.last(170).each do |value| %>
+          <%= number_to_currency(value.price, :unit => "", :separator => ".", :delimiter => "") %>,
+        <% end %>
+      ],
+      fill: false
+    }]
   },
   options: {
     maintainAspectRatio: true,
@@ -173,12 +169,12 @@ new Chart(document.getElementById("line-chart-<%= coin.name %>"), {
         }
       }],
       yAxes: [{
-          display: true,
-          ticks: {
-            callback: function(dataLabel) {
-              return null;
-            }
+        display: true,
+        ticks: {
+          callback: function(dataLabel) {
+            return null;
           }
+        }
       }]
     },
   }
