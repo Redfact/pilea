@@ -15,4 +15,9 @@ class User < ApplicationRecord
   def admin?
     return self.admin==true
   end
+
+  def already_liked(coin_id)
+    return self.coins.include?(Coin.find_by(id:coin_id))
+  end
+
 end
