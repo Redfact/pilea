@@ -11,39 +11,61 @@
     <%= stylesheet_link_tag 'https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css' %>
     <%= stylesheet_link_tag 'https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css' %>
     <%= stylesheet_link_tag 'https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap' %>
+    <%= javascript_include_tag 'https://cdn.jsdelivr.net/npm/vue@2.6.11' %>
     <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js' %>
   </head>
 
 <body class="bg-gray-900">
-  <nav class="flex items-center justify-between flex-wrap bg-green-600 py-1 px-10">
-    <div class="flex items-center flex-shrink-0 text-white mx-16">
-      <%= link_to "Pilea", root_path, style: "font-family:'Leckerli One'", class: "text-5xl tracking-normal" %>
-    </div>
-    <div class="block lg:hidden">
-      <button class="flex items-center px-3 py-2 border rounded text-green-200 border-green-200 hover:border-white hover:text-white">
-        <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
-      </button>
-    </div>
-    <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-      <div class="text-lg lg:flex-grow">
-        <%= link_to "Équipe", 'https://www.ruby-lang.org/', target: "_blank", class: "block mt-4 lg:inline-block lg:mt-0 text-green-200 hover:text-white mr-6" %>
-        <%= link_to "Projet", 'https://www.ruby-lang.org/', target: "_blank", class: "block mt-4 lg:inline-block lg:mt-0 text-green-200 hover:text-white mr-6" %>
+  <div class="font-sans antialiased" id="navbar">
+    <nav class="flex items-center justify-between flex-wrap bg-green-600 py-1 px-10 z-50 top-0 sm:text-center fixed w-full">
+      <div class="flex items-center flex-shrink-0 text-white mx-16">
+        <%= link_to "Pilea", root_path, style: "font-family:'Leckerli One'", class: "text-5xl tracking-normal" %>
       </div>
-      <div class="mr-16">
-        <% if user_signed_in? %>
-          <% if current_user.first_name.nil? && current_user.last_name.nil? %>
-            <%= link_to "#{current_user.email}", user_path(current_user), class: "block mt-4 lg:inline-block lg:mt-0 text-green-200 text-lg hover:text-white mr-6" %>
+      <div class="block lg:hidden">
+        <button @click="toggle" class="flex items-center px-3 py-2 border rounded text-green-200 border-green-200 hover:border-white hover:text-white">
+          <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+        </button>
+      </div>
+      <div :class="open ? 'block': 'hidden'" class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+        <div class="text-lg flex-grow lg:flex lg:ml-6 sm:my-6 lg:-mb-4">
+          <%= link_to "Équipe", 'https://www.ruby-lang.org/', target: "_blank", class: "block lg:inline-block text-green-200 hover:text-white" %>
+          <div class="lg:mx-8 sm:my-8"></div>
+          <%= link_to "Projet", 'https://www.ruby-lang.org/', target: "_blank", class: "block lg:inline-block text-green-200 hover:text-white" %>
+        </div>
+        <div class="mr-16 sm:mr-0 sm:my-5">
+          <% if user_signed_in? %>
+            <% if current_user.first_name.nil? && current_user.last_name.nil? %>
+              <%= link_to "#{current_user.email}", user_path(current_user), class: "block mt-4 lg:inline-block lg:mt-0 text-green-200 text-lg hover:text-white mr-6 sm:mr-0" %>
+            <% else %>
+              <%= link_to "#{current_user.first_name} #{current_user.last_name}", user_path(current_user), class: "block mt-4 lg:inline-block lg:mt-0 text-green-200 text-lg hover:text-white mr-6 sm:mr-0" %>
+            <% end %>
+            <%= link_to "Déconnexion", destroy_user_session_path, :method => :delete, class: "inline-block text-base px-5 py-3 leading-none border rounded text-green-200 border-green-200 hover:border-transparent hover:text-green-600 hover:bg-green-200 mt-4 lg:mt-0" %>
           <% else %>
-            <%= link_to "#{current_user.first_name} #{current_user.last_name}", user_path(current_user), class: "block mt-4 lg:inline-block lg:mt-0 text-green-200 text-lg hover:text-white mr-6" %>
+            <%= link_to "Inscription", new_user_registration_path, class: "inline-block text-base px-5 py-3 leading-none border rounded text-green-200 border-green-200 hover:border-transparent hover:text-green-600 hover:bg-green-200 mt-4 mr-2 lg:mt-0" %>
+            <%= link_to "Connexion", new_user_session_path, class: "inline-block text-base px-5 py-3 leading-none border rounded text-green-200 border-green-200 hover:border-transparent hover:text-green-600 hover:bg-green-200 mt-4 lg:mt-0" %>
           <% end %>
-          <%= link_to "Déconnexion", destroy_user_session_path, :method => :delete, class: "inline-block text-base px-5 py-3 leading-none border rounded text-green-200 border-green-200 hover:border-transparent hover:text-green-600 hover:bg-green-200 mt-4 lg:mt-0" %>
-        <% else %>
-          <%= link_to "Inscription", new_user_registration_path, class: "inline-block text-base px-5 py-3 leading-none border rounded text-green-200 border-green-200 hover:border-transparent hover:text-green-600 hover:bg-green-200 mt-4 mr-2 lg:mt-0" %>
-          <%= link_to "Connexion", new_user_session_path, class: "inline-block text-base px-5 py-3 leading-none border rounded text-green-200 border-green-200 hover:border-transparent hover:text-green-600 hover:bg-green-200 mt-4 lg:mt-0" %>
-        <% end %>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </div>
+
+  <div class="mt-2 sm:mt-0 h-20"></div>
+
   <%= yield %>
+
+  <script>
+    new Vue({
+      el: '#navbar',
+      data: {
+        open: false,
+      },
+      methods: {
+        toggle() {
+          this.open = !this.open
+        }
+      }
+    })
+  </script>
+
 </body>
 </html>
