@@ -1,48 +1,68 @@
-<div class="bg-gray-200 shadow-2xl rounded-lg mx-auto mt-6 mb-4 px-8 py-4 w-10/12">
-  <div class="flex justify-between text-gray-700 my-10 mx-auto">
-    <div class="my-auto mx-6">
+<!-- Content -->
+<div class="bg-gray-200 shadow-2xl rounded-lg mx-auto mt-6 mb-4 px-12 py-4 w-10/12">
+  <div class="w-full mx-auto block flex-grow text-gray-700 border-gray-300 border-b-2 lg:flex lg:items-center lg:justify-between">
+    <div class="block sm:my-8 flex justify-center">
       <img class="w-16 h-16 rounded-full object-cover my-auto shadow-2xl" src="<%= @coin.logo %>" alt="Logo <%= @coin.name %>">
-      <p class="w-16 my-auto text-lg text-center"><%= @coin.symbol %></p>
+      <p class="w-16 my-auto text-lg uppercase font-bold ml-3 text-center"><%= @coin.name %></p>
     </div>
-    <div class="flex my-auto">
-      <p class="w-64 my-auto text-2xl text-center"><%= number_to_currency(@coin.values.last.price, :unit => "$ ", :separator => ".", :delimiter => ",") %></p>
+    <div class="block lg:inline-block sm:my-8 flex justify-center">
+      <p class="my-auto sm:mx-8 text-sm tracking-widest text-center">
+        PRIX
+      </p>
+      <p class="my-auto text-2xl font-medium text-center">
+        <%= number_to_currency(@coin.values.last.price, :unit => "$ ", :separator => ".", :delimiter => ",") %>
+      </p>
     </div>
-    <div class="flex my-auto">
-      <p class="w-64 my-auto text-2xl text-center"><%= number_to_currency(@coin.values.last.volume, :unit => "$ ", :separator => ".", :delimiter => ",", :precision => 0) %></p>
+    <div class="block lg:inline-block sm:my-8 flex justify-center">
+      <p class="my-auto sm:mx-8 text-sm tracking-widest text-center">
+        VOLUME
+      </p>
+      <p class="my-auto text-2xl font-medium text-center">
+        <%= number_to_currency(@coin.values.last.volume, :unit => "$ ", :separator => ".", :delimiter => ",", :precision => 0) %>
+      </p>
     </div>
-    <div class="flex my-auto">
-      <p class="w-64 my-auto text-2xl text-center"><%= number_to_currency(@coin.values.last.market_cap, :unit => "$ ", :separator => ".", :delimiter => ",", :precision => 0) %></p>
+    <div class="block lg:inline-block sm:my-8 flex justify-center">
+      <p class="my-auto sm:mx-8 text-sm tracking-widest text-center">
+        CAPITALISATION
+      </p>
+      <p class="my-auto text-2xl font-medium text-center">
+        <%= number_to_currency(@coin.values.last.market_cap, :unit => "$ ", :separator => ".", :delimiter => ",", :precision => 0) %>
+      </p>
     </div>
-    <svg fill="none" viewBox="0 0 24 24"  class="my-auto w-8 h-8 mx-8" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-    </svg>
+    <a href="<%= coin_path(@coin) %>" class="block lg:inline-block sm:my-8 lg:mr-8 flex justify-center">
+      <svg fill="none" viewBox="0 0 24 24"  class="w-8 h-8" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+      </svg>
+    </a>
   </div>
-  <div class="flex mb-5 mt-15 mx-auto">
+  <div class="flex flex-wrap w-full mb-5 mt-3 lg:justify-between sm:justify-center">
     <div class="chart-container relative rounded-lg p-5">
-      <canvas id="line-chart-<%= @coin.name %>" width="40" height="15"></canvas>
+      <canvas id="line-chart-<%= @coin.name %>" width="550" height="300"></canvas>
     </div>
     <div class="chart-container relative rounded-lg p-5">
-      <canvas id="bar-chart-<%= @coin.name %>" width="40" height="15"></canvas>
+      <canvas id="bar-chart-<%= @coin.name %>" width="550" height="300"></canvas>
     </div>
   </div>
 </div>
+<!-- Content -->
 
+<!-- Chart.js -->
 <script>
 new Chart(document.getElementById("line-chart-<%= @coin.name %>"), {
     type: 'line',
     data: {
       labels: [
             <% @values.daily.each do |value| %>
-              <%= "#{value.time}," %>
+              "<%= Time.at((value.time)/1000).strftime("%D") %>",
             <% end %>
           ],
       datasets: [{
-          label: "Prix",
+          label: "<%= @coin.symbol.upcase %> / USD",
           type: "line",
           borderColor: "#48bb78",
           data: [
             <% @values.daily.each do |value| %>
-              <%= value.market_cap %>,
+              <%= number_to_currency(value.price, :unit => "", :separator => ".", :delimiter => "", :precision => 3) %>,
             <% end %>
           ],
           fill: false
@@ -51,11 +71,17 @@ new Chart(document.getElementById("line-chart-<%= @coin.name %>"), {
     },
     options: {
       title: {
-        display: false,
+        display: true,
+        text: 'ÉVOLUTION DU PRIX',
         gridLines: {
 					display: false,
 					drawBorder: false
 				}
+      },
+      elements: {
+        point:{
+          radius: 0
+        }
       },
       legend: { display: false }
     }
@@ -65,26 +91,28 @@ new Chart(document.getElementById("bar-chart-<%= @coin.name %>"), {
     type: 'bar',
     data: {
       labels: [
-            <% @values.each do |value| %>
-            <%= "#{value.price}," %>          
+            <% @values.daily.last(170).each do |value| %>
+              "<%= Time.at((value.time)/1000).strftime("%D") %>",
             <% end %>
           ],
       datasets: [{
-          label: "Volume",
+          label: "<%= @coin.symbol.upcase %> / USD",
           type: "bar",
-          backgroundColor: "rgba(0,20,0,0.2)",
-          backgroundColorHover: "#3e95cd",
+          backgroundColor: "#38A169",
+          backgroundColorHover: "#38A169",
           data: [
-            <% @values.each do |value| %>
-            <%= "#{value.market_cap}," %>          
+            <% @values.daily.last(170).each do |value| %>
+              <%= number_to_currency(value.volume, :unit => "", :separator => ".", :delimiter => "", :precision => 0) %>,
             <% end %>
-          ]
+          ],
+          fill: false
         }
       ]
     },
     options: {
       title: {
-        display: false,
+        display: true,
+        text: 'ÉVOLUTION DU VOLUME',
         gridLines: {
 					display: false,
 					drawBorder: false
@@ -94,3 +122,4 @@ new Chart(document.getElementById("bar-chart-<%= @coin.name %>"), {
     }
 });
 </script>
+<!-- Chart.js -->
