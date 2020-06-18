@@ -1,4 +1,3 @@
-
 class GetValues
    attr_accessor :coin
    
@@ -11,7 +10,7 @@ class GetValues
          when "daily"
             Coin.find_by(name:@coin).daily.last.time
          when "hourly"
-            Coin.find_by(name:@coin).hourly.last.time    
+            Coin.find_by(name:@coin).hourly.last.time
       end
    end
    
@@ -26,37 +25,36 @@ class GetValues
          when "hourly"
             JSON.parse(coingecko_call(@coin,'90'))
          else
-            puts "Chose valide duration (ex: 'daily' , 'hourly' ..."     
+            puts "Choose valid duration (ex: 'daily' , 'hourly' ..."
       end
    end
    
-   # Value type => total_volumes,market_caps,prices
-   def get_array_values(hash,value_type)
+   # Value type => total_volumes, market_caps, prices
+   def get_array_values(hash, value_type)
       hash[value_type].each_with_object([]) do |index, values|
          values << index[1]
       end
    end
 
-   # Work like 'get_all_values()' but return an array of timestamp 
+   # Work like 'get_all_values()' but return an array of timestamp
    def get_time_of_values(hash)
       hash['prices'].each_with_object([]) do |index, times|
          times<<index[0]
       end
    end
 
-   # Get a sub array of values from last database date to most recent date 
-   def get_sub_array(array,lastime)
+   # Get a sub array of values from last database date to most recent date
+   def get_sub_array(array, lastime)
       array = array.reverse()
-      iter=0
+      iter = 0
       array.each do |elem|
          deltatime = elem[0] - lastime
-            if( deltatime <=
-                0 )  
+            if( deltatime <= 0 )
                break
             else
-               iter +=1 
+               iter +=1
             end
-      end 
+      end
       array.first(iter).reverse()
    end
 
@@ -67,7 +65,7 @@ class GetValues
          when "hourly"
             new_data=JSON.parse(coingecko_call(@coin,'90'))
          else
-            puts "Chose valide duration (ex: 'daily' , 'hourly' ..."     
+            puts "Chose valide duration (ex: 'daily' , 'hourly' ..."
       end
       new_data['prices']=get_sub_array(new_data['prices'],last_dates(duration))
       new_data['market_caps']=get_sub_array(new_data['market_caps'],last_dates(duration))
@@ -76,8 +74,3 @@ class GetValues
    end
    
 end
-
-
-
-
-
