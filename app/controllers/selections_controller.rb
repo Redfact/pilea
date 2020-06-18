@@ -1,11 +1,12 @@
 class SelectionsController < ApplicationController
-  before_action :Signed?, only: [:create,:destroy]
+ before_action :Signed?, only: [:create,:destroy]
 
   def Signed?
     unless(user_signed_in?)
       redirect_to new_user_session_path
     end
   end
+
   
   def create
     puts "Controller Create selection"

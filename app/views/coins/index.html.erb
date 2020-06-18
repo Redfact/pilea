@@ -101,7 +101,7 @@
                   <% if current_user.already_liked(coin.id) %>
                   <%= link_to 'unlike', selection_path(id:coin.id) ,method: :delete , remote:true %>
                   <%else%>
-                  <%= link_to 'like',selections_path(id:coin.id ,),method: :post ,remote:true%>
+                  <%= link_to 'like',selections_path(id:coin.id),method: :post ,remote:true%>
                   <% end %>
                 <% end %>
             </td>
