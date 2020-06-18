@@ -6,9 +6,8 @@ class Coin < ApplicationRecord
     has_many :values
 
 
-    validates :symbol, 
-    uniqueness:true, 
-    presence:true
+    validates :symbol, uniqueness:true, presence:true
+    validates :name, uniqueness:true, presence:true
 
     def minutely
       array = []
