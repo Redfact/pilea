@@ -19,6 +19,8 @@ gem 'rest-client'
 gem 'premailer'
 # Use Mailjet for sending mails
 gem 'mailjet', :git => 'https://github.com/mailjet/mailjet-gem.git'
+# use jquery
+gem 'jquery-rails'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'

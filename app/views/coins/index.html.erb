@@ -147,12 +147,17 @@
                 <%= number_to_currency(coin.values.hourly.last.market_cap, :unit => "$ ", :delimiter => ",", :precision => 0) %>
               </a>
             </td>
-            <td>
-              <a href="<%= coin_path(coin) %>" class="flex justify-center">
-                <svg fill="none" viewBox="0 0 24 24"  class="w-5 h-5 lg:w-8 lg:h-8" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                </svg>
-              </a>
+            <td id="<%=coin.id%>" class="flex justify-center">
+              <% if current_user %>
+                <% if current_user.already_liked(coin.id) %>
+                  <%= link_to 'unlike', selection_path(id:coin.id) ,method: :delete , remote:true %>
+                <%else%>
+                  <%= link_to 'like',selections_path(id:coin.id),method: :post ,remote:true%>
+                  <a href="<%= coin_path(coin) %>" class="flex justify-center">
+                    <svg fill="none" viewBox="0 0 24 24"  class="w-5 h-5 lg:w-8 lg:h-8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                  </a>
+                <% end %>
+              <% end %>
             </td>
           </tr>
         <% end %>
