@@ -9,6 +9,10 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def already_liked(coin_id)
+    return self.coins.include?(Coin.find_by(id:coin_id))
+  end
+  
   def update
     @user = current_user
     if @user.update(user_params)
