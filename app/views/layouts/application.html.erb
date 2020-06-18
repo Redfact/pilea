@@ -7,15 +7,18 @@
     <%= favicon_link_tag 'favicon.ico' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- Stylesheets & JavaScripts CDN -->
     <%= stylesheet_link_tag 'https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css' %>
     <%= stylesheet_link_tag 'https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css' %>
     <%= stylesheet_link_tag 'https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css' %>
     <%= stylesheet_link_tag 'https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap' %>
     <%= javascript_include_tag 'https://cdn.jsdelivr.net/npm/vue@2.6.11' %>
     <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js' %>
+    <!-- Stylesheets & JavaScripts CDN -->
   </head>
 
 <body class="bg-gray-900">
+  <!-- Navbar -->
   <div class="font-sans antialiased" id="navbar">
     <nav class="flex items-center justify-between flex-wrap bg-green-600 py-1 px-10 z-50 top-0 sm:text-center fixed w-full">
       <div class="flex items-center flex-shrink-0 text-white mx-16">
@@ -48,11 +51,15 @@
       </div>
     </nav>
   </div>
+  <!-- Navbar -->
 
   <div class="my-2 sm:my-0 h-20"></div>
 
+  <!-- Content -->
   <%= yield %>
+  <!-- Content -->
 
+  <!-- Vue.js -->
   <script>
     new Vue({
       el: '#navbar',
@@ -66,6 +73,7 @@
       }
     })
   </script>
+  <!-- Vue.js -->
 
 </body>
 </html>
