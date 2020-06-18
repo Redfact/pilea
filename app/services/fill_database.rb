@@ -1,9 +1,4 @@
 class FillDatabase
-  attr_accessor :coin
-
-  def initialize
-    @coin = coin_name
-  end
 
   def by_interval_type(interval)
     interval_equivalence_num = {
@@ -14,7 +9,11 @@ class FillDatabase
     all_coins = Coin.all
     all_coins.each { |coin|
       values = GetValues.new(coin.name).history(interval)
-      SaveValues.new(@coin, interval, 2).perform
+      puts coin.name
+      puts interval
+      puts interval_equivalence_num[interval]
+      SaveValues.new(coin.name, interval, interval_equivalence_num[interval]).perform
+      puts "SaveValues exécuté"
     }
   end
 

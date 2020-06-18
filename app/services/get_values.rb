@@ -25,7 +25,7 @@ class GetValues
          when "hourly"
             JSON.parse(coingecko_call(@coin,'90'))
          else
-            puts "Choose valid duration (ex: 'daily' , 'hourly' ..."
+            puts "Choose valid duration (ex: 'daily' , 'hourly' ...)"
       end
    end
    
