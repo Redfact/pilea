@@ -11,10 +11,11 @@ class FillDatabase
       "hourly"=>1,
       "daily"=>2,
     }
-    current_coin = coin.name
-    values = GetValues.new(current_coin).history(interval)
-    SaveValues.new(@coin, interval, 2).perform
-    hourly
+    all_coins = Coin.all
+    all_coins.each { |coin|
+      values = GetValues.new(coin.name).history(interval)
+      SaveValues.new(@coin, interval, 2).perform
+    }
   end
 
 end
