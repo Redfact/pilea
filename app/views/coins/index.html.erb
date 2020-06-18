@@ -112,41 +112,6 @@
             </td>
           </tr>
         <% end %>
-        <% @coins.each do |coin| %>
-          <tr class="uppercase text-center">
-            <td>
-              <a href="<%= coin_path(coin) %>" class="flex justify-center">
-                <img class="w-5 h-5 lg:w-10 lg:h-10 lg:-mt-2 mr-2 rounded-full" src="<%= coin.logo %>" alt="Logo <%= coin.name %>">
-                <%= coin.name %>
-              </a>
-            </td>
-            <td class="chart-container">
-              <canvas id="line-chart-<%= coin.name %>" width="40" height="15"></canvas>
-            </td>
-            <td>
-              <a href="<%= coin_path(coin) %>" class="flex justify-center">
-                <%= number_to_currency(coin.values.hourly.last.price, :unit => "$ ", :delimiter => ",", :separator => ".") %>
-              </a>
-            </td>
-            <td>
-              <a href="<%= coin_path(coin) %>" class="flex justify-center">
-                <%= number_to_currency(coin.values.hourly.last.volume, :unit => "$ ", :delimiter => ",", :precision => 0) %>
-              </a>
-            </td>
-            <td>
-              <a href="<%= coin_path(coin) %>" class="flex justify-center">
-                <%= number_to_currency(coin.values.hourly.last.market_cap, :unit => "$ ", :delimiter => ",", :precision => 0) %>
-              </a>
-            </td>
-            <td>
-              <a href="<%= coin_path(coin) %>" class="flex justify-center">
-                <svg fill="none" viewBox="0 0 24 24"  class="w-5 h-5 lg:w-8 lg:h-8" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                </svg>
-              </a>
-            </td>
-          </tr>
-        <% end %>
       </tbody>
     </table>
   </div>
