@@ -11,7 +11,7 @@ class SaveValues
     coin_ID = Coin.find_by(name:@coin).id
       if (history['prices'].empty?)
           puts "No values added !"
-      else 
+      else
           @history['prices'].each_with_index do |price, index|
               Value.create(
               coin_id: coin_ID,

@@ -7,9 +7,9 @@ coins = {
   "litecoin"=>["ltc","https://assets.coingecko.com/coins/images/2/large/litecoin.png"]
 }
 
-puts "Creating coins..." 
+puts "Creating coins..."
 coins.each { |key,value|
-    Coin.create(name:key, symbol:value[0], logo:value[1])
+  Coin.create(name:key, symbol:value[0], logo:value[1])
 }
 
 puts "Creating admin account..."
@@ -22,4 +22,3 @@ User.create(
 )
 
 puts "Seeding is done !"
-

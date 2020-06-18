@@ -12,7 +12,7 @@ class FillDatabase
       puts coin.name
       puts interval
       puts interval_equivalence_num[interval]
-      SaveValues.new(coin.name, interval, interval_equivalence_num[interval]).perform
+      SaveValues.new(coin.name, values, interval_equivalence_num[interval]).perform
       puts "SaveValues exécuté"
     }
   end
