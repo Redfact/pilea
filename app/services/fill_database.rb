@@ -21,6 +21,8 @@ class FillDatabase
       puts "...Done!"
       sleep 0.5
     }
+    puts "-"*80
+    puts "The database has been filled with #{interval} value for all coins."
   end
 
 end
