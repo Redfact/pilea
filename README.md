@@ -12,22 +12,15 @@ nous contacter pour nous faire part de votre expérience
 
 ---
 
-## FONCTIONNALITÉS FUTURES
-
-- Dashboard accessible au compte Administrateur
-- Gestion des favoris et classement des monnaies
-- Frontend responsive et graphiques dynamiques
-- Récupération automatique des données API
-
----
-
 ## TECHNOLOGIES UTILISÉES
 
 - TailwindCSS
+- DataTables
 - Chart.js
+- Vue.js
 - Ruby
 - Rails
-- API CoinGecko
+- CoinGecko
 
 ---
 
