@@ -1,7 +1,7 @@
 class GetValues
   attr_accessor :daily, :coin , :hourly
 
-  def seed_initialize(coin_name) 
+  def initialize(coin_name) 
      @daily = Hash.new
      @hourly = Hash.new
      @coin = coin_name
