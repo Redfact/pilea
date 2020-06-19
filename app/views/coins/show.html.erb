@@ -1,47 +1,94 @@
-<div class="bg-gray-200 shadow-2xl rounded-lg mx-auto my-4 px-8 py-4 w-10/12">
-  <div class="flex justify-between text-gray-700 my-10 mx-auto">
-    <div class="my-auto mx-6">
-      <img class="w-16 h-16 rounded-full object-cover my-auto shadow-2xl" src="<%= @coin.logo %>" alt="Logo <%= @coin.name %>">
-      <p class="w-16 my-auto text-lg text-center"><%= @coin.symbol %></p>
+<div class="bg-gray-200 shadow-2xl rounded-lg mx-auto mt-6 mb-4 px-12 py-4 w-10/12">
+  <div class="w-full mx-auto block flex-grow text-gray-700 border-gray-300 border-b-2 lg:flex lg:items-center lg:justify-between">
+    <div class="block sm:my-8 flex justify-center">
+      <%= image_tag((@coin.logo), class: "w-16 h-16 rounded-full object-cover my-auto shadow-2xl") %>
+      <p class="w-16 my-auto text-lg uppercase font-bold ml-3 text-center"><%= @coin.name %></p>
     </div>
-    <div class="flex my-auto">
-      <p class="w-64 my-auto text-2xl text-center"><%= number_to_currency(@coin.values.last.price, :unit => "$ ", :separator => ".", :delimiter => ",") %></p>
+    <div class="block lg:inline-block sm:my-8 flex justify-center">
+      <p class="my-auto sm:mx-8 text-sm tracking-widest text-center">
+        PRIX
+
+      </p>
+      <p class="my-auto text-2xl font-medium text-center">
+        <%= link_to @coin.last_price %>
+      </p>
     </div>
-    <div class="flex my-auto">
-      <p class="w-64 my-auto text-2xl text-center"><%= number_to_currency(@coin.values.last.volume, :unit => "$ ", :separator => ".", :delimiter => ",", :precision => 0) %></p>
+    <div class="block lg:inline-block sm:my-8 flex justify-center">
+      <p class="my-auto sm:mx-8 text-sm tracking-widest text-center">
+        VOLUME
+      </p>
+      <p class="my-auto text-2xl font-medium text-center">
+        <%= link_to @coin.last_volume %>
+      </p>
     </div>
-    <div class="flex my-auto">
-      <p class="w-64 my-auto text-2xl text-center"><%= number_to_currency(@coin.values.last.market_cap, :unit => "$ ", :separator => ".", :delimiter => ",", :precision => 0) %></p>
+    <div class="block lg:inline-block sm:my-8 flex justify-center">
+      <p class="my-auto sm:mx-8 text-sm tracking-widest text-center">
+        CAPITALISATION
+      </p>
+      <p class="my-auto text-2xl font-medium text-center">
+        <%= link_to @coin.last_market_cap %>
+      </p>
     </div>
-    <svg fill="none" viewBox="0 0 24 24"  class="my-auto w-8 h-8 mx-8" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-    </svg>
+    <div id="likebutton<%=@coin.id %>" class="flex justify-center">
+      <% if current_user %>
+        <% if current_user.already_liked(@coin) %>
+          <%= link_to image_tag(('unlike.png'), class: "w-5 h-5 lg:w-8 lg:h-8"), selection_path(id: @coin), method: :delete, remote:true %>
+        <% else %>
+          <%= link_to image_tag(('like.png'), class: "w-5 h-5 lg:w-8 lg:h-8"), selections_path(id: @coin), method: :post, remote:true %>
+        <% end %>
+      <% else %>
+        <%= link_to image_tag(('like.png'), class: "w-5 h-5 lg:w-8 lg:h-8"), new_user_registration_path %>
+      <% end %>
+      </div>
   </div>
-  <div class="flex mb-5 mt-15 mx-auto">
-    <div class="chart-container relative w-2/4 h-1/12 rounded-lg p-5">
-      <canvas id="line-chart-<%= @coin.name %>"></canvas>
-    <div class="chart-container relative w-2/4 h-1/12 rounded-lg p-5">
-      <canvas id="bar-chart-<%= @coin.name %>"></canvas>
+  <div class="w-full mb-5 mt-3 lg:justify-between sm:justify-center">
+    <div class="flex flex-wrap">
+      <div class="chart-container w-2/4 relative rounded-lg p-5">
+        <canvas id="today-line-<%= @coin.name %>" width="550" height="300"></canvas>
+      </div>
+      <div class="chart-container w-2/4 relative rounded-lg p-5">
+        <canvas id="today-bar-<%= @coin.name %>" width="550" height="300"></canvas>
+      </div>
     </div>
-  </div>
+    <div class="flex flex-wrap">
+      <div class="chart-container w-2/4 relative rounded-lg p-5">
+        <canvas id="week-line-<%= @coin.name %>" width="550" height="300"></canvas>
+      </div>
+      <div class="chart-container w-2/4 relative rounded-lg p-5">
+        <canvas id="week-bar-<%= @coin.name %>" width="550" height="300"></canvas>
+      </div>
+    </div>
+    </div>
+    <div class="flex flex-wrap">
+      <div class="chart-container w-2/4 relative rounded-lg p-5">
+        <canvas id="year-line-<%= @coin.name %>" width="550" height="300"></canvas>
+      </div>
+      <div class="chart-container w-2/4 relative rounded-lg p-5">
+        <canvas id="year-bar-<%= @coin.name %>" width="550" height="300"></canvas>
+      </div>
+    </div>
+    <div class="chart-container relative rounded-lg p-5 mx-auto">
+      <canvas id="forever-line-<%= @coin.name %>" width="1000" height="500"></canvas>
+    </div>
 </div>
 
+<!-- Chart.js -->
 <script>
-new Chart(document.getElementById("line-chart-<%= @coin.name %>"), {
+new Chart(document.getElementById("today-line-<%= @coin.name %>"), {
     type: 'line',
     data: {
       labels: [
-            <% @values.daily.each do |value| %>
-              <%= "#{value.time}," %>
+            <% @values.hourly.last(26).each do |value| %>
+              "<%= Time.at((value.time)/1000).strftime("%^a %R") %>",
             <% end %>
           ],
       datasets: [{
-          label: "Prix",
+          label: "<%= @coin.symbol.upcase %> / USD",
           type: "line",
           borderColor: "#48bb78",
           data: [
-            <% @values.daily.each do |value| %>
-              <%= value.market_cap %>,
+            <% @values.hourly.last(26).each do |value| %>
+              <%= number_to_currency(value.price, :unit => "", :separator => ".", :delimiter => "", :precision => 3) %>,
             <% end %>
           ],
           fill: false
@@ -50,7 +97,8 @@ new Chart(document.getElementById("line-chart-<%= @coin.name %>"), {
     },
     options: {
       title: {
-        display: false,
+        display: true,
+        text: 'ÉVOLUTION DU PRIX - JOURNÉE',
         gridLines: {
 					display: false,
 					drawBorder: false
@@ -60,30 +108,32 @@ new Chart(document.getElementById("line-chart-<%= @coin.name %>"), {
     }
 });
 
-new Chart(document.getElementById("bar-chart-<%= @coin.name %>"), {
+new Chart(document.getElementById("today-bar-<%= @coin.name %>"), {
     type: 'bar',
     data: {
       labels: [
-            <% @values.each do |value| %>
-            <%= "#{value.price}," %>          
+            <% @values.hourly.last(26).each do |value| %>
+              "<%= Time.at((value.time)/1000).strftime("%^a %R") %>",
             <% end %>
           ],
       datasets: [{
-          label: "Volume",
+          label: "<%= @coin.symbol.upcase %> / USD",
           type: "bar",
-          backgroundColor: "rgba(0,20,0,0.2)",
-          backgroundColorHover: "#3e95cd",
+          backgroundColor: "#38A169",
+          backgroundColorHover: "#38A169",
           data: [
-            <% @values.each do |value| %>
-            <%= "#{value.market_cap}," %>          
+            <% @values.hourly.last(26).each do |value| %>
+              <%= number_to_currency(value.volume, :unit => "", :separator => ".", :delimiter => "", :precision => 0) %>,
             <% end %>
-          ]
+          ],
+          fill: false
         }
       ]
     },
     options: {
       title: {
-        display: false,
+        display: true,
+        text: 'ÉVOLUTION DU VOLUME - JOURNÉE',
         gridLines: {
 					display: false,
 					drawBorder: false
@@ -92,4 +142,192 @@ new Chart(document.getElementById("bar-chart-<%= @coin.name %>"), {
       legend: { display: false }
     }
 });
+
+new Chart(document.getElementById("week-line-<%= @coin.name %>"), {
+    type: 'line',
+    data: {
+      labels: [
+            <% @values.hourly.last(170).each do |value| %>
+              "<%= Time.at((value.time)/1000).strftime("%e %^b %R") %>",
+            <% end %>
+          ],
+      datasets: [{
+          label: "<%= @coin.symbol.upcase %> / USD",
+          type: "line",
+          borderColor: "#48bb78",
+          data: [
+            <% @values.hourly.last(170).each do |value| %>
+              <%= number_to_currency(value.price, :unit => "", :separator => ".", :delimiter => "", :precision => 3) %>,
+            <% end %>
+          ],
+          fill: false
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'ÉVOLUTION DU PRIX - SEMAINE',
+        gridLines: {
+					display: false,
+					drawBorder: false
+				}
+      },
+      elements: {
+        point:{
+          radius: 0
+        }
+      },
+      legend: { display: false }
+    }
+});
+
+new Chart(document.getElementById("week-bar-<%= @coin.name %>"), {
+    type: 'bar',
+    data: {
+      labels: [
+            <% @values.hourly.last(170).each do |value| %>
+              "<%= Time.at((value.time)/1000).strftime("%e %^b %R") %>",
+            <% end %>
+          ],
+      datasets: [{
+          label: "<%= @coin.symbol.upcase %> / USD",
+          type: "bar",
+          backgroundColor: "#38A169",
+          backgroundColorHover: "#38A169",
+          data: [
+            <% @values.hourly.last(170).each do |value| %>
+              <%= number_to_currency(value.volume, :unit => "", :separator => ".", :delimiter => "", :precision => 0) %>,
+            <% end %>
+          ],
+          fill: false
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'ÉVOLUTION DU VOLUME - SEMAINE',
+        gridLines: {
+					display: false,
+					drawBorder: false
+				}
+      },
+      legend: { display: false }
+    }
+});
+
+new Chart(document.getElementById("year-line-<%= @coin.name %>"), {
+    type: 'line',
+    data: {
+      labels: [
+            <% @values.daily.last(370).each do |value| %>
+              "<%= Time.at((value.time)/1000).strftime("%e %^b") %>",
+            <% end %>
+          ],
+      datasets: [{
+          label: "<%= @coin.symbol.upcase %> / USD",
+          type: "line",
+          borderColor: "#48bb78",
+          data: [
+            <% @values.daily.last(370).each do |value| %>
+              <%= number_to_currency(value.price, :unit => "", :separator => ".", :delimiter => "", :precision => 3) %>,
+            <% end %>
+          ],
+          fill: false
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'ÉVOLUTION DU PRIX - ANNÉE',
+        gridLines: {
+					display: false,
+					drawBorder: false
+				}
+      },
+      elements: {
+        point:{
+          radius: 0
+        }
+      },
+      legend: { display: false }
+    }
+});
+
+new Chart(document.getElementById("year-bar-<%= @coin.name %>"), {
+    type: 'bar',
+    data: {
+      labels: [
+            <% @values.daily.last(370).each do |value| %>
+              "<%= Time.at((value.time)/1000).strftime("%e %^b") %>",
+            <% end %>
+          ],
+      datasets: [{
+          label: "<%= @coin.symbol.upcase %> / USD",
+          type: "bar",
+          backgroundColor: "#38A169",
+          backgroundColorHover: "#38A169",
+          data: [
+            <% @values.daily.last(370).each do |value| %>
+              <%= number_to_currency(value.volume, :unit => "", :separator => ".", :delimiter => "", :precision => 0) %>,
+            <% end %>
+          ],
+          fill: false
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'ÉVOLUTION DU VOLUME - ANNÉE',
+        gridLines: {
+					display: false,
+					drawBorder: false
+				}
+      },
+      legend: { display: false }
+    }
+});
+
+new Chart(document.getElementById("forever-line-<%= @coin.name %>"), {
+    type: 'line',
+    data: {
+      labels: [
+            <% @values.daily.each do |value| %>
+              "<%= Time.at((value.time)/1000).strftime("%e %^b %Y") %>",
+            <% end %>
+          ],
+      datasets: [{
+          label: "<%= @coin.symbol.upcase %> / USD",
+          type: "line",
+          borderColor: "#48bb78",
+          data: [
+            <% @values.daily.each do |value| %>
+              <%= number_to_currency(value.price, :unit => "", :separator => ".", :delimiter => "", :precision => 3) %>,
+            <% end %>
+          ],
+          fill: false
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'ÉVOLUTION DU PRIX - HISTOIRE',
+        gridLines: {
+					display: false,
+					drawBorder: false
+				}
+      },
+      elements: {
+        point:{
+          radius: 0
+        }
+      },
+      legend: { display: false }
+    }
+});
 </script>
+<!-- Chart.js -->

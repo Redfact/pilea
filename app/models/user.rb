@@ -8,7 +8,7 @@ class User < ApplicationRecord
   after_create :welcome_send
   
   def welcome_send
-    puts 'sending mail ...'
+    puts 'sending welcome mail...'
     UserMailer.welcome_email(self).deliver_now!
   end
 

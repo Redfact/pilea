@@ -22,4 +22,3 @@ User.create(
 )
 
 puts "Seeding is done !"
-

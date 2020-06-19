@@ -1,75 +1,39 @@
-<style>
-  /*Overrides for Tailwind CSS */
-  
-  /*Form fields*/
-  .dataTables_wrapper select,
-  .dataTables_wrapper .dataTables_filter input {
-    color: #4a5568; 			/*text-gray-700*/
-    padding-left: 1rem; 		/*pl-4*/
-    padding-right: 1rem; 		/*pl-4*/
-    padding-top: .5rem; 		/*pl-2*/
-    padding-bottom: .5rem; 		/*pl-2*/
-    line-height: 1.25; 			/*leading-tight*/
-    border-width: 2px; 			/*border-2*/
-    border-radius: .25rem; 		
-    border-color: #edf2f7; 		/*border-gray-200*/
-    background-color: #edf2f7; 	/*bg-gray-200*/
-  }
+<!-- Hero Header -->
+<% unless user_signed_in? %>
+<div class="py-10 bg-green-600 -mt-8 z-30">
+	<div class="container text-gray-200 px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+		<div class="flex flex-col w-full md:w-2/5 justify-center items-center text-center md:text-left">
+			<h1 class="my-4 text-5xl font-bold uppercase text-center leading-tight">
+        Le comparateur de cryptomonnaies facile d'accès
+      </h1>
+			<p class="leading-normal text-xl font-light text-center mb-8">
+        Blockchain, tokens, trading... les cryptos au début c'est compliqué, mais ça vient de changer. Avec Pilea, que tu sois juste curieux ou déjà un maître de la blockchain, toutes les infos dont tu as besoin sont ici. Tu peux comparer les données des plus importantes cryptos du marché très simplement, fini de se prendre la tête !
+      </p>
+      <p class="uppercase tracking-loose font-bold text-center w-full">
+        Service entièrement libre et gratuit
+      </p>
+      <%= link_to button_tag("Découvrir", class: "mx-auto uppercase shadow-lg hover:shadow-3xl bg-gray-200 text-green-500 hover:text-green-700 font-bold text-xl rounded-full z-40 my-6 py-4 px-32 shadow-lg"), "#coins-index" %>
+		</div>
 
-  /*Row Hover*/
-  table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
-    background-color: #ebf4ff;	/*bg-indigo-100*/
-  }
-  
-  /*Pagination Buttons*/
-  .dataTables_wrapper .dataTables_paginate .paginate_button		{
-    font-weight: 700;				/*font-bold*/
-    border-radius: .25rem;			/*rounded*/
-    border: 1px solid transparent;	/*border border-transparent*/
-  }
-  
-  /*Pagination Buttons - Current selected */
-  .dataTables_wrapper .dataTables_paginate .paginate_button.current	{
-    color: #fff !important;				/*text-white*/
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06); 	/*shadow*/
-    font-weight: 700;					/*font-bold*/
-    border-radius: .25rem;				/*rounded*/
-    background: #667eea !important;		/*bg-indigo-500*/
-    border: 1px solid transparent;		/*border border-transparent*/
-  }
+		<div class="w-full md:w-3/5 pb-16 pt-6 flex justify-center text-center">
+      <%= image_tag(('hero.png'), class: "w-4/5 h-4/5 mx-auto relative z-40") %>
+		</div>
+	</div>
+</div>
+<% end %>
+<!-- Hero Header -->
 
-  /*Pagination Buttons - Hover */
-  .dataTables_wrapper .dataTables_paginate .paginate_button:hover		{
-    color: #fff !important;				/*text-white*/
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);	 /*shadow*/
-    font-weight: 700;					/*font-bold*/
-    border-radius: .25rem;				/*rounded*/
-    background: #667eea !important;		/*bg-indigo-500*/
-    border: 1px solid transparent;		/*border border-transparent*/
-  }
-  
-  /*Add padding to bottom border */
-  table.dataTable.no-footer {
-    border-bottom: 1px solid #e2e8f0;	/*border-b-1 border-gray-300*/
-    margin-top: 0.75em;
-    margin-bottom: 0.75em;
-  }
-  
-  /*Change colour of responsive icon*/
-  table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
-    background-color: #667eea !important; /*bg-indigo-500*/
-  }
-</style>
+<%= render 'layouts/transition' %>
 
-<div class="w-full bg-white tracking-wider leading-normal">
+<!-- Coins Index -->
+<div class="w-full bg-white tracking-wider z-10 leading-normal">
 
   <div class="p-6">
     
     <table id="all-coins" class="stripe hover mx-auto">
       <thead>
-        <tr>
-          <th></th>
-          <th data-priority="1">Nom</th>
+        <tr class="text-gray-700">
+          <th>Nom</th>
           <th data-priority="1">Évolution Prix</th>
           <th>Prix</th>
           <th>Volume</th>
@@ -80,35 +44,32 @@
       <tbody>				
         <% @coins.each do |coin| %>
           <tr class="uppercase text-center">
-            <td class="flex justify-center">
-              <a href="<%= coin_path(coin) %>">
-                <img class="w-10 h-10 absolute rounded-full" src="<%= coin.logo %>" alt="Logo <%= coin.name %>">
-              </a>
-            </td>
             <td>
-              <a href="<%= coin_path(coin) %>">
-                <%= coin.name %>
-              </a>
-            </td>
+              <%= link_to image_tag((coin.logo), class: "w-5 h-5 lg:w-10 lg:h-10 lg:-mb-6 mr-2 rounded-full"), coin_path(coin) %>
+              <%= link_to coin.name, coin_path(coin) %>
+            </td class="flex justify-center">
             <td class="chart-container">
               <canvas id="line-chart-<%= coin.name %>" width="40" height="15"></canvas>
             </td>
-            <td><%= number_to_currency(coin.values.hourly.last.price, :unit => "$ ", :delimiter => ",", :separator => ".") %></td>
-            <td><%= number_to_currency(coin.values.hourly.last.volume, :unit => "$ ", :delimiter => ",", :precision => 0) %></td>
-            <td><%= number_to_currency(coin.values.hourly.last.market_cap, :unit => "$ ", :delimiter => ",", :precision => 0) %></td>
-            <td id="<%=coin.id%>">
-                <% if current_user %>
-                  <% if current_user.already_liked(coin.id) %>
-                  <%= link_to 'unlike', selection_path(id:coin.id) ,method: :delete , remote:true %>
-                  <%else%>
-                  <%= link_to 'like',selections_path(id:coin.id),method: :post ,remote:true%>
-                  <% end %>
-                <% end %>
+            <td>
+              <%= link_to coin.last_price, coin_path(coin), class: "flex justify-center" %>
             </td>
-            <td class="flex justify-center">
-              <svg fill="none" viewBox="0 0 24 24"  class="absolute w-8 h-8" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-              </svg>
+            <td>
+              <%= link_to coin.last_volume, coin_path(coin), class: "flex justify-center" %>
+            </td>
+            <td>
+              <%= link_to coin.last_market_cap, coin_path(coin), class: "flex justify-center" %>
+            </td>
+            <td id="likebutton<%=coin.id %>">
+              <% if current_user %>
+                <% if current_user.already_liked(coin) %>
+                  <%= link_to image_tag(('unlike.png'), class: "w-5 h-5 lg:w-8 lg:h-8"), selection_path(id: coin), method: :delete, remote:true %>
+                <% else %>
+                  <%= link_to image_tag(('like.png'), class: "w-5 h-5 lg:w-8 lg:h-8"), selections_path(id: coin), method: :post, remote:true %>
+                <% end %>
+              <% else %>
+                <%= link_to image_tag(('like.png'), class: "w-5 h-5 lg:w-8 lg:h-8"), new_user_registration_path %>
+              <% end %>
             </td>
           </tr>
         <% end %>
@@ -116,11 +77,16 @@
     </table>
   </div>
 </div>
+<div id="coins-index"></div>
+<!-- Coins Index -->
 
+<!-- JavaScripts CDN -->
 <%= javascript_include_tag 'https://code.jquery.com/jquery-3.4.1.min.js' %>
 <%= javascript_include_tag 'https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js' %>
 <%= javascript_include_tag 'https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js' %>
+<!-- JavaScripts CDN -->
 
+<!-- DataTables -->
 <script>
 $(document).ready(function() {
   
@@ -131,7 +97,9 @@ $(document).ready(function() {
     .responsive.recalc();
 } )
 </script>
+<!-- DataTables -->
 
+<!-- Chart.js -->
 <% @coins.each do |coin| %>
 <script>
 new Chart(document.getElementById("line-chart-<%= coin.name %>"), {
@@ -143,7 +111,7 @@ new Chart(document.getElementById("line-chart-<%= coin.name %>"), {
       <% end %>
     ],
     datasets: [{
-      label: "Prix (USD)",
+      label: "<%= coin.symbol.upcase %> / USD",
       borderColor: "#48bb78",
       data: [
         <% coin.hourly.last(170).each do |value| %>
@@ -190,3 +158,4 @@ new Chart(document.getElementById("line-chart-<%= coin.name %>"), {
 });
 </script>
 <% end %>
+<!-- Chart.js -->

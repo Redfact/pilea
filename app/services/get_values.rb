@@ -76,8 +76,3 @@ class GetValues
    end
    
 end
-
-
-
-
-
