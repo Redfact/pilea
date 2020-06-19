@@ -36,4 +36,20 @@ class FillDatabase
   
   end
 
+  def add_new_coin
+    puts "*"*100
+    puts "Please enter the name of the new coin : (example : 'bitcoin')"
+    print "> "
+    name = gets.chomp
+    puts "Please enter the symbol of the new coin : (example : 'btc')"
+    print "> "
+    symbol = gets.chomp
+    logo = symbol + ".png"
+    puts name
+    puts symbol
+    puts logo
+    # Coin.create(name: name, symbol: symbol, logo: logo)
+  end
+  
+
 end
