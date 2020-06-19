@@ -8,12 +8,10 @@ class FillDatabase
     }
     all_coins = Coin.all
     all_coins.each { |coin|
+      puts "Filling database with #{interval} values of '#{coin.name}'..."
       values = GetValues.new(coin.name).history(interval)
-      puts coin.name
-      puts interval
-      puts interval_equivalence_num[interval]
       SaveValues.new(coin.name, values, interval_equivalence_num[interval]).perform
-      puts "SaveValues exécuté"
+      puts "...Done!"
     }
   end
 
