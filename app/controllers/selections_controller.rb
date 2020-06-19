@@ -1,6 +1,13 @@
 class SelectionsController < ApplicationController
  before_action :Signed?, only: [:create,:destroy]
 
+  def index
+    @selections = current_user.coins
+    unless current_user
+      redirect_to root_path
+    end
+  end
+
   def Signed?
     unless(user_signed_in?)
       redirect_to new_user_session_path
