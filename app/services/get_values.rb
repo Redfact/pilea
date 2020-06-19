@@ -65,7 +65,7 @@ class GetValues
          when "hourly"
             new_data=JSON.parse(coingecko_call(@coin,'90'))
          else
-            puts "Chose valide duration (ex: 'daily' , 'hourly' ..."
+            puts "Choose valide duration (ex: 'daily' , 'hourly' ..."
       end
       new_data['prices']=get_sub_array(new_data['prices'],last_dates(duration))
       new_data['market_caps']=get_sub_array(new_data['market_caps'],last_dates(duration))

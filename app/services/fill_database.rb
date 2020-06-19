@@ -8,7 +8,7 @@ class FillDatabase
     }
     all_coins = Coin.all
     puts "-"*100
-    puts "Starting to update all coins #{interval} values..."
+    puts "Starting process to update all coins #{interval} values..."
     puts "-"*100
     sleep 3
     all_coins.each { |coin|
