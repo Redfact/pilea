@@ -2,7 +2,7 @@
 class GetValues
    attr_accessor :coin
    
-   def initialize(coin_name) 
+   def initialize(coin_name)
       @coin = coin_name
    end
 
@@ -76,8 +76,3 @@ class GetValues
    end
    
 end
-
-
-
-
-
