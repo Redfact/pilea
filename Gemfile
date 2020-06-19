@@ -21,6 +21,8 @@ gem 'premailer'
 gem 'mailjet', :git => 'https://github.com/mailjet/mailjet-gem.git'
 # use jquery
 gem 'jquery-rails'
+# Admin Dashboard
+gem "administrate"
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
