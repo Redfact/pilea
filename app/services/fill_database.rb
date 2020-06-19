@@ -45,9 +45,13 @@ class FillDatabase
     print "> "
     symbol = gets.chomp
     logo = name + ".png"
+    puts "*"*50
     Coin.create(name: name, symbol: symbol, logo: logo)
-    puts "The coin named '#{name}'' is added to the database."
-    puts "Its logo must be named '#{logo}'' and placed in app/assets/images."
+    puts "*"*50
+    sleep 1
+    puts "The coin named '#{name}' is now in the database."
+    sleep 2
+    puts "Don't forget to add its logo '#{logo}' in app/assets/images."
     puts "-"*100
   end
 
