@@ -1,7 +1,8 @@
-<div class="max-w-xl bg-white shadow-md rounded px-8 pt-6 pb-8 mt-4 mx-auto">
+<%= render "devise/shared/error_messages", resource: resource %>
+
+<div class="max-w-xl bg-white shadow-md rounded px-8 pt-6 pb-8 mt-6 mx-auto">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
 
   <p class="text-center text-gray-700 text-lg font-bold mb-6">INSCRIPTION</p>
 
@@ -31,4 +32,3 @@
 
 </div>
 
-<p class="text-center text-gray-500 my-4 text-xs">&copy;2020 Metis Lab. All rights reserved.</p>
