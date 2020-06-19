@@ -31,9 +31,9 @@
       </div>
       <div :class="open ? 'block': 'hidden'" class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
         <div class="text-lg flex-grow lg:flex lg:ml-6 sm:my-6 lg:-mb-4">
-          <%= link_to "Équipe", 'https://www.ruby-lang.org/', target: "_blank", class: "block lg:inline-block text-green-200 hover:text-white" %>
+          <%= link_to "Équipe", team_path, class: "block lg:inline-block text-green-200 hover:text-white" %>
           <div class="lg:mx-8 sm:my-8"></div>
-          <%= link_to "Projet", 'https://www.ruby-lang.org/', target: "_blank", class: "block lg:inline-block text-green-200 hover:text-white" %>
+          <%= link_to "Projet", project_path, class: "block lg:inline-block text-green-200 hover:text-white" %>
         </div>
         <div class="lg:mr-16 sm:mr-0 sm:my-5">
           <% if user_signed_in? %>
@@ -42,7 +42,8 @@
             <% else %>
               <%= link_to "#{current_user.first_name} #{current_user.last_name}", user_path(current_user), class: "block mt-4 lg:inline-block lg:mt-0 text-green-200 text-lg hover:text-white lg:mr-10 sm:mr-0" %>
             <% end %>
-            <%= link_to "Favoris", selections_path, class: "inline-block text-base px-5 py-3 leading-none border rounded text-green-200 border-green-200 hover:border-transparent hover:text-green-600 hover:bg-green-200 mt-4 mr-2 lg:mt-0" %>
+            <%= link_to "Favoris", selections_path, class: "inline-block text-base px-5 py-3 leading-none border rounded text-green-200 border-green-200 hover:border-transparent hover:text-green-600 hover:bg-green-200 mt-4 mr-4 lg:mt-0" %>
+            <%= link_to "Administration", root_path, class: "inline-block text-base px-5 py-3 leading-none border rounded text-green-200 border-green-200 hover:border-transparent hover:text-green-600 hover:bg-green-200 mt-4 mr-2 lg:mt-0" %>
             <%= link_to "Déconnexion", destroy_user_session_path, :method => :delete, class: "inline-block text-base px-5 py-3 leading-none border rounded text-green-200 border-green-200 hover:border-transparent hover:text-green-600 hover:bg-green-200 mt-4 lg:mt-0" %>
           <% else %>
             <%= link_to "Inscription", new_user_registration_path, class: "inline-block text-base px-5 py-3 leading-none border rounded text-green-200 border-green-200 hover:border-transparent hover:text-green-600 hover:bg-green-200 mt-4 mr-2 lg:mt-0" %>
