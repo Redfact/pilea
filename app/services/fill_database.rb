@@ -18,11 +18,10 @@ class FillDatabase
         values = GetValues.new(coin.name).update(interval)
       end
         SaveValues.new(coin.name, values, interval_equivalence_num[interval]).perform
-      puts "...Done!"
       sleep 0.5
     }
     puts "-"*80
-    puts "The database has been filled with #{interval} value for all coins."
+    puts "The database has been updated with #{interval} value for all coins."
   end
 
 end
