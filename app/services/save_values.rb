@@ -22,7 +22,7 @@ class SaveValues
               time: price[0],
               )
           end
-          puts "New values added in #{@coin} !"
+          puts "New values added for #{@coin} !"
       end
   end
 

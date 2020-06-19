@@ -36,16 +36,12 @@ coins = {
   # "waves"=>["waves","waves.png"]
 }
 
-<<<<<<< HEAD
-puts "Creating coins..."
-=======
 puts "Cleaning database..."
 Coin.destroy_all
 Value.destroy_all
 User.destroy_all
 
 puts "Creating coins..." 
->>>>>>> development
 coins.each { |key,value|
   Coin.create(name:key, symbol:value[0], logo:value[1])
 }
@@ -106,8 +102,4 @@ User.create(
   admin: true
 )
 
-<<<<<<< HEAD
 puts "Seeding is done !"
-=======
-puts "Seeding is done !"
->>>>>>> development
