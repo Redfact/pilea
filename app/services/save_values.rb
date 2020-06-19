@@ -10,7 +10,7 @@ class SaveValues
   def perform
     coin_ID = Coin.find_by(name:@coin).id
       if (history['prices'].empty?)
-          puts "No values added !"
+          puts "Already up to date !"
       else
           @history['prices'].each_with_index do |price, index|
               Value.create(
