@@ -38,6 +38,15 @@ class Coin < ApplicationRecord
         return array 
     end
 
+    def has_interval_values?(interval)
+      case interval
+        when 'daily'
+          self.values.daily.any?
+        when 'hourly'
+          self.values.hourly.any?
+        end
+    end
+
     include ActionView::Helpers::NumberHelper
 
     def last_price
