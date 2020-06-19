@@ -9,15 +9,17 @@ coins = {
   "binancecoin"=>["bnb","binancecoin.png"]
  }
 
+# Create Database
+
 # puts "Cleaning database..."
 # Coin.destroy_all
 # Value.destroy_all
 # User.destroy_all
 
-puts "Creating coins..." 
-coins.each { |key,value|
-    Coin.create(name:key, symbol:value[0], logo:value[1])
-}
+# puts "Creating coins..." 
+# coins.each { |key,value|
+#     Coin.create(name:key, symbol:value[0], logo:value[1])
+# }
 
 # def Add_daily_values(coin,data)
 #   daily     = data.daily
@@ -66,13 +68,13 @@ coins.each { |key,value|
 #   Add_daily_values(coin,data)
 # }
 
-puts "Creating admin account..."
-User.create(
-  first_name: "Metis",
-  last_name: "Lab",
-  email: "metislab201@gmail.com",
-  password: "Metislab2016064",
-  admin: true
-)
+# puts "Creating admin account..."
+# User.create(
+#   first_name: "Metis",
+#   last_name: "Lab",
+#   email: "metislab201@gmail.com",
+#   password: "Metislab2016064",
+#   admin: true
+# )
 
 puts "Seeding is done !"
