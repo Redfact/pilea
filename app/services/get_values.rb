@@ -2,9 +2,9 @@
 class GetValues
    attr_accessor :coin
    
-   def initialize(coin_name) 
-      @coin = coin_name
-   end
+  #  def initialize(coin_name) 
+  #     @coin = coin_name
+  #  end
 
    def last_dates(duration)
       case duration
