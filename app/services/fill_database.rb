@@ -49,9 +49,9 @@ class FillDatabase
     Coin.create(name: name, symbol: symbol, logo: logo)
     puts "*"*50
     puts "The coin named '#{name}' is now in the database."
-    sleep 2
-    puts "Don't forget to add its logo '#{logo}' in app/assets/images."
     sleep 3
+    puts "Don't forget to add its logo '#{logo}' in app/assets/images."
+    sleep 4
     puts "-"*100
   end
 
