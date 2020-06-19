@@ -17,7 +17,7 @@
         <% @selections.each do |coin| %>
           <tr class="uppercase text-center">
             <td>
-              <%= link_to image_tag((coin.logo), class: "w-5 h-5 lg:w-10 lg:h-10 lg:-mt-2 mr-2 rounded-full"), coin_path(coin) %>
+              <%= link_to image_tag((coin.logo), class: "w-5 h-5 lg:w-10 lg:h-10 lg:-mb-6 mr-2 rounded-full"), coin_path(coin) %>
               <%= coin.name %>
             </td>
             <td class="chart-container">

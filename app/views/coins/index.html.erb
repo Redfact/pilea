@@ -1,6 +1,6 @@
 <!-- Hero Header -->
 <% unless user_signed_in? %>
-<div class="py-10 bg-green-600 z-30">
+<div class="py-10 bg-green-600 -mt-8 z-30">
 	<div class="container text-gray-200 px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
 		<div class="flex flex-col w-full md:w-2/5 justify-center items-center text-center md:text-left">
 			<h1 class="my-4 text-5xl font-bold uppercase text-center leading-tight">
@@ -12,13 +12,11 @@
       <p class="uppercase tracking-loose font-bold text-center w-full">
         Service entièrement libre et gratuit
       </p>
-			<button href="#index" class="mx-auto uppercase shadow-lg hover:shadow-3xl bg-gray-200 text-green-500 hover:text-green-700 font-bold text-xl rounded-full z-40 my-6 py-4 px-32 shadow-lg">
-        Découvrir
-      </button>
+      <%= link_to button_tag("Découvrir", class: "mx-auto uppercase shadow-lg hover:shadow-3xl bg-gray-200 text-green-500 hover:text-green-700 font-bold text-xl rounded-full z-40 my-6 py-4 px-32 shadow-lg"), "#coins-index" %>
 		</div>
 
 		<div class="w-full md:w-3/5 pb-16 pt-6 flex justify-center text-center">
-      <%= image_tag(('hero.png'), class: "w-3/5 h-3/5 relative z-40") %>
+      <%= image_tag(('hero.png'), class: "w-4/5 h-4/5 mx-auto relative z-40") %>
 		</div>
 	</div>
 </div>
@@ -30,7 +28,7 @@
 <!-- Coins Index -->
 <div class="w-full bg-white tracking-wider z-10 leading-normal">
 
-  <div id="index" class="p-6">
+  <div class="p-6">
     
     <table id="all-coins" class="stripe hover mx-auto">
       <thead>
@@ -47,8 +45,8 @@
         <% @coins.each do |coin| %>
           <tr class="uppercase text-center">
             <td>
-              <%= link_to image_tag((coin.logo), class: "w-6 h-6 lg:w-10 lg:h-10 lg:-mt-2 mr-2 rounded-full"), coin_path(coin) %>
-              <%= coin.name %>
+              <%= link_to image_tag((coin.logo), class: "w-5 h-5 lg:w-10 lg:h-10 lg:-mb-6 mr-2 rounded-full"), coin_path(coin) %>
+              <%= link_to coin.name, coin_path(coin) %>
             </td class="flex justify-center">
             <td class="chart-container">
               <canvas id="line-chart-<%= coin.name %>" width="40" height="15"></canvas>
@@ -79,6 +77,7 @@
     </table>
   </div>
 </div>
+<div id="coins-index"></div>
 <!-- Coins Index -->
 
 <!-- JavaScripts CDN -->
