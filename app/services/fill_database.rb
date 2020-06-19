@@ -9,11 +9,13 @@ class FillDatabase
     all_coins = Coin.all
     puts "-"*100
     puts "Starting to update all coins #{interval} values..."
+    sleep 2
     all_coins.each { |coin|
       if coin.values.empty?
         puts "No existing #{interval} value for '#{coin.name}' !"
+        sleep 1.5
         puts "Filling database for the first time..."
-        sleep 2
+        sleep 1
         values = GetValues.new(coin.name).history(interval)
       else
         puts "Updating database with #{interval} values of '#{coin.name}'..."
