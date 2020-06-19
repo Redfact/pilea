@@ -1,0 +1,11 @@
+div= document.getElementById("likebutton<%=@selection.coin_id%>")
+console.log(div)
+childs= div.childNodes
+for (i = 0; i <childs.length; i++) {
+    if(childs[i].localName === 'a'){
+        childs[i].remove()
+    }
+    console.log(childs[i].nodeType)
+}
+div.insertAdjacentHTML("beforeend", "<%= j render 'selection_false', selection: @selection %>")
+console.log(childs)

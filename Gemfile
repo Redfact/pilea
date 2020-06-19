@@ -5,8 +5,23 @@ ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use PostgreSQL as the database for Active Record
+gem 'pg', '>= 0.18', '< 2.0'
+# Use Devise for authentication
+gem 'devise'
+# Use Dotenv to manage .env files
+gem 'dotenv-rails'
+# Use table-print to visualize the database from console
+gem 'table_print'
+# Use rest-client to get and parse API data
+gem 'rest-client'
+# Use Premailer to parse mailers styling
+gem 'premailer'
+# Use Mailjet for sending mails
+gem 'mailjet', :git => 'https://github.com/mailjet/mailjet-gem.git'
+# use jquery
+gem 'jquery-rails'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -60,3 +75,4 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+  
