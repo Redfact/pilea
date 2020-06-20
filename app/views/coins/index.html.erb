@@ -1,36 +1,36 @@
-<!-- Hero Header -->
 <% unless user_signed_in? %>
-<div class="py-10 bg-green-600 -mt-8 z-30">
-	<div class="container text-gray-200 px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
-		<div class="flex flex-col w-full md:w-2/5 justify-center items-center text-center md:text-left">
-			<h1 class="my-4 text-5xl font-bold uppercase text-center leading-tight">
-        Le comparateur de cryptomonnaies facile d'accès
-      </h1>
-			<p class="leading-normal text-xl font-light text-center mb-8">
-        Blockchain, tokens, trading... les cryptos au début c'est compliqué, mais ça vient de changer. Avec Pilea, que tu sois juste curieux ou déjà un maître de la blockchain, toutes les infos dont tu as besoin sont ici. Tu peux comparer les données des plus importantes cryptos du marché très simplement, fini de se prendre la tête !
-      </p>
-      <p class="uppercase tracking-loose font-bold text-center w-full">
-        Service entièrement libre et gratuit
-      </p>
-      <%= link_to button_tag("REJOINDRE L'AVENTURE", class: "mx-auto uppercase shadow-lg hover:shadow-3xl bg-gray-200 text-green-500 hover:text-green-700 font-bold text-xl rounded-full z-40 my-6 py-4 px-32 shadow-lg"), new_user_registration_path %>
-		</div>
-
-		<div class="w-full md:w-3/5 pb-16 pt-6 flex justify-center text-center">
-      <%= image_tag(('hero.png'), class: "w-4/5 h-4/5 mx-auto relative z-40") %>
-		</div>
-	</div>
-</div>
-<% end %>
 <!-- Hero Header -->
+  <div class="py-10 bg-green-600 z-30">
+    <div class="container text-gray-200 px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+      <div class="flex flex-col w-full md:w-2/5 justify-center items-center text-center md:text-left">
+        <h1 class="my-4 text-5xl font-bold uppercase text-center leading-tight">
+          Le comparateur de cryptomonnaies facile d'accès
+        </h1>
+        <p class="leading-normal text-xl font-light text-center mb-8">
+          Blockchain, tokens, trading... les cryptos au début c'est compliqué, mais ça vient de changer. Avec Pilea, que tu sois juste curieux ou déjà un maître de la blockchain, toutes les infos dont tu as besoin sont ici. Tu peux comparer les données des plus importantes cryptos du marché très simplement, fini de se prendre la tête !
+        </p>
+        <p class="uppercase tracking-loose font-bold text-center w-full">
+          Service entièrement libre et gratuit
+        </p>
+        <%= link_to button_tag("REJOINDRE L'AVENTURE", class: "mx-auto uppercase shadow-lg hover:shadow-3xl bg-gray-200 text-green-500 hover:text-green-700 font-bold text-xl rounded-full z-40 my-6 py-4 px-32 shadow-lg"), new_user_registration_path %>
+      </div>
 
-<%= render 'layouts/transition' %>
+      <div class="w-full md:w-3/5 pb-16 pt-6 flex justify-center text-center">
+        <%= image_tag(('hero.png'), class: "w-3/5 h-3/5 mx-auto relative z-40") %>
+      </div>
+    </div>
+  </div>
+<!-- Hero Header -->
+<% end %>
+
+<%= render 'assets/transition' %>
 
 <!-- Coins Index -->
 <div class="w-full bg-white tracking-wider z-10 leading-normal">
 
   <div class="p-6">
     
-    <table id="all-coins" class="stripe hover mx-auto">
+    <table id="table_coins" class="display responsive no-wrap mx-auto">
       <thead>
         <tr class="text-gray-700">
           <th>Nom</th>
@@ -49,7 +49,7 @@
               <%= link_to coin.name, coin_path(coin) %>
             </td class="flex justify-center">
             <td class="chart-container">
-              <canvas id="line-chart-<%= coin.name %>" width="40" height="15"></canvas>
+              <canvas id="coins-chart-<%= coin.name %>" width="40" height="15"></canvas>
             </td>
             <td>
               <%= link_to coin.last_price, coin_path(coin), class: "flex justify-center" %>
@@ -80,76 +80,5 @@
 <div id="coins-index"></div>
 <!-- Coins Index -->
 
-<!-- DataTables -->
-<script>
-$(document).ready(function() {
-  
-  var table = $('#all-coins').DataTable( {
-      responsive: true
-    } )
-    .columns.adjust()
-    .responsive.recalc();
-} )
-</script>
-<!-- DataTables -->
-
-<!-- Chart.js -->
-<% @coins.each do |coin| %>
-<script>
-new Chart(document.getElementById("line-chart-<%= coin.name %>"), {
-  type: 'line',
-  data: {
-    labels: [
-      <% coin.hourly.last(170).each do |value| %>
-        "<%= Time.at((value.time)/1000).strftime("%^a %R") %>",    
-      <% end %>
-    ],
-    datasets: [{
-      label: "<%= coin.symbol.upcase %> / USD",
-      borderColor: "#48bb78",
-      data: [
-        <% coin.hourly.last(170).each do |value| %>
-          <%= number_to_currency(value.price, :unit => "", :separator => ".", :delimiter => "", :precision => 3) %>,
-        <% end %>
-      ],
-      fill: false
-    }]
-  },
-  options: {
-    maintainAspectRatio: true,
-    title: {
-      display: false,
-      gridLines: {
-        display: false,
-        drawBorder: false
-      },
-    },
-    elements: {
-        point:{
-          radius: 0
-        }
-    },
-    legend: { display: false },
-    scales: {
-      xAxes: [{
-        display: true,
-        ticks: {
-          callback: function(dataLabel) {
-            return null;
-          }
-        }
-      }],
-      yAxes: [{
-        display: true,
-        ticks: {
-          callback: function(dataLabel) {
-            return null;
-          }
-        }
-      }]
-    },
-  }
-});
-</script>
-<% end %>
-<!-- Chart.js -->
+<%= javascript_include_tag 'table_coins' %>
+<%= render 'assets/charts_coins.js.erb' %>
