@@ -1,0 +1,62 @@
+
+<div class="py-10 bg-green-600 -mt-8 z-30">
+	<div class="container text-gray-200 px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+		<div class="flex flex-col w-full md:w-2/5 justify-center items-center text-center md:text-left">
+			<h1 class="my-4 text-4xl font-bold uppercase text-center leading-tight">
+        Le comparateur de cryptomonnaies facile d'accès
+      </h1>
+			<p class="leading-normal text-xl font-light text-center mb-8">
+        Blockchain, tokens, trading... les cryptos au début c'est compliqué, mais ça vient de changer. Avec Pilea, que tu sois juste curieux ou déjà un maître de la blockchain, toutes les infos dont tu as besoin sont ici. Tu peux comparer les données des plus importantes cryptos du marché très simplement, fini de se prendre la tête !
+      </p>
+      <p class="uppercase tracking-loose font-bold text-center w-full">
+        Service entièrement libre et gratuit
+      </p>
+      <%= link_to button_tag("EN SAVOIR PLUS", class: "mx-auto uppercase shadow-lg hover:shadow-3xl bg-gray-200 text-green-500 hover:text-green-700 font-bold text-xl rounded-full z-40 my-6 py-4 px-32 shadow-lg"), "#project" %>
+		</div>
+
+		<div class="w-full md:w-3/5 pb-16 pt-6 flex justify-center text-center">
+      <%= image_tag(('hero.png'), class: "w-4/5 h-4/5 mx-auto relative z-40") %>
+		</div>
+	</div>
+</div>
+
+<%= render 'layouts/transition' %>
+
+<div class="w-full bg-white text-gray-800 text-center">
+  <div id="project" class="max-w-2xl py-16 mx-auto">
+    <h1 class="text-4xl font-bold uppercase text-center leading-tight my-12">
+      Un problème majeur...
+    </h1>
+    <p class="leading-normal text-2xl font-normal text-center mb-2">
+      Aujourd’hui, il n’est pas possible d’accéder a des données analysables ou triables sur les cryptomonnaies, du moins pas de façon simple et pratique.
+    </p>
+    <p class="leading-normal text-2xl font-normal text-center mb-2">
+      Par exemple, il n’est pas possible de classer les monnaies pour un échange de notre choix sur les anciennes plateformes du genre, c'est super dommage, vous ne trouvez pas ?
+    </p>
+    <p class="leading-normal text-2xl font-normal text-center mb-2">
+      Mais heureusement...
+    </p>
+    <h1 class="font-bold text-center leading-tight my-12">
+      <span style= "font-family:'Leckerli One'", class="text-6xl font-bold text-green-500 tracking-normal mr-2">Pilea</span>
+      <span class="text-4xl uppercase"> est là !</span>
+    </h1>
+    <p class="leading-normal text-2xl font-normal text-center mb-2">
+      Le but de notre est d’offrir un site facilement utilisable permettant de suivre les actifs des plateformes.
+    </p>
+    <p class="leading-normal text-2xl font-normal text-center mb-2">
+      En vous inscrivant, vous pourrez garder un oeil sur vos cryptomonnaies favorites pour faire les meilleurs choix, le tout en un temps record.
+    </p>
+    <p class="leading-normal text-2xl font-normal text-center mb-8">
+      N'hésitez plus, inscrivez-vous pour profiter d'un service...
+    </p>
+    <h1 class="text-4xl font-bold uppercase text-center leading-tight mt-12">
+      Gratuit, Simple, efficace.
+    </h1>
+
+    <p class="uppercase tracking-loose font-bold text-center mt-2 mb-4">
+      Le futur des cryptomonnaies vous attend
+    </p>
+
+    <%= link_to button_tag(("REJOINDRE L'AVENTURE"), class: "mx-auto uppercase shadow-lg hover:shadow-3xl text-white bg-green-500 hover:bg-green-700 font-bold text-xl rounded-full z-40 my-6 py-4 px-32 shadow-lg"), new_user_registration_path %>
+  </div>
+</div>
