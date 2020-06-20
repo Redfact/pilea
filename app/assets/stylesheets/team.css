@@ -1,0 +1,10 @@
+.team_button {
+  background-color: #38A169;
+}
+
+button {
+  box-shadow: 0 0 0 0 #ec008c, 0.2rem 0.2rem 10px #4c5061;
+  }
+  button:hover {
+  box-shadow: 0 0 0 0 #ec008c, 0.2rem 0.2rem 20px #4c5061;
+  }
