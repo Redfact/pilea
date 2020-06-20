@@ -1,0 +1,58 @@
+<% @selections.each do |coin| %>
+<script>
+  new Chart(document.getElementById("selections-chart-<%= coin.name %>"), {
+    type: 'line',
+    data: {
+      labels: [
+        <% coin.hourly.last(170).each do |value| %>
+          "<%= Time.at((value.time)/1000).strftime("%^a %R") %>",    
+        <% end %>
+      ],
+      datasets: [{
+        label: "<%= coin.symbol.upcase %> / USD",
+        borderColor: "#48bb78",
+        data: [
+          <% coin.hourly.last(170).each do |value| %>
+            <%= number_to_currency(value.price, :unit => "", :separator => ".", :delimiter => "", :precision => 3) %>,
+          <% end %>
+        ],
+        fill: false
+      }]
+    },
+    options: {
+      maintainAspectRatio: true,
+      title: {
+        display: false,
+        gridLines: {
+          display: false,
+          drawBorder: false
+        },
+      },
+      elements: {
+          point:{
+            radius: 0
+          }
+      },
+      legend: { display: false },
+      scales: {
+        xAxes: [{
+          display: true,
+          ticks: {
+            callback: function(dataLabel) {
+              return null;
+            }
+          }
+        }],
+        yAxes: [{
+          display: true,
+          ticks: {
+            callback: function(dataLabel) {
+              return null;
+            }
+          }
+        }]
+      },
+    }
+  });
+</script>
+<% end %>

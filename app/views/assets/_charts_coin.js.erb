@@ -1,0 +1,255 @@
+new Chart(document.getElementById("today-line-<%= @coin.name %>"), {
+    type: 'line',
+    data: {
+      labels: [
+            <% @values.hourly.last(26).each do |value| %>
+              "<%= Time.at((value.time)/1000).strftime("%^a %R") %>",
+            <% end %>
+          ],
+      datasets: [{
+          label: "<%= @coin.symbol.upcase %> / USD",
+          type: "line",
+          borderColor: "#48bb78",
+          data: [
+            <% @values.hourly.last(26).each do |value| %>
+              <%= number_to_currency(value.price, :unit => "", :separator => ".", :delimiter => "", :precision => 3) %>,
+            <% end %>
+          ],
+          fill: false
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'ÉVOLUTION DU PRIX - JOURNÉE',
+        gridLines: {
+					display: false,
+					drawBorder: false
+				}
+      },
+      legend: { display: false }
+    }
+});
+
+new Chart(document.getElementById("today-bar-<%= @coin.name %>"), {
+    type: 'bar',
+    data: {
+      labels: [
+            <% @values.hourly.last(26).each do |value| %>
+              "<%= Time.at((value.time)/1000).strftime("%^a %R") %>",
+            <% end %>
+          ],
+      datasets: [{
+          label: "<%= @coin.symbol.upcase %> / USD",
+          type: "bar",
+          backgroundColor: "#38A169",
+          backgroundColorHover: "#38A169",
+          data: [
+            <% @values.hourly.last(26).each do |value| %>
+              <%= number_to_currency(value.volume, :unit => "", :separator => ".", :delimiter => "", :precision => 0) %>,
+            <% end %>
+          ],
+          fill: false
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'ÉVOLUTION DU VOLUME - JOURNÉE',
+        gridLines: {
+					display: false,
+					drawBorder: false
+				}
+      },
+      legend: { display: false }
+    }
+});
+
+new Chart(document.getElementById("week-line-<%= @coin.name %>"), {
+    type: 'line',
+    data: {
+      labels: [
+            <% @values.hourly.last(170).each do |value| %>
+              "<%= Time.at((value.time)/1000).strftime("%e %^b %R") %>",
+            <% end %>
+          ],
+      datasets: [{
+          label: "<%= @coin.symbol.upcase %> / USD",
+          type: "line",
+          borderColor: "#48bb78",
+          data: [
+            <% @values.hourly.last(170).each do |value| %>
+              <%= number_to_currency(value.price, :unit => "", :separator => ".", :delimiter => "", :precision => 3) %>,
+            <% end %>
+          ],
+          fill: false
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'ÉVOLUTION DU PRIX - SEMAINE',
+        gridLines: {
+					display: false,
+					drawBorder: false
+				}
+      },
+      elements: {
+        point:{
+          radius: 0
+        }
+      },
+      legend: { display: false }
+    }
+});
+
+new Chart(document.getElementById("week-bar-<%= @coin.name %>"), {
+    type: 'bar',
+    data: {
+      labels: [
+            <% @values.hourly.last(170).each do |value| %>
+              "<%= Time.at((value.time)/1000).strftime("%e %^b %R") %>",
+            <% end %>
+          ],
+      datasets: [{
+          label: "<%= @coin.symbol.upcase %> / USD",
+          type: "bar",
+          backgroundColor: "#38A169",
+          backgroundColorHover: "#38A169",
+          data: [
+            <% @values.hourly.last(170).each do |value| %>
+              <%= number_to_currency(value.volume, :unit => "", :separator => ".", :delimiter => "", :precision => 0) %>,
+            <% end %>
+          ],
+          fill: false
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'ÉVOLUTION DU VOLUME - SEMAINE',
+        gridLines: {
+					display: false,
+					drawBorder: false
+				}
+      },
+      legend: { display: false }
+    }
+});
+
+new Chart(document.getElementById("year-line-<%= @coin.name %>"), {
+    type: 'line',
+    data: {
+      labels: [
+            <% @values.daily.last(370).each do |value| %>
+              "<%= Time.at((value.time)/1000).strftime("%e %^b") %>",
+            <% end %>
+          ],
+      datasets: [{
+          label: "<%= @coin.symbol.upcase %> / USD",
+          type: "line",
+          borderColor: "#48bb78",
+          data: [
+            <% @values.daily.last(370).each do |value| %>
+              <%= number_to_currency(value.price, :unit => "", :separator => ".", :delimiter => "", :precision => 3) %>,
+            <% end %>
+          ],
+          fill: false
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'ÉVOLUTION DU PRIX - ANNÉE',
+        gridLines: {
+					display: false,
+					drawBorder: false
+				}
+      },
+      elements: {
+        point:{
+          radius: 0
+        }
+      },
+      legend: { display: false }
+    }
+});
+
+new Chart(document.getElementById("year-bar-<%= @coin.name %>"), {
+    type: 'bar',
+    data: {
+      labels: [
+            <% @values.daily.last(370).each do |value| %>
+              "<%= Time.at((value.time)/1000).strftime("%e %^b") %>",
+            <% end %>
+          ],
+      datasets: [{
+          label: "<%= @coin.symbol.upcase %> / USD",
+          type: "bar",
+          backgroundColor: "#38A169",
+          backgroundColorHover: "#38A169",
+          data: [
+            <% @values.daily.last(370).each do |value| %>
+              <%= number_to_currency(value.volume, :unit => "", :separator => ".", :delimiter => "", :precision => 0) %>,
+            <% end %>
+          ],
+          fill: false
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'ÉVOLUTION DU VOLUME - ANNÉE',
+        gridLines: {
+					display: false,
+					drawBorder: false
+				}
+      },
+      legend: { display: false }
+    }
+});
+
+new Chart(document.getElementById("forever-line-<%= @coin.name %>"), {
+    type: 'line',
+    data: {
+      labels: [
+            <% @values.daily.each do |value| %>
+              "<%= Time.at((value.time)/1000).strftime("%e %^b %Y") %>",
+            <% end %>
+          ],
+      datasets: [{
+          label: "<%= @coin.symbol.upcase %> / USD",
+          type: "line",
+          borderColor: "#48bb78",
+          data: [
+            <% @values.daily.each do |value| %>
+              <%= number_to_currency(value.price, :unit => "", :separator => ".", :delimiter => "", :precision => 3) %>,
+            <% end %>
+          ],
+          fill: false
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'ÉVOLUTION DU PRIX - HISTOIRE',
+        gridLines: {
+					display: false,
+					drawBorder: false
+				}
+      },
+      elements: {
+        point:{
+          radius: 0
+        }
+      },
+      legend: { display: false }
+    }
+});
