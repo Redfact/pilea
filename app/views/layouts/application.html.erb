@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Pilea - <%= yield(:title).empty? ? 'Accueil' : yield(:title) %></title>
+    <title>Pilea<%= yield(:title).empty? ? '' : yield(:title) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= favicon_link_tag 'favicon.ico' %>
     <%= stylesheet_link_tag 'application', media:'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <!-- Stylesheets & JavaScripts CDN -->
     <%= stylesheet_link_tag 'https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css' %>
     <%= stylesheet_link_tag 'https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css' %>
     <%= stylesheet_link_tag 'https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css' %>
     <%= stylesheet_link_tag 'https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap' %>
     <%= javascript_include_tag 'https://cdn.jsdelivr.net/npm/vue@2.6.11' %>
     <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js' %>
-    <!-- Stylesheets & JavaScripts CDN -->
+    <%= javascript_include_tag 'https://code.jquery.com/jquery-3.4.1.min.js' %>
+    <%= javascript_include_tag 'https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js' %>
+    <%= javascript_include_tag 'https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js' %>
   </head>
 
 <body class="bg-gray-900">
