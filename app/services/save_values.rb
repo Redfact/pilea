@@ -9,9 +9,9 @@ class SaveValues
 
   def perform
     coin_ID = Coin.find_by(name:@coin).id
-      if( history['prices'].empty? )
-          puts "No values added !"
-      else 
+      if (history['prices'].empty?)
+          puts "Already up to date !"
+      else
           @history['prices'].each_with_index do |price, index|
               Value.create(
               coin_id: coin_ID,
@@ -22,7 +22,7 @@ class SaveValues
               time: price[0],
               )
           end
-          puts "New values added in #{@coin} !"
+          puts "New values added for '#{@coin}' !"
       end
   end
 
