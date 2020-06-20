@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 # Use PostgreSQL as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
+
 # Use Devise for authentication
 gem 'devise'
 # Use Dotenv to manage .env files
@@ -15,14 +15,16 @@ gem 'dotenv-rails'
 gem 'table_print'
 # Use rest-client to get and parse API data
 gem 'rest-client'
-# Use Premailer to parse mailers styling
-gem 'premailer'
-# Use Mailjet for sending mails
-gem 'mailjet', :git => 'https://github.com/mailjet/mailjet-gem.git'
-# use jquery
-gem 'jquery-rails'
 # Admin Dashboard
 gem "administrate"
+# Use Mailjet for sending mails
+gem 'mailjet', :git => 'https://github.com/mailjet/mailjet-gem.git'
+
+# Assets Pipeline Libraries
+gem 'jquery-rails'
+gem 'jquery-datatables-rails', '~> 3.4.0'
+gem 'vuejs-rails'
+gem 'chart-js-rails'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
