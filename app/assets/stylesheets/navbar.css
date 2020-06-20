@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'Leckerli One';
+    src:url(/assets/leckerli_one.ttf);
+}
+
+#navbar_title {
+  font-family: 'Leckerli One', sans-serif;
+}
