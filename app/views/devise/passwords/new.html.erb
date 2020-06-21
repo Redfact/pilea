@@ -11,9 +11,9 @@
     <%= f.label :Adresse_mail, class: "block text-gray-700 text-sm font-bold mb-2" %>
     <%= f.email_field :email, autofocus: true, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:border-orange-300 outline-none", placeholder: "exemple@mail.com" %>
   </div>
-
-    <%= f.submit 'Régénérer mot de passe', class: "bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded outline-none" %>
+ 
   <div class="flex justify-center my-2">
+    <%= f.submit 'Valider', class: "bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded outline-none" %>
     <%= link_to "Retour", :back, class: "bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 ml-2 rounded outline-none" %>
   </div>
 <% end %>
