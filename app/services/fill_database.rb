@@ -50,7 +50,7 @@ class FillDatabase
     puts "*"*50
     puts "The coin named '#{name}' is now in the database."
     sleep 3
-    puts "Don't forget to add its logo '#{logo}' in app/assets/images."
+    puts "Don't forget to add its logo '#{logo}' in app/assets/images/"
     sleep 4
     puts "-"*100
   end

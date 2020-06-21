@@ -1,5 +1,3 @@
-# Create Database
-
 coins = {
   "bitcoin"=>["btc","bitcoin.png"],
   "ethereum"=>["eth","ethereum.png"],
@@ -32,6 +30,11 @@ coins = {
   # "nano"=>["nano","nano.png"],
   # "waves"=>["waves","waves.png"]
 }
+
+puts "Cleaning database..."
+Coin.destroy_all
+Value.destroy_all
+User.destroy_all
 
 puts "Creating coins..."
 coins.each { |key,value|
