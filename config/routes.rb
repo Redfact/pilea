@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   get '/project', to: 'statics#project'
   get '/team', to: 'statics#team'
 
+  devise_for :users
+  resources :selections
   resources :coins, only: [:show]
   resources :users, only: [:show, :edit, :update]
-  resources :selections
-  devise_for :users
 
   namespace :admin do
     root "users#index"

@@ -25,7 +25,6 @@ gem 'jquery-rails'
 gem 'jquery-datatables-rails', '~> 3.4.0'
 gem 'vuejs-rails'
 gem 'chart-js-rails'
-gem 'optimist', '~> 3.0'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
