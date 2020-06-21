@@ -1,27 +1,31 @@
 <% provide(:title, " | Profil") %>
 
-<h2>Change your password</h2>
+<div class="max-w-xl bg-white shadow-md rounded px-8 pt-6 pb-8 mt-6 mx-auto">
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
   <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
+  <p class="text-center text-gray-700 text-lg font-bold mb-6">MODIFIER MON MOT DE PASSE</p>
+
+  <div class="mb-6">
+    <%= f.label :Nouveau_mot_de_passe, class: "block text-gray-700 text-sm font-bold" %>
     <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+      <em class="italic text-gray-500"><%= @minimum_password_length %> caractères minimum</em>
     <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+    <%= f.password_field :password, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-2 b-3 leading-tight focus:border-green-300 outline-none", placeholder: "Laisser ce champ vide pour ne pas modifier" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="mb-6">
+    <%= f.label :Confirmer_le_mot_de_passe, class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <%= f.password_field :password_confirmation, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:border-green-300 outline-none", placeholder: "Laisser ce champ vide pour ne pas modifier" %>
+  </div>
+  
+  <div class="flex justify-center">
+    <%= f.submit "Valider", class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded border-none outline-none" %>
+    <%= link_to "Retour", :back, class: "bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 ml-2 rounded border-none outline-none" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+</div>
