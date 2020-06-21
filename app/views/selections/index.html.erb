@@ -1,11 +1,10 @@
-<% provide(:title, "Favoris") %>
-
-<%= render 'layouts/transition' %>
+<% provide(:title, " | Favoris") %>
+<%= render 'assets/transition' %>
 
 <!-- Selections Index -->
 <div class="w-full bg-white tracking-wider z-10 leading-normal">
   <div id="index" class="p-6">
-    <table id="selected-coins" class="stripe hover mx-auto">
+    <table id="table_selections" class="stripe hover mx-auto">
       <thead>
         <tr class="text-gray-700">
           <th>Nom</th>
@@ -23,7 +22,7 @@
               <%= coin.name %>
             </td>
             <td class="chart-container">
-              <canvas id="selections-line-chart-<%= coin.name %>" width="40" height="15"></canvas>
+              <canvas id="selections-chart-<%= coin.name %>" width="40" height="15"></canvas>
             </td>
             <td>
               <%= link_to coin.last_price, coin_path(coin), class: "flex justify-center" %>
@@ -42,82 +41,5 @@
 </div>
 <!-- Selections Index -->
 
-<!-- JavaScripts CDN -->
-  <%= javascript_include_tag 'https://code.jquery.com/jquery-3.4.1.min.js' %>
-  <%= javascript_include_tag 'https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js' %>
-  <%= javascript_include_tag 'https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js' %>
-<!-- JavaScripts CDN -->
-
-<!-- DataTables -->
-<script>
-$(document).ready(function() {
-  
-  var table = $('#selected-coins').DataTable( {
-      responsive: true
-    } )
-    .columns.adjust()
-    .responsive.recalc();
-} )
-</script>
-<!-- DataTables -->
-
-<!-- Chart.js -->
-<% @selections.each do |coin| %>
-<script>
-new Chart(document.getElementById("selections-line-chart-<%= coin.name %>"), {
-  type: 'line',
-  data: {
-    labels: [
-      <% coin.hourly.last(170).each do |value| %>
-        "<%= Time.at((value.time)/1000).strftime("%^a %R") %>",    
-      <% end %>
-    ],
-    datasets: [{
-      label: "<%= coin.symbol.upcase %> / USD",
-      borderColor: "#48bb78",
-      data: [
-        <% coin.hourly.last(170).each do |value| %>
-          <%= number_to_currency(value.price, :unit => "", :separator => ".", :delimiter => "", :precision => 3) %>,
-        <% end %>
-      ],
-      fill: false
-    }]
-  },
-  options: {
-    maintainAspectRatio: true,
-    title: {
-      display: false,
-      gridLines: {
-        display: false,
-        drawBorder: false
-      },
-    },
-    elements: {
-        point:{
-          radius: 0
-        }
-    },
-    legend: { display: false },
-    scales: {
-      xAxes: [{
-        display: true,
-        ticks: {
-          callback: function(dataLabel) {
-            return null;
-          }
-        }
-      }],
-      yAxes: [{
-        display: true,
-        ticks: {
-          callback: function(dataLabel) {
-            return null;
-          }
-        }
-      }]
-    },
-  }
-});
-</script>
-<% end %>
-<!-- Chart.js -->
+<%= javascript_include_tag 'table_selections' %>
+<%= render 'assets/charts_selections.js' %>

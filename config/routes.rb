@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
   root 'coins#index'
-  get '/team', to: 'statics#team'
   get '/project', to: 'statics#project'
+  get '/team', to: 'statics#team'
 
-  resources :coins, only: [:show]
   devise_for :users
-  resources :users, only: [:show, :edit, :update]
   resources :selections
+  resources :coins, only: [:show]
+  resources :users, only: [:show, :edit, :update]
 
   namespace :admin do
+    root "users#index"
     resources :users
     resources :coins
     resources :values
-    root to: "users#index"
   end
 end

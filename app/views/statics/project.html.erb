@@ -1,5 +1,5 @@
-
-<div class="py-10 bg-green-600 -mt-8 z-30">
+<% provide(:title, " | Projet") %>
+<div class="py-10 bg-green-600 z-30">
 	<div class="container text-gray-200 px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
 		<div class="flex flex-col w-full md:w-2/5 justify-center items-center text-center md:text-left">
 			<h1 class="my-4 text-4xl font-bold uppercase text-center leading-tight">
@@ -15,12 +15,12 @@
 		</div>
 
 		<div class="w-full md:w-3/5 pb-16 pt-6 flex justify-center text-center">
-      <%= image_tag(('hero.png'), class: "w-4/5 h-4/5 mx-auto relative z-40") %>
+      <%= image_tag(('hero.png'), class: "w-3/5 h-3/5 mx-auto relative z-40") %>
 		</div>
 	</div>
 </div>
 
-<%= render 'layouts/transition' %>
+<%= render 'assets/transition' %>
 
 <div class="w-full bg-white text-gray-800 text-center">
   <div id="project" class="max-w-2xl py-16 mx-auto">
@@ -37,7 +37,7 @@
       Mais heureusement...
     </p>
     <h1 class="font-bold text-center leading-tight my-12">
-      <span style= "font-family:'Leckerli One'", class="text-6xl font-bold text-green-500 tracking-normal mr-2">Pilea</span>
+      <span style= "font-family:'Leckerli One'", class="pilea_title text-6xl font-bold text-green-500 tracking-normal mr-2">Pilea</span>
       <span class="text-4xl uppercase"> est là !</span>
     </h1>
     <p class="leading-normal text-2xl font-normal text-center mb-2">
@@ -53,10 +53,10 @@
       Gratuit, Simple, efficace.
     </h1>
 
-    <p class="uppercase tracking-loose font-bold text-center mt-2 mb-4">
+    <p class="uppercase tracking-loose font-bold text-center mt-2 my-5">
       Le futur des cryptomonnaies vous attend
     </p>
 
-    <%= link_to button_tag(("REJOINDRE L'AVENTURE"), class: "mx-auto uppercase shadow-lg hover:shadow-3xl text-white bg-green-500 hover:bg-green-700 font-bold text-xl rounded-full z-40 my-6 py-4 px-32 shadow-lg"), new_user_registration_path %>
+    <%= link_to button_tag(("REJOINDRE L'AVENTURE"), class: "mx-auto uppercase shadow-lg hover:shadow-3xl text-white bg-green-500 hover:bg-green-700 font-bold text-3xl rounded-full z-40 my-6 py-6 px-40 shadow-lg"), new_user_registration_path %>
   </div>
 </div>
