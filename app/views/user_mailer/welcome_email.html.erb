@@ -1,6 +1,6 @@
 <div style="text-align: center;">
-  <h2>Bienvenue sur Pilea <%= @user.first_name %> !</h2>
+  <h2>Bienvenue sur Pilea, <%= @user.email %> !</h2>
   <h3>Merci pour votre inscription. Vous pouvez désormais sélectionner vos cryptomonnaies favorites pour gagner du temps. Cliquez sur le lien ci-dessous pour commencer dès maintenant :</h3>
-  <p><a href="https://pilea.herokuapp.com" style="padding: 10px 25px; display: inline-block; border-radius: 5px;	background: #38A169; color: #ffffff;" class="btn btn-primary">COMMENCER L'AVENTURE</a></p>
+  <p><%= link_to 'COMMENCER L\'AVENTURE', 'https://pilea.herokuapp.com', style:"padding: 10px 25px; display: inline-block; border-radius: 5px;	background: #38A169; color: #ffffff;" class:"btn btn-primary" %></p>
 </div>
   
