@@ -4,7 +4,5 @@ for (i = 0; i <childs.length; i++) {
     if(childs[i].localName === 'a'){
         childs[i].remove()
     }
-    console.log(childs[i])
 }
-div.insertAdjacentHTML("beforeend", "<%= j render 'selection_true', selection: @selection %>")
-console.log(childs)
+div.insertAdjacentHTML("beforeend", "<%= j render 'assets/selection_true', selection: @selection %>")
