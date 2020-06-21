@@ -6,7 +6,7 @@
     <%= csp_meta_tag %>
     <%= favicon_link_tag 'favicon.ico' %>
     <%= stylesheet_link_tag 'https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css' %>
-    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'application',  %>
     <%= stylesheet_link_tag 'application' %>
   </head>
 
@@ -15,7 +15,7 @@
     <div class="font-sans antialiased" id="navbar">
       <nav class="flex items-center justify-between flex-wrap bg-green-600 py-1 px-10 z-50 top-0 sm:text-center fixed w-full">
         <div class="flex items-center flex-shrink-0 text-white mx-16">
-          <%= link_to "Pilea", root_path, id: "navbar_title", class: "text-5xl tracking-normal" %>
+          <%= link_to "Pilea", root_path, class: "pilea_title text-5xl tracking-normal" %>
         </div>
         <div class="block lg:hidden">
           <button @click="toggle" class="flex items-center px-3 py-2 border rounded text-green-200 border-green-200 hover:border-white hover:text-white">
