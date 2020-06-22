@@ -1,5 +1,6 @@
 <% provide(:title, " | Profil") %>
-<!-- VIEW TERMINÉE MAIS NON UTILISÉE, USERS NON CONFIRMABLES -->
+<%= render "devise/shared/error_messages", resource: resource %>
+<!-- VIEW TERMINÉE MAIS NON UTILISÉE, USER CONFIRMABLE = false -->
 <div class="max-w-xl bg-white shadow-md rounded px-8 pt-6 pb-8 mt-6 mx-auto">
 
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
