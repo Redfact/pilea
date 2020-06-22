@@ -1,14 +1,6 @@
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <h1>Salut et bienvenue chez Pilea !</h1>
-    <p>
-      Tu t'es inscrit en utilisant l'e-mail suivant : <%=link_to @user.email,"#"%>.
-    </p>
-
-    <p> À très vite sur Pilea !
-  </body>
-</html>
-
+<div style="text-align: center;">
+  <h2>Bienvenue, <%= @user.email %> !</h2>
+  <h3>Merci pour votre inscription. Vous pouvez désormais sélectionner vos cryptomonnaies favorites pour gagner du temps. Cliquez sur le lien ci-dessous pour commencer dès maintenant :</h3>
+  <p><%= link_to 'COMMENCER L\'AVENTURE', 'https://pilea.herokuapp.com', style:"padding: 10px 25px; display: inline-block; border-radius: 5px;	background: #38A169; color: #ffffff;", class:"btn btn-primary" %></p>
+</div>
+  

@@ -20,17 +20,32 @@
   <% if devise_mapping.rememberable? %>
     <div class="mb-6 flex justify-center">
       <%= f.check_box :remember_me, class: "bg-green-500 mt-1" %>
-      <%= f.label :Se_souvenir_de_moi, class: "text-gray-700 text-sm font-bold ml-2" %>
+      <%= f.label :Se_souvenir_de_moi, class: "text-gray-700 text-sm font-bold ml-2 mb-1" %>
     </div>
   <% end %>
 
   <div class="flex justify-center my-2">
+    <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+      <%= link_to "Inscription", new_registration_path(resource_name), class: "bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 mr-2 rounded outline-none" %>
+    <% end %>
     <%= f.submit "Se connecter", class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded outline-none" %>
     <%= link_to "Retour", :back, class: "bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 ml-2 rounded outline-none" %>
   </div>
   <div class="text-center">
     <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
       <%= link_to "Mot de passe oublié ?", new_password_path(resource_name), class: "inline-block align-baseline font-bold text-sm text-green-500 hover:text-green-600" %>
+    <% end %>
+  </div>
+  <div class="text-center">
+    <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+      <%= link_to "Débloquer mon compte", new_unlock_path(resource_name), class: "inline-block align-baseline font-bold text-sm text-green-500 hover:text-green-600" %>
+    <% end %>
+  </div>
+  <div class="text-center">
+    <%- if devise_mapping.omniauthable? %>
+      <%- resource_class.omniauth_providers.each do |provider| %>
+        <%= link_to "Se connecter en tant que #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class: "inline-block align-baseline font-bold text-sm text-gray-500 hover:text-gray-600" %>
+      <% end %>
     <% end %>
   </div>
 <% end %>
