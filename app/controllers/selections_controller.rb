@@ -34,7 +34,7 @@ class SelectionsController < ApplicationController
     if( @selection != nil)
         @selection.destroy
     else
-        puts "selection don't exist or already destroyed !"
+        puts "selection doesn't exist or is already destroyed !"
     end
     respond_to do |format|
         format.html do 

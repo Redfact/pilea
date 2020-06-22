@@ -1,4 +1,6 @@
 <% provide(:title, " | Projet") %>
+
+<!-- PROJECT HEADER -->
 <div class="py-10 bg-green-600 z-30">
 	<div class="container text-gray-200 px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
 		<div class="flex flex-col w-full md:w-2/5 justify-center items-center text-center md:text-left">
@@ -19,9 +21,11 @@
 		</div>
 	</div>
 </div>
+<!-- PROJECT HEADER -->
 
 <%= render 'assets/transition' %>
 
+<!-- PROJECT BODY -->
 <div class="w-full bg-white text-gray-800 text-center">
   <div id="project" class="max-w-2xl py-16 mx-auto">
     <h1 class="text-4xl font-bold uppercase text-center leading-tight my-12">
@@ -60,3 +64,4 @@
     <%= link_to button_tag(("REJOINDRE L'AVENTURE"), class: "mx-auto uppercase shadow-lg hover:shadow-3xl text-white bg-green-500 hover:bg-green-700 font-bold text-3xl rounded-full z-40 my-6 py-6 px-40 shadow-lg"), new_user_registration_path %>
   </div>
 </div>
+<!-- PROJECT BODY -->

@@ -47,6 +47,7 @@ class Coin < ApplicationRecord
         end
     end
 
+    #Translate Coin Values to USD price
     include ActionView::Helpers::NumberHelper
 
     def last_price
