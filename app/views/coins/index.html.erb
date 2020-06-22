@@ -1,5 +1,5 @@
 <% unless user_signed_in? %>
-<!-- Hero Header -->
+<!-- VISITORS HEADER -->
   <div class="py-10 bg-green-600 z-30">
     <div class="container text-gray-200 px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
       <div class="flex flex-col w-full md:w-2/5 justify-center items-center text-center md:text-left">
@@ -20,12 +20,12 @@
       </div>
     </div>
   </div>
-<!-- Hero Header -->
+<!-- VISITORS HEADER -->
 <% end %>
 
 <%= render 'assets/transition' %>
 
-<!-- Coins Index -->
+<!-- ALL COINS DATATABLE -->
 <div class="w-full bg-white tracking-wider z-10 leading-normal">
 
   <div class="p-6">
@@ -78,7 +78,7 @@
   </div>
 </div>
 <div id="coins-index"></div>
-<!-- Coins Index -->
+<!-- ALL COINS DATATABLE -->
 
 <%= javascript_include_tag 'table_coins' %>
 <%= render 'assets/charts_coins.js.erb' %>

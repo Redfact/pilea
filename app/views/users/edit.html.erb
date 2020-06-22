@@ -2,6 +2,7 @@
 
 <div class="max-w-xl bg-white shadow-md rounded px-8 pt-6 pb-8 mt-6 mx-auto">
 
+<!-- FORM -->
 <%= form_for(current_user, url: user_path(current_user), method: :put) do |f| %>
 
   <p class="text-center text-gray-700 text-lg font-bold mb-8">MODIFIER MES INFORMATIONS</p>
@@ -30,11 +31,14 @@
     </div>
   </div>
 
+  <!-- BUTTONS -->
   <div class="flex justify-center">
     <%= f.submit "Valider", class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded border-none outline-none" %>
     <%= link_to "Retour", :back, class: "bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 ml-2 rounded border-none outline-none" %>
   </div>
+  <!-- BUTTONS -->
 
 <% end %>
+<!-- FORM -->
 
 </div>

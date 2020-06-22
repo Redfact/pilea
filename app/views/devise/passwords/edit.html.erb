@@ -3,6 +3,7 @@
 
 <div class="max-w-xl bg-white shadow-md rounded px-8 pt-6 pb-8 mt-6 mx-auto">
 
+<!-- FORM -->
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.hidden_field :reset_password_token %>
 
@@ -27,5 +28,6 @@
   </div>
 
 <% end %>
+<!-- FORM -->
 
 </div>

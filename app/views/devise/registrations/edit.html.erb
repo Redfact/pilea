@@ -3,6 +3,7 @@
 
 <div class="max-w-xl bg-white shadow-md rounded px-8 pt-6 pb-8 mt-6 mx-auto">
 
+<!-- FORM -->
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
   <p class="text-center text-gray-700 text-lg font-bold mb-6">MODIFIER MON COMPTE</p>
@@ -40,6 +41,7 @@
   </div>
 
 <% end %>
+<!-- FORM -->
 
   <div class="flex justify-center mt-2">
     <%= button_to "Supprimer compte", registration_path(resource_name), class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded border-none outline-none", data: { confirm: "Êtes-vous sûr de vouloir supprimer votre compte ? Toute suppression sera définitive." }, method: :delete %></p>
