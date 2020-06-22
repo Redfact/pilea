@@ -1,5 +1,5 @@
 <div style="text-align: center;">
   <h2>Bienvenue sur Pilea, <%= @email %> !</h2>
   <h3>Confirmez votre inscription via le lien ci-dessous :</h3>
-  <p><%= link_to 'CONFIRMER INSCRIPTION', confirmation_url(@resource, confirmation_token: @token), style:"padding: 10px 25px; display: inline-block; border-radius: 5px;	background: #38A169; color: #ffffff;" class:"btn btn-primary" %></p>
+  <p><%= link_to 'CONFIRMER INSCRIPTION', confirmation_url(@resource, confirmation_token: @token), style:"padding: 10px 25px; display: inline-block; border-radius: 5px;	background: #38A169; color: #ffffff;", class:"btn btn-primary" %></p>
 </div>
