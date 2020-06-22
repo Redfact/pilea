@@ -1,9 +1,9 @@
 <% provide(:title, " | Profil") %>
-<!-- VIEW TERMINÉE MAIS NON UTILISÉE, USERS NON BLOCABLES/DÉBLOCABLES -->
+<%= render "devise/shared/error_messages", resource: resource %>
+<!-- VIEW TERMINÉE MAIS NON UTILISÉE, USERS UNLOCKABLE = false -->
 <div class="max-w-xl bg-white shadow-md rounded px-8 pt-6 pb-8 mt-6 mx-auto">
 
 <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
 
   <p class="text-center text-gray-700 text-lg font-bold mb-6">RENVOYER MES INSTRUCTIONS DE DÉBLOCAGE</p>
 
