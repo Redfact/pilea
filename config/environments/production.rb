@@ -93,7 +93,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.delivery_method = :mailjet
-
+  config.action_mailer.default_url_options = { :host => ENV['MAILER_URL'] }
   config.action_mailer.perform_deliveries = true
   
 end
